@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Frente al mar · MP Propiedades">
+<meta property="og:description" content="Tres departamentos en venta en Miraflores, frente al mar y cerca al malecón, con todas sus fotos.">
+<meta property="og:image" content="https://fatimatm00.github.io/mppropiedades/malecon/img/vista-previa.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://fatimatm00.github.io/mppropiedades/malecon/">
+<meta property="og:type" content="website">
+<link rel="icon" href="../img/logo-verde.png">
+<title>Frente al mar · MP Propiedades</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: catálogo vertical, una ficha por depa; cada ficha abre con su carrusel de fotos a todo el ancho. Un solo look de marca (claro). */
+  :root {
+    --verde: #00381d;
+    --verde-suave: #e8efe9;
+    --oro: #8a6a35;
+    --tinta: #1c2520;
+    --gris: #48524c;
+    --linea: #dfe3dd;
+    --fondo: #ffffff;
+    --marco: #f2f3ef;
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --texto: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
+  .envoltura { max-width: 880px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  header.portada { background: var(--verde); color: #fff; }
+  header.portada .envoltura { padding-block: 40px 36px; display: flex; flex-direction: column; gap: 18px; }
+  header.portada img { width: 76px; height: auto; }
+  header.portada .eyebrow { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: #e2cb98; font-weight: 600; }
+  header.portada h1 { font-family: var(--display); font-weight: 500; font-size: clamp(38px, 8vw, 58px); line-height: 1.02; margin: 0; text-wrap: balance; }
+  header.portada p { margin: 0; font-size: 17px; max-width: 34em; color: #fff; }
+  nav.indice { display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.indice a { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.55); padding: 8px 14px; font-size: 15px; border-radius: 999px; }
+  nav.indice a:hover, nav.indice a:focus-visible { background: #fff; color: var(--verde); outline: none; }
+
+  article.depa { padding-block: 44px 8px; border-bottom: 1px solid var(--linea); scroll-margin-top: 12px; }
+  article.depa:last-of-type { border-bottom: 0; }
+
+  .carrusel { position: relative; background: var(--marco); border-radius: 6px; overflow: hidden; }
+  .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .pista::-webkit-scrollbar { display: none; }
+  .pista figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; aspect-ratio: 4 / 3; max-width: 100%; display: flex; align-items: center; justify-content: center; }
+  .pista img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.94); color: var(--verde); font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+  .flecha:disabled { opacity: .35; cursor: default; }
+  .flecha:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+  .flecha.ant { left: 12px; } .flecha.sig { right: 12px; }
+  .contador { position: absolute; bottom: 12px; right: 12px; background: var(--verde); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 11px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .ayuda { font-size: 14px; color: var(--gris); margin: 8px 0 0; }
+
+  .cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-top: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--linea); }
+  .cabecera > div { min-width: 0; }
+  .lugar { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--oro); font-weight: 600; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 40px); line-height: 1.05; color: var(--verde); margin: 4px 0 0; text-wrap: balance; }
+  .precio { text-align: right; }
+  .precio b { display: block; font-family: var(--display); font-size: clamp(32px, 6.5vw, 42px); font-weight: 600; color: var(--verde); line-height: 1; font-variant-numeric: tabular-nums; }
+  .precio span { font-size: 15px; color: var(--gris); font-weight: 500; }
+
+  .datos { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--linea); }
+  .datos div { text-align: center; padding: 14px 4px; border-right: 1px solid var(--linea); }
+  .datos div:last-child { border-right: 0; }
+  .datos b { display: block; font-family: var(--display); font-size: 27px; font-weight: 600; color: var(--verde); line-height: 1.1; }
+  .datos span { font-size: 13px; color: var(--gris); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+
+  .detalle { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-block: 22px 28px; }
+  .detalle > * { min-width: 0; }
+  .detalle p { margin: 0 0 12px; max-width: 34em; }
+  .detalle ul { list-style: none; margin: 0; padding: 0; }
+  .detalle li { padding: 8px 0 8px 18px; border-bottom: 1px solid var(--linea); position: relative; font-size: 16px; }
+  .detalle li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 2px; background: var(--oro); }
+
+  footer.contacto { background: var(--verde-suave); margin-top: 24px; }
+  footer.contacto .envoltura { padding-block: 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  footer.contacto img { width: 84px; height: auto; }
+  footer.contacto h3 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 38px); color: var(--verde); margin: 0; line-height: 1.1; text-wrap: balance; }
+  footer.contacto p { margin: 0; color: var(--tinta); max-width: 30em; }
+  .numero { font-size: 22px; font-weight: 600; color: var(--verde); letter-spacing: .04em; user-select: all; }
+  .boton { display: inline-block; background: var(--verde); color: #fff; text-decoration: none; font-weight: 600; padding: 13px 24px; border-radius: 999px; font-size: 16px; }
+  .boton:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .detalle { grid-template-columns: 1fr; gap: 14px; }
+    .datos { grid-template-columns: repeat(2, 1fr); }
+    .datos div:nth-child(2) { border-right: 0; }
+    .datos div:nth-child(-n+2) { border-bottom: 1px solid var(--linea); }
+    .precio { text-align: left; }
+    .flecha { width: 42px; height: 42px; font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pista { scroll-behavior: auto; } }
+</style>
+
+</head>
+<body>
+<header class="portada">
+  <div class="envoltura">
+    <img src="../img/logo-blanco.png" alt="MP Propiedades">
+    <div class="eyebrow">Selección de propiedades · Octubre 2026</div>
+    <h1>Frente al mar en Miraflores</h1>
+    <p>Tres departamentos en venta frente al mar o a pasos del malecón. Pase las fotos de cada uno con las flechas o deslizando el dedo.</p>
+    <nav class="indice" aria-label="Departamentos">
+      <a href="#pasos-malecon">A pasos del Malecón</a>
+      <a href="#estreno-malecon">De estreno en el Malecón</a>
+      <a href="#malecon-marina">Malecón de la Marina</a>
+    </nav>
+  </div>
+</header>
+
+<main class="envoltura">
+  <article class="depa" id="pasos-malecon">
+    <div class="carrusel" data-fotos="lara" data-total="29" data-nombre="A pasos del Malecón"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · A pasos del Malecón</div><h2>Moderno, con terraza y vista al mar</h2></div>
+      <div class="precio"><b>US$ 409,000</b><span>Mantenimiento S/ 850 aprox.</span></div>
+    </div>
+    <div class="datos"><div><b>124 m²</b><span>Área</span></div><div><b>2</b><span>Dormitorios</span></div><div><b>Piso 3</b><span>Ascensor directo</span></div><div><b>2</b><span>Cocheras</span></div></div>
+    <div class="detalle"><div><p>Moderno departamento a solo pasos del Malecón, con terraza y vista al mar. Tercer piso con ascensor directo, en un edificio de 7 años de antigüedad.</p><p>Los dos dormitorios tienen su propio baño incorporado y clósets. Viene con una cochera doble en línea para dos autos y un depósito.</p></div><ul><li>Amplia sala-comedor</li><li>Terraza con vista al mar</li><li>Cocina abierta estilo americana</li><li>Baño de visitas</li><li>2 dormitorios, cada uno con baño incorporado y clósets</li><li>Lavandería, cuarto y baño de servicio</li><li>Cochera doble en línea (2 autos) y depósito</li></ul></div>
+  </article>
+  <article class="depa" id="estreno-malecon">
+    <div class="carrusel" data-fotos="estreno" data-total="27" data-nombre="De estreno en el Malecón"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Malecón</div><h2>De estreno, con vista al mar</h2></div>
+      <div class="precio"><b>Desde US$ 518,000</b><span>No paga alcabala · Entrega inmediata</span></div>
+    </div>
+    <div class="datos"><div><b>155–160 m²</b><span>Área</span></div><div><b>3</b><span>Dormitorios</span></div><div><b>3.5</b><span>Baños</span></div><div><b>2</b><span>Cocheras</span></div></div>
+    <div class="detalle"><div><p>Departamentos de estreno en el Malecón, con espectacular vista al mar y áreas comunes completas. Quedan dos opciones:</p><p><b>3.er piso:</b> 160 m² · US$ 536,000<br><b>1.er piso elevado:</b> 155 m² · US$ 518,000</p><p>No pagan alcabala y la entrega es inmediata.</p></div><ul><li>Amplia sala-comedor con vista al mar</li><li>Terraza con vista al mar</li><li>Moderna cocina abierta y sala de estar</li><li>Medio baño de visitas</li><li>3 dormitorios con baño completo; principal con walk-in closet</li><li>Lavandería, cuarto y baño de servicio</li><li>Áreas comunes: parrilla, salón de usos múltiples, gimnasio y coworking</li></ul></div>
+  </article>
+  <article class="depa" id="malecon-marina">
+    <div class="carrusel" data-fotos="starck" data-total="18" data-nombre="Malecón de la Marina"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Malecón de la Marina</div><h2>Diseñado por Philippe Starck, frente al mar</h2></div>
+      <div class="precio"><b>US$ 1,500,000</b><span>Exclusivo · Piso 9</span></div>
+    </div>
+    <div class="datos"><div><b>373 m²</b><span>Área</span></div><div><b>4</b><span>Dormitorios</span></div><div><b>3.5</b><span>Baños</span></div><div><b>4</b><span>Cocheras</span></div></div>
+    <div class="detalle"><div><p>Exclusivo departamento en el Malecón de la Marina, diseñado por Philippe Starck, con una vista al mar inmejorable. Noveno piso con ascensor principal y de servicio directos al departamento.</p><p>Sala y comedor separados, rodeados de vista al mar, y terraza cerrada con balcón. Cuenta con aire acondicionado.</p></div><ul><li>Hall de entrada; sala y comedor separados con vista al mar</li><li>Terraza cerrada con balcón y sala de estar</li><li>Amplia cocina con comedor de diario</li><li>Principal con amplio walk-in closet y baño; 1 secundario con baño y 2 que comparten baño</li><li>Baño de visitas; lavandería, cuarto y baño de servicio</li><li>4 cocheras paralelas y depósito</li><li>Áreas comunes: terraza con parrilla, piscina temperada, gimnasio, sala de billar, salón de niños y moderno lobby</li></ul></div>
+  </article>
+</main>
+
+<footer class="contacto">
+  <div class="envoltura">
+    <img src="../img/logo-verde.png" alt="MP Propiedades">
+    <h3>¿Le gustaría visitar alguna de estas propiedades?</h3>
+    <p>Coordinamos las visitas, resolvemos sus dudas y le acompañamos en todo el proceso de compra.</p>
+    <div class="numero">WhatsApp 969 698 347</div>
+    <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.carrusel').forEach(function (c) {
+    var clave = c.dataset.fotos, total = +c.dataset.total, nombre = c.dataset.nombre;
+    var pista = document.createElement('div');
+    pista.className = 'pista';
+    pista.setAttribute('tabindex', '0');
+    pista.setAttribute('aria-label', 'Fotos de ' + nombre);
+    for (var i = 1; i <= total; i++) {
+      var f = document.createElement('figure');
+      var img = document.createElement('img');
+      img.src = 'img/' + clave + '-' + String(i).padStart(2, '0') + '.jpg';
+      img.alt = nombre + ', foto ' + i + ' de ' + total;
+      img.loading = i <= 2 ? 'eager' : 'lazy';
+      f.appendChild(img);
+      pista.appendChild(f);
+    }
+    var ant = document.createElement('button'); ant.className = 'flecha ant'; ant.innerHTML = '&#8249;'; ant.setAttribute('aria-label', 'Foto anterior');
+    var sig = document.createElement('button'); sig.className = 'flecha sig'; sig.innerHTML = '&#8250;'; sig.setAttribute('aria-label', 'Foto siguiente');
+    var cont = document.createElement('div'); cont.className = 'contador';
+    c.append(pista, ant, sig, cont);
+    var ayuda = document.createElement('p'); ayuda.className = 'ayuda'; ayuda.textContent = total + ' fotos';
+    c.after(ayuda);
+
+    var idx = 0;
+    function actual() { return Math.round(pista.scrollLeft / pista.clientWidth); }
+    function pintar() {
+      var n = idx;
+      cont.textContent = (n + 1) + ' / ' + total;
+      ant.disabled = n === 0; sig.disabled = n === total - 1;
+    }
+    function ir(n) { idx = n; pintar(); pista.scrollTo({ left: n * pista.clientWidth }); }
+    ant.addEventListener('click', function () { ir(Math.max(0, idx - 1)); });
+    sig.addEventListener('click', function () { ir(Math.min(total - 1, idx + 1)); });
+    pista.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); }
+    });
+    var t; pista.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { idx = actual(); pintar(); }, 120); });
+    window.addEventListener('resize', pintar);
+    pintar();
+  });
+</script>
+
+</body>
+</html>
