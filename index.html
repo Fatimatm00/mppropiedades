@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Selección Miraflores · MP Propiedades">
+<meta property="og:description" content="Cuatro departamentos en venta en Miraflores, con todas sus fotos.">
+<meta property="og:image" content="https://fatimatm00.github.io/mppropiedades/img/vista-previa.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://fatimatm00.github.io/mppropiedades/">
+<meta property="og:type" content="website">
+<link rel="icon" href="img/logo-verde.png">
+<title>Selección Miraflores · MP Propiedades</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: catálogo vertical, una ficha por depa; cada ficha abre con su carrusel de fotos a todo el ancho. Un solo look de marca (claro). */
+  :root {
+    --verde: #00381d;
+    --verde-suave: #e8efe9;
+    --oro: #8a6a35;
+    --tinta: #1c2520;
+    --gris: #48524c;
+    --linea: #dfe3dd;
+    --fondo: #ffffff;
+    --marco: #f2f3ef;
+    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --texto: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
+  .envoltura { max-width: 880px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+  header.portada { background: var(--verde); color: #fff; }
+  header.portada .envoltura { padding-block: 40px 36px; display: flex; flex-direction: column; gap: 18px; }
+  header.portada img { width: 76px; height: auto; }
+  header.portada .eyebrow { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: #e2cb98; font-weight: 600; }
+  header.portada h1 { font-family: var(--display); font-weight: 500; font-size: clamp(38px, 8vw, 58px); line-height: 1.02; margin: 0; text-wrap: balance; }
+  header.portada p { margin: 0; font-size: 17px; max-width: 34em; color: #fff; }
+  nav.indice { display: flex; flex-wrap: wrap; gap: 8px; }
+  nav.indice a { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.55); padding: 8px 14px; font-size: 15px; border-radius: 999px; }
+  nav.indice a:hover, nav.indice a:focus-visible { background: #fff; color: var(--verde); outline: none; }
+
+  article.depa { padding-block: 44px 8px; border-bottom: 1px solid var(--linea); scroll-margin-top: 12px; }
+  article.depa:last-of-type { border-bottom: 0; }
+
+  .carrusel { position: relative; background: var(--marco); border-radius: 6px; overflow: hidden; }
+  .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .pista::-webkit-scrollbar { display: none; }
+  .pista figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; aspect-ratio: 4 / 3; max-width: 100%; display: flex; align-items: center; justify-content: center; }
+  .pista img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.94); color: var(--verde); font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
+  .flecha:disabled { opacity: .35; cursor: default; }
+  .flecha:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+  .flecha.ant { left: 12px; } .flecha.sig { right: 12px; }
+  .contador { position: absolute; bottom: 12px; right: 12px; background: var(--verde); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 11px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .ayuda { font-size: 14px; color: var(--gris); margin: 8px 0 0; }
+
+  .cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-top: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--linea); }
+  .cabecera > div { min-width: 0; }
+  .lugar { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--oro); font-weight: 600; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 40px); line-height: 1.05; color: var(--verde); margin: 4px 0 0; text-wrap: balance; }
+  .precio { text-align: right; }
+  .precio b { display: block; font-family: var(--display); font-size: clamp(32px, 6.5vw, 42px); font-weight: 600; color: var(--verde); line-height: 1; font-variant-numeric: tabular-nums; }
+  .precio span { font-size: 15px; color: var(--gris); font-weight: 500; }
+
+  .datos { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--linea); }
+  .datos div { text-align: center; padding: 14px 4px; border-right: 1px solid var(--linea); }
+  .datos div:last-child { border-right: 0; }
+  .datos b { display: block; font-family: var(--display); font-size: 27px; font-weight: 600; color: var(--verde); line-height: 1.1; }
+  .datos span { font-size: 13px; color: var(--gris); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+
+  .detalle { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-block: 22px 28px; }
+  .detalle > * { min-width: 0; }
+  .detalle p { margin: 0 0 12px; max-width: 34em; }
+  .detalle ul { list-style: none; margin: 0; padding: 0; }
+  .detalle li { padding: 8px 0 8px 18px; border-bottom: 1px solid var(--linea); position: relative; font-size: 16px; }
+  .detalle li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 2px; background: var(--oro); }
+
+  footer.contacto { background: var(--verde-suave); margin-top: 24px; }
+  footer.contacto .envoltura { padding-block: 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
+  footer.contacto img { width: 84px; height: auto; }
+  footer.contacto h3 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 38px); color: var(--verde); margin: 0; line-height: 1.1; text-wrap: balance; }
+  footer.contacto p { margin: 0; color: var(--tinta); max-width: 30em; }
+  .numero { font-size: 22px; font-weight: 600; color: var(--verde); letter-spacing: .04em; user-select: all; }
+  .boton { display: inline-block; background: var(--verde); color: #fff; text-decoration: none; font-weight: 600; padding: 13px 24px; border-radius: 999px; font-size: 16px; }
+  .boton:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .detalle { grid-template-columns: 1fr; gap: 14px; }
+    .datos { grid-template-columns: repeat(2, 1fr); }
+    .datos div:nth-child(2) { border-right: 0; }
+    .datos div:nth-child(-n+2) { border-bottom: 1px solid var(--linea); }
+    .precio { text-align: left; }
+    .flecha { width: 42px; height: 42px; font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .pista { scroll-behavior: auto; } }
+</style>
+
+</head>
+<body>
+<header class="portada">
+  <div class="envoltura">
+    <img src="img/logo-blanco.png" alt="MP Propiedades">
+    <div class="eyebrow">Selección de propiedades · Octubre 2026</div>
+    <h1>Departamentos en venta en Miraflores</h1>
+    <p>Cuatro opciones elegidas para usted. Pase las fotos de cada departamento con las flechas o deslizando el dedo.</p>
+    <nav class="indice" aria-label="Departamentos">
+      <a href="#naciones-unidas">Parque Naciones Unidas</a>
+      <a href="#parque-blume">Parque Blume</a>
+      <a href="#cordova-5">General Córdova cdra. 5</a>
+      <a href="#cordova-8">General Córdova cdra. 8</a>
+    </nav>
+  </div>
+</header>
+
+<main class="envoltura">
+
+  <article class="depa" id="naciones-unidas">
+    <div class="carrusel" data-fotos="nnuu" data-total="12" data-nombre="Parque Naciones Unidas"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Parque Naciones Unidas</div><h2>Frente al parque, con salida directa</h2></div>
+      <div class="precio"><b>US$ 360,000</b><span>S/ 1,200,000</span></div>
+    </div>
+    <div class="datos">
+      <div><b>130 m²</b><span>Área</span></div>
+      <div><b>2 + 1</b><span>Dormitorios</span></div>
+      <div><b>2.5</b><span>Baños</span></div>
+      <div><b>2</b><span>Cocheras</span></div>
+    </div>
+    <div class="detalle">
+      <div>
+        <p>Ubicación privilegiada frente al Parque Naciones Unidas, con salida directa al parque y balcón con una hermosa vista.</p>
+        <p>Hoy tiene 2 dormitorios, pero la distribución permite cerrar un tercero: funciona muy bien para quien busca 2 o 3 habitaciones. Ambientes muy iluminados, pisos de madera y excelente estado de conservación.</p>
+      </div>
+      <ul>
+        <li>Sala-comedor amplia con balcón y vista al parque</li>
+        <li>Cocina cerrada con doble lavadero, barra de granito y comedor de diario</li>
+        <li>Family room / sala de TV</li>
+        <li>Principal con walk-in closet y baño privado</li>
+        <li>Lavandería, alacena y medio baño de servicio</li>
+        <li>2 estacionamientos simples y 1 depósito</li>
+        <li>Edificio de pocos vecinos · Recepción 24 h</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="depa" id="parque-blume">
+    <div class="carrusel" data-fotos="blume" data-total="9" data-nombre="Parque Blume"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Parque Blume</div><h2>De estreno, con vista y salida al parque</h2></div>
+      <div class="precio"><b>US$ 375,000</b><span>Negociable · paga alcabala</span></div>
+    </div>
+    <div class="datos">
+      <div><b>107 m²</b><span>Área</span></div>
+      <div><b>3</b><span>Dormitorios</span></div>
+      <div><b>Piso 6</b><span>Vista al parque</span></div>
+      <div><b>1</b><span>Cochera</span></div>
+    </div>
+    <div class="detalle">
+      <div>
+        <p>Departamento de estreno con acabados de primera, en un edificio moderno con excelente distribución y conexión directa a las áreas verdes del Parque Blume.</p>
+        <p>Precio ajustado para venta. Calle Cap. José Quiñones, cuadra 1.</p>
+      </div>
+      <ul>
+        <li>Sala-comedor con balcón y vista al parque</li>
+        <li>Cocina abierta equipada</li>
+        <li>Principal con baño y clóset</li>
+        <li>Dormitorios secundarios con baño compartido</li>
+        <li>1 estacionamiento y 1 depósito</li>
+        <li>2 ascensores · 4 departamentos por piso</li>
+        <li>Portería 24/7 · Mantenimiento S/ 600</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="depa" id="cordova-5">
+    <div class="carrusel" data-fotos="hol" data-total="27" data-nombre="General Córdova cdra. 5"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Av. General Córdova cdra. 5</div><h2>Un departamento por piso, con terraza</h2></div>
+      <div class="precio"><b>US$ 430,000</b><span>S/ 1,479,200 aprox.</span></div>
+    </div>
+    <div class="datos">
+      <div><b>214 m²</b><span>170 techados</span></div>
+      <div><b>3</b><span>Dormitorios</span></div>
+      <div><b>3.5</b><span>Baños</span></div>
+      <div><b>2</b><span>Cocheras</span></div>
+    </div>
+    <div class="detalle">
+      <div>
+        <p>Impecable departamento, con muy buenos acabados y mantenimiento. Una linda terraza interior de 44 m² le da calidez y ventilación; muy bien iluminado.</p>
+        <p>Solo un departamento por piso, con ascensor directo. Segundo piso de un edificio de 7, con 12 años de antigüedad. Se permiten mascotas.</p>
+      </div>
+      <ul>
+        <li>Living-comedor y comedor de diario</li>
+        <li>Cocina cerrada y estar familiar</li>
+        <li>3 dormitorios con baño incorporado, walk-in closet</li>
+        <li>Cuarto y baño de servicio, lavandería</li>
+        <li>Terraza de 44 m²</li>
+        <li>2 cocheras techadas en línea y 2 depósitos</li>
+        <li>Guardianía · Mantenimiento S/ 1,296 + agua</li>
+      </ul>
+    </div>
+  </article>
+
+  <article class="depa" id="cordova-8">
+    <div class="carrusel" data-fotos="cordova" data-total="12" data-nombre="General Córdova cdra. 8"></div>
+    <div class="cabecera">
+      <div><div class="lugar">Miraflores · Av. General Córdova cdra. 8</div><h2>Prácticamente nuevo, con balcón</h2></div>
+      <div class="precio"><b>US$ 310,000</b><span>Mantenimiento S/ 750</span></div>
+    </div>
+    <div class="datos">
+      <div><b>128 m²</b><span>Área</span></div>
+      <div><b>3</b><span>Dormitorios</span></div>
+      <div><b>3.5</b><span>Baños</span></div>
+      <div><b>2</b><span>Cocheras</span></div>
+    </div>
+    <div class="detalle">
+      <div>
+        <p>Segundo piso en un edificio de 12 pisos con solo 2 departamentos por piso y ascensor directo con clave. Seis años de construido y usado por el propietario apenas 3 meses.</p>
+        <p>Viene con rollers en todo el departamento. Lindo lobby, portería 24/7 con cámaras y ascensor para personas con discapacidad.</p>
+      </div>
+      <ul>
+        <li>Sala y comedor con salida a balcón</li>
+        <li>Principal con baño incorporado y walk-in closet</li>
+        <li>2 dormitorios con baño completo compartido</li>
+        <li>Baño de visitas</li>
+        <li>Cocina cerrada amplia, granito, plancha y campana</li>
+        <li>Lavandería, cuarto y baño de servicio, therma</li>
+        <li>2 cocheras individuales y 1 depósito grande</li>
+      </ul>
+    </div>
+  </article>
+
+</main>
+
+<footer class="contacto">
+  <div class="envoltura">
+    <img src="img/logo-verde.png" alt="MP Propiedades">
+    <h3>¿Le gustaría visitar alguna de estas propiedades?</h3>
+    <p>Coordinamos las visitas, resolvemos sus dudas y le acompañamos en todo el proceso de compra.</p>
+    <div class="numero">WhatsApp 969 698 347</div>
+    <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.carrusel').forEach(function (c) {
+    var clave = c.dataset.fotos, total = +c.dataset.total, nombre = c.dataset.nombre;
+    var pista = document.createElement('div');
+    pista.className = 'pista';
+    pista.setAttribute('tabindex', '0');
+    pista.setAttribute('aria-label', 'Fotos de ' + nombre);
+    for (var i = 1; i <= total; i++) {
+      var f = document.createElement('figure');
+      var img = document.createElement('img');
+      img.src = 'img/' + clave + '-' + String(i).padStart(2, '0') + '.jpg';
+      img.alt = nombre + ', foto ' + i + ' de ' + total;
+      img.loading = i <= 2 ? 'eager' : 'lazy';
+      f.appendChild(img);
+      pista.appendChild(f);
+    }
+    var ant = document.createElement('button'); ant.className = 'flecha ant'; ant.innerHTML = '&#8249;'; ant.setAttribute('aria-label', 'Foto anterior');
+    var sig = document.createElement('button'); sig.className = 'flecha sig'; sig.innerHTML = '&#8250;'; sig.setAttribute('aria-label', 'Foto siguiente');
+    var cont = document.createElement('div'); cont.className = 'contador';
+    c.append(pista, ant, sig, cont);
+    var ayuda = document.createElement('p'); ayuda.className = 'ayuda'; ayuda.textContent = total + ' fotos';
+    c.after(ayuda);
+
+    function actual() { return Math.round(pista.scrollLeft / pista.clientWidth); }
+    function pintar() {
+      var n = actual();
+      cont.textContent = (n + 1) + ' / ' + total;
+      ant.disabled = n === 0; sig.disabled = n === total - 1;
+    }
+    function ir(n) { pista.scrollTo({ left: n * pista.clientWidth }); }
+    ant.addEventListener('click', function () { ir(Math.max(0, actual() - 1)); });
+    sig.addEventListener('click', function () { ir(Math.min(total - 1, actual() + 1)); });
+    pista.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); }
+    });
+    var t; pista.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(pintar, 60); });
+    window.addEventListener('resize', pintar);
+    pintar();
+  });
+</script>
+
+</body>
+</html>
