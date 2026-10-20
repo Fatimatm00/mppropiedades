@@ -269,20 +269,21 @@
     var ayuda = document.createElement('p'); ayuda.className = 'ayuda'; ayuda.textContent = total + ' fotos';
     c.after(ayuda);
 
+    var idx = 0;
     function actual() { return Math.round(pista.scrollLeft / pista.clientWidth); }
     function pintar() {
-      var n = actual();
+      var n = idx;
       cont.textContent = (n + 1) + ' / ' + total;
       ant.disabled = n === 0; sig.disabled = n === total - 1;
     }
-    function ir(n) { pista.scrollTo({ left: n * pista.clientWidth }); }
-    ant.addEventListener('click', function () { ir(Math.max(0, actual() - 1)); });
-    sig.addEventListener('click', function () { ir(Math.min(total - 1, actual() + 1)); });
+    function ir(n) { idx = n; pintar(); pista.scrollTo({ left: n * pista.clientWidth }); }
+    ant.addEventListener('click', function () { ir(Math.max(0, idx - 1)); });
+    sig.addEventListener('click', function () { ir(Math.min(total - 1, idx + 1)); });
     pista.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); }
     });
-    var t; pista.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(pintar, 60); });
+    var t; pista.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { idx = actual(); pintar(); }, 120); });
     window.addEventListener('resize', pintar);
     pintar();
   });
