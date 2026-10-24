@@ -176,6 +176,39 @@
     .js .rv { opacity: 1; transform: none; transition: none; }
     .tarjetas, .pista { scroll-behavior: auto; }
   }
+
+  /* Ajustes de tamaño: mobile first */
+  .barra .corto { display: none; }
+  .pista figure { aspect-ratio: 4 / 5; }
+  .mapa .chips { position: static; padding: 12px 0 0; }
+  .mapa .chips span { background: var(--marfil); color: var(--verde); border-color: var(--linea); backdrop-filter: none; }
+  .mapa img { aspect-ratio: 16 / 10; object-position: 78% 50%; }
+  @media (max-width: 760px) {
+    .barra { padding-top: 9px; padding-bottom: calc(9px + env(safe-area-inset-bottom, 0px)); }
+    .barra b { font-size: 21px; }
+    .barra .largo { display: none; } .barra .corto { display: block; font-size: 13px; }
+    .barra a { padding: 9px 18px; font-size: 15px; }
+    .plazo { flex-direction: row; text-align: left; align-items: flex-start; gap: 16px; padding: 18px; }
+    .reloj { width: 76px; height: 76px; font-size: 15px; }
+    .reloj b { font-size: 30px; }
+    .plazo h3 { font-size: 17px; }
+    .plazo p { font-size: 15px; }
+    .tarjeta h3 { font-size: 28px; }
+    .portada h1 { font-size: clamp(50px, 14vw, 64px); }
+  }
+  @media (min-width: 761px) {
+    .pista figure { aspect-ratio: 3 / 2; }
+    .tarjeta { flex-basis: calc((100% - 32px) / 2.4); }
+    .mapa img { aspect-ratio: 1500 / 712; }
+    .incluye b { font-size: 46px; }
+  }
+  @media (min-width: 1100px) {
+    .tarjetas { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+    #familia .tabs { display: none; }
+    .tarjeta h3 { font-size: 27px; }
+    .tarjeta .cuerpo { padding: 18px 18px 20px; }
+    .galeria .carrusel, .galeria .miniaturas { max-width: 900px; margin-left: auto; margin-right: auto; }
+  }
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -366,7 +399,7 @@
 
 <div class="tip" id="tip" role="status"></div>
 <div class="barra" id="barra">
-  <div><b>US$ 530,000</b><span>Precio especial · 160 m² · separación hasta el martes 27</span></div>
+  <div><b>US$ 530,000</b><span class="largo">Precio especial · 160 m² · separación hasta el martes 27</span><span class="corto">Separación hasta el martes 27</span></div>
   <a href="#propuesta">Separar</a>
 </div>
 
