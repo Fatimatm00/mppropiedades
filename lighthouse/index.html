@@ -3,215 +3,256 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta property="og:title" content="Lighthouse · Una propuesta para su familia">
-<meta property="og:description" content="Un departamento frente al mar en Miraflores, con espacio y privacidad para cada uno.">
+<title>Lighthouse · Una casa frente al mar</title>
+<meta property="og:title" content="Lighthouse · Una casa frente al mar">
+<meta property="og:description" content="Piso 3 en Lighthouse by Bragagnini, Miraflores: tres dormitorios con baño propio, vista al mar y al parque.">
 <meta property="og:image" content="https://fatimatm00.github.io/mppropiedades/lighthouse/img/vista-previa.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://fatimatm00.github.io/mppropiedades/lighthouse/">
 <meta property="og:type" content="website">
 <link rel="icon" href="../img/logo-verde.png">
-<title>Lighthouse · Una propuesta para su familia</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* Layout: catálogo vertical, una ficha por depa; cada ficha abre con su carrusel de fotos a todo el ancho. Un solo look de marca (claro). */
+  /* Editorial de lujo: portada a sangre, capítulos con foto grande y texto al lado, cierre en verde. Un solo look claro. */
   :root {
     --verde: #00381d;
-    --verde-suave: #e8efe9;
-    --oro: #8a6a35;
-    --tinta: #1c2520;
-    --gris: #48524c;
-    --linea: #dfe3dd;
-    --fondo: #ffffff;
-    --marco: #f2f3ef;
+    --verde-hondo: #062a19;
+    --oro: #a8834a;
+    --oro-claro: #e2cb98;
+    --marfil: #f7f4ee;
+    --tinta: #1b2420;
+    --gris: #46504a;
+    --linea: #dcd6c9;
     --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --texto: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--fondo); color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
-  .envoltura { max-width: 880px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #fff; color: var(--tinta); font-family: var(--texto); font-size: 18px; line-height: 1.6; }
+  img { max-width: 100%; display: block; }
+  .ancho { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-size: 13px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--oro); }
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+  em { font-style: italic; }
 
-  header.portada { background: var(--verde); color: #fff; }
-  header.portada .envoltura { padding-block: 40px 36px; display: flex; flex-direction: column; gap: 18px; }
-  header.portada img { width: 76px; height: auto; }
-  header.portada .eyebrow { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: #e2cb98; font-weight: 600; }
-  header.portada h1 { font-family: var(--display); font-weight: 500; font-size: clamp(38px, 8vw, 58px); line-height: 1.02; margin: 0; text-wrap: balance; }
-  header.portada p { margin: 0; font-size: 17px; max-width: 34em; color: #fff; }
-  nav.indice { display: flex; flex-wrap: wrap; gap: 8px; }
-  nav.indice a { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.55); padding: 8px 14px; font-size: 15px; border-radius: 999px; }
-  nav.indice a:hover, nav.indice a:focus-visible { background: #fff; color: var(--verde); outline: none; }
+  /* Portada */
+  .portada { position: relative; min-height: min(92svh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--verde-hondo) url(img/depa-01.jpg) center 62%/cover; }
+  .portada::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 30%, rgba(6,42,25,.15) 50%, rgba(6,42,25,.88) 100%); }
+  .portada .marca { position: absolute; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 64px; z-index: 1; }
+  .portada .ancho { position: relative; width: 100%; padding-block: 0 48px; }
+  .portada .eyebrow { color: var(--oro-claro); }
+  .portada h1 { font-size: clamp(52px, 11vw, 112px); line-height: .95; margin: 14px 0 20px; font-weight: 500; }
+  .portada h1 em { color: var(--oro-claro); }
+  .portada p { margin: 0; max-width: 30em; font-size: 18px; }
+  .fichas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .fichas span { border: 1px solid rgba(255,255,255,.6); border-radius: 999px; padding: 8px 15px; font-size: 15px; font-weight: 500; }
 
-  article.depa { padding-block: 44px 8px; border-bottom: 1px solid var(--linea); scroll-margin-top: 12px; }
-  article.depa:last-of-type { border-bottom: 0; }
+  /* Declaración */
+  .declaracion { background: var(--marfil); }
+  .declaracion .ancho { padding-block: 72px; }
+  .declaracion p { font-family: var(--display); font-size: clamp(30px, 5vw, 46px); line-height: 1.18; color: var(--verde); margin: 0; max-width: 22em; }
+  .declaracion p em { color: var(--oro); }
 
-  .carrusel { position: relative; background: var(--marco); border-radius: 6px; overflow: hidden; }
+  /* Capítulos */
+  .capitulo .ancho { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: 80px; }
+  .capitulo.invertido .foto { order: 2; }
+  .capitulo .foto { position: relative; }
+  .capitulo .foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
+  .capitulo .foto.ancha img { aspect-ratio: 4 / 3; }
+  .capitulo .foto figcaption { font-size: 14px; color: var(--gris); margin-top: 10px; }
+  .capitulo .texto { min-width: 0; }
+  .capitulo .num { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--oro); }
+  .capitulo h2 { font-size: clamp(40px, 6vw, 62px); line-height: 1; color: var(--verde); margin: 8px 0 20px; }
+  .capitulo p { margin: 0 0 16px; max-width: 32em; }
+  .puntos { list-style: none; padding: 0; margin: 22px 0 0; border-top: 1px solid var(--linea); }
+  .puntos li { padding: 13px 0 13px 26px; border-bottom: 1px solid var(--linea); position: relative; font-weight: 500; }
+  .puntos li::before { content: ''; position: absolute; left: 0; top: 25px; width: 12px; height: 1.5px; background: var(--oro); }
+  .capitulo + .capitulo .ancho { border-top: 1px solid var(--linea); }
+
+  /* Recorrido */
+  .recorrido { background: var(--verde-hondo); color: #fff; }
+  .recorrido .ancho { padding-block: 76px; }
+  .recorrido .eyebrow { color: var(--oro-claro); }
+  .recorrido h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; margin: 10px 0 14px; }
+  .recorrido .aviso { margin: 0 0 28px; max-width: 36em; color: #fff; }
+  .recorrido .aviso b { color: var(--oro-claro); font-weight: 600; }
+  .carrusel { position: relative; background: #0d3423; border-radius: 4px; overflow: hidden; }
   .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
   .pista::-webkit-scrollbar { display: none; }
   .pista figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; aspect-ratio: 4 / 3; max-width: 100%; display: flex; align-items: center; justify-content: center; }
-  .pista img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.94); color: var(--verde); font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,.18); }
-  .flecha:disabled { opacity: .35; cursor: default; }
-  .flecha:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
-  .flecha.ant { left: 12px; } .flecha.sig { right: 12px; }
-  .contador { position: absolute; bottom: 12px; right: 12px; background: var(--verde); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 11px; border-radius: 999px; font-variant-numeric: tabular-nums; }
-  .ayuda { font-size: 14px; color: var(--gris); margin: 8px 0 0; }
+  .pista img { width: 100%; height: 100%; object-fit: contain; }
+  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); color: var(--verde); font-size: 28px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+  .flecha:disabled { opacity: .3; cursor: default; }
+  .flecha:focus-visible { outline: 3px solid var(--oro-claro); outline-offset: 2px; }
+  .flecha.ant { left: 14px; } .flecha.sig { right: 14px; }
+  .contador { position: absolute; bottom: 14px; right: 14px; background: rgba(6,42,25,.9); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .ayuda { font-size: 14px; color: rgba(255,255,255,.8); margin: 10px 0 0; }
 
-  .cabecera { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px 24px; margin-top: 22px; padding-bottom: 16px; border-bottom: 1px solid var(--linea); }
-  .cabecera > div { min-width: 0; }
-  .lugar { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--oro); font-weight: 600; }
-  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 40px); line-height: 1.05; color: var(--verde); margin: 4px 0 0; text-wrap: balance; }
-  .precio { text-align: right; }
-  .precio b { display: block; font-family: var(--display); font-size: clamp(32px, 6.5vw, 42px); font-weight: 600; color: var(--verde); line-height: 1; font-variant-numeric: tabular-nums; }
-  .precio span { font-size: 15px; color: var(--gris); font-weight: 500; }
+  /* Edificio */
+  .edificio .ancho { padding-block: 80px 40px; }
+  .edificio h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; color: var(--verde); margin: 10px 0 30px; }
+  .cifras { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+  .cifras div { padding: 24px 8px; text-align: center; border-right: 1px solid var(--linea); }
+  .cifras div:last-child { border-right: 0; }
+  .cifras b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(38px, 6vw, 56px); line-height: 1; color: var(--verde); }
+  .cifras span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); font-weight: 600; }
+  .amenidades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 36px; list-style: none; padding: 0; margin: 34px 0 0; }
+  .amenidades li { padding: 14px 0; border-bottom: 1px solid var(--linea); font-weight: 500; }
+  .amenidades li small { display: block; font-weight: 400; color: var(--gris); font-size: 15px; }
 
-  .datos { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--linea); }
-  .datos div { text-align: center; padding: 14px 4px; border-right: 1px solid var(--linea); }
-  .datos div:last-child { border-right: 0; }
-  .datos b { display: block; font-family: var(--display); font-size: 27px; font-weight: 600; color: var(--verde); line-height: 1.1; }
-  .datos span { font-size: 13px; color: var(--gris); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+  /* Ubicación */
+  .ubicacion { background: var(--marfil); }
+  .ubicacion .ancho { padding-block: 76px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .ubicacion h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; color: var(--verde); margin: 10px 0 0; }
+  .ubicacion .ancho > * { min-width: 0; }
 
-  .detalle { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-block: 22px 28px; }
-  .detalle > * { min-width: 0; }
-  .detalle p { margin: 0 0 12px; max-width: 34em; }
-  .detalle ul { list-style: none; margin: 0; padding: 0; }
-  .detalle li { padding: 8px 0 8px 18px; border-bottom: 1px solid var(--linea); position: relative; font-size: 16px; }
-  .detalle li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 2px; background: var(--oro); }
+  /* Cierre */
+  .cierre { background: var(--verde); color: #fff; text-align: center; }
+  .cierre .ancho { padding-block: 84px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .cierre img { width: 78px; }
+  .cierre h2 { font-size: clamp(40px, 6.5vw, 64px); line-height: 1.02; max-width: 12em; }
+  .cierre h2 em { color: var(--oro-claro); }
+  .cierre p { margin: 0; max-width: 30em; }
+  .numero { font-size: 22px; font-weight: 600; letter-spacing: .05em; user-select: all; }
+  .boton { display: inline-block; background: var(--oro-claro); color: var(--verde-hondo); text-decoration: none; font-weight: 600; padding: 15px 28px; border-radius: 999px; font-size: 17px; }
+  .boton:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
-  footer.contacto { background: var(--verde-suave); margin-top: 24px; }
-  footer.contacto .envoltura { padding-block: 48px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 14px; }
-  footer.contacto img { width: 84px; height: auto; }
-  footer.contacto h3 { font-family: var(--display); font-weight: 600; font-size: clamp(30px, 6vw, 38px); color: var(--verde); margin: 0; line-height: 1.1; text-wrap: balance; }
-  footer.contacto p { margin: 0; color: var(--tinta); max-width: 30em; }
-  .numero { font-size: 22px; font-weight: 600; color: var(--verde); letter-spacing: .04em; user-select: all; }
-  .boton { display: inline-block; background: var(--verde); color: #fff; text-decoration: none; font-weight: 600; padding: 13px 24px; border-radius: 999px; font-size: 16px; }
-  .boton:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
-
-  @media (max-width: 640px) {
-    body { font-size: 16px; }
-    .detalle { grid-template-columns: 1fr; gap: 14px; }
-    .datos { grid-template-columns: repeat(2, 1fr); }
-    .datos div:nth-child(2) { border-right: 0; }
-    .datos div:nth-child(-n+2) { border-bottom: 1px solid var(--linea); }
-    .precio { text-align: left; }
-    .flecha { width: 42px; height: 42px; font-size: 22px; }
+  @media (max-width: 760px) {
+    body { font-size: 17px; }
+    .capitulo .ancho, .ubicacion .ancho { grid-template-columns: 1fr; padding-block: 56px; }
+    .capitulo.invertido .foto { order: 0; }
+    .amenidades { grid-template-columns: 1fr; }
+    .cifras b { font-size: 40px; }
+    .flecha { width: 44px; height: 44px; font-size: 24px; }
+    .declaracion .ancho { padding-block: 52px; }
   }
-  @media (prefers-reduced-motion: reduce) { .pista { scroll-behavior: auto; } }
-
-  .seccion { padding-block: 44px 8px; }
-  .seccion > h2 { margin-bottom: 6px; }
-  .bajada { color: var(--gris); margin: 0 0 22px; max-width: 36em; }
-  .para { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .para > div { background: var(--verde-suave); border-radius: 6px; padding: 22px 22px 18px; min-width: 0; }
-  .para h3 { font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1.1; color: var(--verde); margin: 0 0 10px; text-wrap: balance; }
-  .para p { margin: 0; }
-  .lista2 { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 32px; }
-  .lista2 li { padding: 8px 0 8px 18px; border-bottom: 1px solid var(--linea); position: relative; break-inside: avoid; }
-  .lista2 li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 2px; background: var(--oro); }
-  .nota-fotos { font-size: 14px; color: var(--gris); margin: 8px 0 0; }
-  .sello { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--verde); border: 1px solid var(--verde); border-radius: 999px; padding: 6px 12px; margin-bottom: 14px; }
-  @media (max-width: 640px) { .para { grid-template-columns: 1fr; } .lista2 { columns: 1; } }
+  @media (prefers-reduced-motion: reduce) { html, .pista { scroll-behavior: auto; } }
 </style>
-
 </head>
 <body>
+
 <header class="portada">
-  <div class="envoltura">
-    <img src="../img/logo-blanco.png" alt="MP Propiedades">
+  <img class="marca" src="../img/logo-blanco.png" alt="MP Propiedades">
+  <div class="ancho">
     <div class="eyebrow">Lighthouse by Bragagnini · Miraflores</div>
-    <h1>Un hogar frente al mar, con espacio para cada uno</h1>
-    <p>Preparamos esta página pensando en su familia: en quien viene de vivir en una casa, en una hija que necesita calma para estudiar y en que cada uno tenga su propio espacio.</p>
+    <h1>Una casa<br><em>frente al mar</em></h1>
+    <p>El piso 3 de Lighthouse: espacio para cada uno, vista al mar y al verde, y todo Miraflores a una caminata.</p>
+    <div class="fichas"><span>3 dormitorios con baño propio</span><span>Balcón con vista al mar</span><span>Piso 3</span></div>
   </div>
 </header>
 
-<main class="envoltura">
+<section class="declaracion">
+  <div class="ancho">
+    <p>Para una familia que viene de vivir en casa y no quiere renunciar a eso: <em>amplitud, privacidad y lugares</em> donde cada uno se sienta a gusto.</p>
+  </div>
+</section>
 
-  <section class="seccion" id="departamento">
-    <div class="carrusel" data-fotos="depa" data-total="17" data-nombre="el departamento"></div>
-    <p class="nota-fotos">Fotos del departamento piloto (piso 2). Deslice o use las flechas para recorrerlo.</p>
-    <div class="cabecera">
-      <div><div class="lugar">Miraflores · Malecón de la Marina con calle Manuel Tovar</div><h2>Piso 3, con vista al mar y al parque</h2></div>
+<section class="capitulo">
+  <div class="ancho">
+    <figure class="foto"><img src="img/depa-12.jpg" alt="Baño completo de uno de los dormitorios"><figcaption>Baño de uno de los dormitorios · depa piloto</figcaption></figure>
+    <div class="texto">
+      <div class="num">I · Para sus hijos</div>
+      <h2>Cada uno, con su propio baño</h2>
+      <p>Los tres dormitorios tienen baño propio. Nadie comparte, nadie espera turno y cada uno mantiene su privacidad, como en una casa.</p>
+      <p>Además, un baño de visitas para que quienes vengan no pasen por los cuartos.</p>
+      <ul class="puntos">
+        <li>3 dormitorios, cada uno con baño propio</li>
+        <li>Principal con walk-in closet</li>
+        <li>Baño de visitas aparte</li>
+      </ul>
     </div>
-    <div class="datos">
-      <div><b>3</b><span>Dormitorios</span></div>
-      <div><b>3</b><span>Baños propios</span></div>
-      <div><b>+ ½</b><span>Baño de visitas</span></div>
-      <div><b>Balcón</b><span>Para parrilla</span></div>
+  </div>
+</section>
+
+<section class="capitulo invertido">
+  <div class="ancho">
+    <figure class="foto"><img src="img/depa-08.jpg" alt="Salita de estar del departamento"><figcaption>Salita de estar · depa piloto</figcaption></figure>
+    <div class="texto">
+      <div class="num">II · Para su hija</div>
+      <h2>Mil lugares para estudiar</h2>
+      <p>A ella le encanta estudiar en cafeterías: en Larcomar y alrededor tiene muchísimas, a las que llega caminando por el malecón.</p>
+      <p>Y sin salir del edificio tiene un coworking espectacular y varias áreas comunes distintas, para cambiar de ambiente cada vez que lo necesite y no sentirse encerrada.</p>
+      <ul class="puntos">
+        <li>Cafés de Larcomar y del malecón, a pie</li>
+        <li>Coworking en el edificio</li>
+        <li>Su cuarto con baño, lejos del movimiento de la sala</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="seccion" id="para-su-familia">
-    <h2>Pensado para su familia</h2>
-    <p class="bajada">Lo que más nos gustó del piso 3, y por qué creemos que le queda a cada uno.</p>
-    <div class="para">
-      <div>
-        <h3>Para quien está acostumbrado a una casa</h3>
-        <p>Ambientes amplios que no se sienten de departamento, y un balcón donde entra una parrilla o un camastro para disfrutar la vista al mar y al parque.</p>
-      </div>
-      <div>
-        <h3>Para su hija, que estudia mucho</h3>
-        <p>Su propio dormitorio con baño, lejos del movimiento de la sala. Y si necesita salir del cuarto, el coworking del edificio es un lugar tranquilo para concentrarse.</p>
-      </div>
-      <div>
-        <h3>Para su hijo</h3>
-        <p>Cada dormitorio tiene su baño, así que cada uno mantiene su privacidad. En el edificio hay gimnasio y una sala con barra y billar para ver los partidos de fútbol.</p>
-      </div>
-      <div>
-        <h3>Para recibir a la familia</h3>
-        <p>Baño de visitas, una salita de estar aparte y cocina abierta que se puede cerrar si lo prefieren. En verano, la terraza con parrilla del edificio.</p>
-      </div>
+<section class="capitulo">
+  <div class="ancho">
+    <figure class="foto ancha"><img src="img/edificio-01.jpg" alt="Terraza con parrilla del edificio"><figcaption>Terraza con parrilla · imagen referencial del proyecto</figcaption></figure>
+    <div class="texto">
+      <div class="num">III · Para su esposo</div>
+      <h2>Mar, verde y espacio de sobra</h2>
+      <p>Para quien está acostumbrado a casa: vista al mar y al parque desde la sala y un balcón donde entra una parrilla o un camastro.</p>
+      <p>Y muchas áreas comunes para sentirse en casa también fuera del departamento: terraza con parrilla, una sala con barra y billar para ver los partidos, gimnasio y un coworking para sus reuniones o directorios.</p>
+      <ul class="puntos">
+        <li>Vista al mar y al parque</li>
+        <li>Balcón para parrilla o camastro</li>
+        <li>Sala con barra y billar para los partidos</li>
+        <li>Terraza con parrilla para el verano</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="seccion" id="distribucion">
-    <h2>El departamento</h2>
-    <p class="bajada">Distribución del piso 3.</p>
-    <ul class="lista2">
-      <li>3 dormitorios, cada uno con su baño propio</li>
-      <li>Baño de visitas</li>
-      <li>Sala y comedor con vista al mar y al parque</li>
-      <li>Balcón con espacio para parrilla o camastro</li>
-      <li>Salita de estar</li>
-      <li>Cocina abierta, que se puede cerrar</li>
+<section class="recorrido" id="recorrido">
+  <div class="ancho">
+    <div class="eyebrow">Recorra el departamento</div>
+    <h2>El depa, foto por foto</h2>
+    <p class="aviso">Estas fotos son del <b>depa piloto del piso 2</b>. El <b>piso 3</b>, el que le proponemos, tiene la misma idea y <b>es un poco más grande</b>.</p>
+    <div class="carrusel" data-fotos="depa" data-total="17" data-nombre="el departamento piloto"></div>
+  </div>
+</section>
+
+<section class="edificio">
+  <div class="ancho">
+    <div class="eyebrow">El edificio</div>
+    <h2>Pocos vecinos, mucho espacio común</h2>
+    <div class="cifras">
+      <div><b>19</b><span>Pisos + azotea</span></div>
+      <div><b>39</b><span>Departamentos</span></div>
+      <div><b>LEED</b><span>Certificado</span></div>
+    </div>
+    <ul class="amenidades">
+      <li>Coworking<small>Para estudiar o tener reuniones</small></li>
+      <li>Sala con barra y billar<small>Para ver los partidos</small></li>
+      <li>Terraza con parrilla<small>Para el verano</small></li>
+      <li>Gimnasio<small>Sin salir de casa</small></li>
+      <li>Lobby amplio<small>Recepción del edificio</small></li>
+      <li>Edificio sostenible<small>Ahorro de luz y agua</small></li>
     </ul>
-  </section>
+    <div class="carrusel" data-fotos="edificio" data-total="2" data-nombre="las áreas comunes" style="margin-top:36px"></div>
+    <p class="ayuda" style="color:var(--gris)">Imágenes referenciales del proyecto.</p>
+  </div>
+</section>
 
-  <section class="seccion" id="edificio">
-    <h2>El edificio</h2>
-    <p class="bajada">19 pisos más azotea y solo 39 departamentos, diseñado por Bragagnini.</p>
-    <div class="sello">Certificación LEED · edificio sostenible</div>
-    <div class="carrusel" data-fotos="edificio" data-total="2" data-nombre="las áreas comunes"></div>
-    <p class="nota-fotos">Imágenes referenciales del proyecto.</p>
-    <ul class="lista2" style="margin-top:18px">
-      <li>Lobby amplio</li>
-      <li>Gimnasio</li>
-      <li>Coworking para estudiar o tener reuniones</li>
-      <li>Sala con barra y mesa de billar, ideal para ver partidos</li>
-      <li>Terraza con parrilla para el verano</li>
-      <li>Ahorro de luz y agua por la certificación LEED</li>
+<section class="ubicacion">
+  <div class="ancho">
+    <div>
+      <div class="eyebrow">La ubicación</div>
+      <h2>Frente al malecón de Miraflores</h2>
+    </div>
+    <ul class="puntos" style="margin-top:0">
+      <li>Malecón de la Marina con calle Manuel Tovar</li>
+      <li>Larcomar y sus cafés, caminando</li>
+      <li>Cafés y restaurantes a pie</li>
+      <li>Un punto medio: a todas partes caminando o en carro</li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <section class="seccion" id="ubicacion" style="padding-bottom:36px">
-    <h2>La ubicación</h2>
-    <p class="bajada">Frente al malecón de Miraflores, en un punto medio de Lima.</p>
-    <ul class="lista2">
-      <li>Frente al mar, en el Malecón de la Marina</li>
-      <li>Larcomar y el malecón para caminar</li>
-      <li>Cafés y restaurantes a los que se llega a pie</li>
-      <li>Bien conectado: a todas partes caminando o en carro</li>
-    </ul>
-  </section>
-
-</main>
-
-<footer class="contacto">
-  <div class="envoltura">
-    <img src="../img/logo-verde.png" alt="MP Propiedades">
-    <h3>¿Coordinamos una segunda visita?</h3>
-    <p>Con gusto le mostramos de nuevo el piso 3 y resolvemos todas sus dudas.</p>
+<footer class="cierre">
+  <div class="ancho">
+    <img src="../img/logo-blanco.png" alt="MP Propiedades">
+    <h2>¿Volvemos a ver <em>el piso 3</em>?</h2>
+    <p>Coordinamos una segunda visita cuando les acomode, también con su esposo e hijos.</p>
     <div class="numero">WhatsApp 969 698 347</div>
-    <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Agendar visita por WhatsApp</a>
   </div>
 </footer>
 
