@@ -38,10 +38,11 @@
 
   /* Portada */
   .portada { position: relative; min-height: min(92svh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--verde-hondo) url(img/depa-01.jpg) center 62%/cover; }
-  .portada::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 30%, rgba(6,42,25,.15) 50%, rgba(6,42,25,.88) 100%); }
+  .portada::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.45) 42%, rgba(6,42,25,.93) 72%, rgba(6,42,25,.96) 100%); }
   .portada .marca { position: absolute; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 64px; z-index: 1; }
   .portada .ancho { position: relative; width: 100%; padding-block: 0 48px; }
-  .portada .eyebrow { color: var(--oro-claro); }
+  .portada .eyebrow { color: var(--oro-claro); text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+  .portada h1, .portada p { text-shadow: 0 1px 12px rgba(0,0,0,.35); }
   .portada h1 { font-size: clamp(52px, 11vw, 112px); line-height: .95; margin: 14px 0 20px; font-weight: 500; }
   .portada h1 em { color: var(--oro-claro); }
   .portada p { margin: 0; max-width: 30em; font-size: 18px; }
