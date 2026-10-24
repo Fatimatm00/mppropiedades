@@ -5,321 +5,307 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lighthouse · Un hogar frente al mar</title>
 <meta property="og:title" content="Lighthouse · Un hogar frente al mar">
-<meta property="og:description" content="Piso 3 en Lighthouse by Bragagnini, Miraflores: tres dormitorios con baño propio, vista al mar y al parque.">
+<meta property="og:description" content="El piso 3 de Lighthouse by Bragagnini, Miraflores: un espacio para cada uno, frente al mar.">
 <meta property="og:image" content="https://fatimatm00.github.io/mppropiedades/lighthouse/img/vista-previa.jpg">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:url" content="https://fatimatm00.github.io/mppropiedades/lighthouse/">
 <meta property="og:type" content="website">
 <link rel="icon" href="../img/logo-verde.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* Editorial de lujo: portada a sangre, capítulos con foto grande y texto al lado, cierre en verde. Un solo look claro. */
+  /* Una experiencia corta: portada con zoom lento, familia en tarjetas deslizables, galería con pestañas, video, ubicación, inversión animada, cierre. */
   :root {
-    --verde: #00381d;
-    --verde-hondo: #062a19;
-    --oro: #a8834a;
-    --oro-claro: #e2cb98;
-    --marfil: #f7f4ee;
-    --tinta: #1b2420;
-    --gris: #46504a;
-    --linea: #dcd6c9;
-    --display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --verde: #00381d; --hondo: #062a19; --oro: #a8834a; --oro-claro: #e2cb98;
+    --marfil: #f7f4ee; --tinta: #1b2420; --gris: #46504a; --linea: #dcd6c9;
+    --display: 'Cormorant Garamond', Georgia, serif;
     --texto: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: #fff; color: var(--tinta); font-family: var(--texto); font-size: 18px; line-height: 1.6; }
+  body { margin: 0; background: #fff; color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
   img { max-width: 100%; display: block; }
-  .ancho { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-  .eyebrow { font-size: 13px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; color: var(--oro); }
   h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
-  em { font-style: italic; }
+  .ancho { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: var(--oro); }
+  .seccion { padding-block: 72px; }
+  .seccion h2 { font-size: clamp(38px, 6vw, 58px); line-height: 1; color: var(--verde); margin: 10px 0 14px; }
+  .bajada { color: var(--gris); margin: 0 0 26px; max-width: 34em; }
+
+  /* Aparecer al bajar */
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.visto { opacity: 1; transform: none; }
 
   /* Portada */
-  .portada { position: relative; min-height: min(92svh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--verde-hondo) url(img/hero.jpg) 66% 70%/cover; }
-  .portada::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.45) 42%, rgba(6,42,25,.93) 72%, rgba(6,42,25,.96) 100%); }
-  .portada .marca { position: absolute; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 64px; z-index: 1; }
-  .portada .ancho { position: relative; width: 100%; padding-block: 0 48px; }
+  .portada { position: relative; min-height: min(94svh, 880px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background: var(--hondo); }
+  .portada .fondo { position: absolute; inset: 0; background: url(img/hero.jpg) 66% 70%/cover; animation: zoom 18s ease-out both; }
+  @keyframes zoom { from { transform: scale(1.14); } to { transform: scale(1); } }
+  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.45) 45%, rgba(6,42,25,.94) 78%); }
+  .portada .marca { position: absolute; z-index: 2; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 62px; }
+  .portada .ref { position: absolute; z-index: 2; top: calc(26px + env(safe-area-inset-top, 0px)); right: max(20px, env(safe-area-inset-right, 0px)); font-size: 12px; color: rgba(255,255,255,.85); text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+  .portada .ancho { position: relative; z-index: 2; width: 100%; padding-block: 0 44px; }
   .portada .eyebrow { color: var(--oro-claro); text-shadow: 0 1px 8px rgba(0,0,0,.5); }
-  .portada h1, .portada p { text-shadow: 0 1px 12px rgba(0,0,0,.35); }
-  .portada h1 { font-size: clamp(52px, 11vw, 112px); line-height: .95; margin: 14px 0 20px; font-weight: 500; }
+  .portada h1 { font-size: clamp(56px, 12vw, 120px); line-height: .92; margin: 12px 0 18px; text-shadow: 0 2px 16px rgba(0,0,0,.35); }
   .portada h1 em { color: var(--oro-claro); }
-  .portada p { margin: 0; max-width: 30em; font-size: 18px; }
-  .fichas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .fichas span { border: 1px solid rgba(255,255,255,.6); border-radius: 999px; padding: 8px 15px; font-size: 15px; font-weight: 500; }
+  .portada p { margin: 0; max-width: 28em; font-size: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+  .chips span { border: 1px solid rgba(255,255,255,.6); border-radius: 999px; padding: 7px 14px; font-size: 15px; font-weight: 500; backdrop-filter: blur(4px); }
+  .bajar { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; }
+  .bajar i { width: 26px; height: 40px; border: 1.5px solid rgba(255,255,255,.8); border-radius: 14px; position: relative; }
+  .bajar i::after { content: ''; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; background: #fff; border-radius: 2px; animation: rueda 1.8s infinite; }
+  @keyframes rueda { 0% { opacity: 1; transform: translateY(0); } 80% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; } }
 
-  /* Declaración */
-  .declaracion { background: var(--marfil); }
-  .declaracion .ancho { padding-block: 72px; }
-  .declaracion p { font-family: var(--display); font-size: clamp(30px, 5vw, 46px); line-height: 1.18; color: var(--verde); margin: 0; max-width: 22em; }
-  .declaracion p em { color: var(--oro); }
+  /* Pestañas */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 18px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: 0 0 auto; font: 600 15px var(--texto); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+  .tabs button[aria-selected="true"] { background: var(--verde); border-color: var(--verde); color: #fff; }
+  .tabs button:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+  .oscuro .tabs button { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; }
+  .oscuro .tabs button[aria-selected="true"] { background: var(--oro-claro); border-color: var(--oro-claro); color: var(--hondo); }
 
-  /* Capítulos */
-  .capitulo .ancho { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(28px, 5vw, 72px); align-items: center; padding-block: 80px; }
-  .capitulo.invertido .foto { order: 2; }
-  .capitulo .foto { position: relative; }
-  .capitulo .foto img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
-  .capitulo .foto.ancha img { aspect-ratio: 4 / 3; }
-  .capitulo .foto figcaption { font-size: 14px; color: var(--gris); margin-top: 10px; }
-  .capitulo .texto { min-width: 0; }
-  .capitulo .num { font-family: var(--display); font-style: italic; font-size: 22px; color: var(--oro); }
-  .capitulo h2 { font-size: clamp(40px, 6vw, 62px); line-height: 1; color: var(--verde); margin: 8px 0 20px; }
-  .capitulo p { margin: 0 0 16px; max-width: 32em; }
-  .puntos { list-style: none; padding: 0; margin: 22px 0 0; border-top: 1px solid var(--linea); }
-  .puntos li { padding: 13px 0 13px 26px; border-bottom: 1px solid var(--linea); position: relative; font-weight: 500; }
-  .puntos li::before { content: ''; position: absolute; left: 0; top: 25px; width: 12px; height: 1.5px; background: var(--oro); }
-  .capitulo + .capitulo .ancho { border-top: 1px solid var(--linea); }
+  /* Familia */
+  .familia { background: var(--marfil); }
+  .tarjetas { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 6px; }
+  .tarjetas::-webkit-scrollbar { display: none; }
+  .tarjeta { flex: 0 0 min(86%, 520px); scroll-snap-align: start; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(6,42,25,.08); }
+  .tarjeta .img { aspect-ratio: 16 / 10; overflow: hidden; }
+  .tarjeta .img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+  .tarjeta:hover .img img { transform: scale(1.05); }
+  .tarjeta .cuerpo { padding: 20px 22px 24px; }
+  .tarjeta .quien { font-family: var(--display); font-style: italic; font-size: 20px; color: var(--oro); }
+  .tarjeta h3 { font-size: 32px; line-height: 1.05; color: var(--verde); margin: 4px 0 10px; }
+  .tarjeta p { margin: 0 0 14px; }
+  .mini { display: flex; flex-wrap: wrap; gap: 6px; }
+  .mini span { font-size: 14px; font-weight: 500; background: var(--marfil); color: var(--verde); padding: 5px 11px; border-radius: 999px; }
+  .tarjeta figcaption { font-size: 13px; color: var(--gris); padding: 8px 22px 0; }
 
-  /* Recorrido */
-  .recorrido { background: var(--verde-hondo); color: #fff; }
-  .recorrido .ancho { padding-block: 76px; }
-  .recorrido .eyebrow { color: var(--oro-claro); }
-  .recorrido h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; margin: 10px 0 14px; }
-  .recorrido .aviso { margin: 0 0 28px; max-width: 36em; color: #fff; }
-  .recorrido .aviso b { color: var(--oro-claro); font-weight: 600; }
-  .carrusel { position: relative; background: #0d3423; border-radius: 4px; overflow: hidden; }
+  /* Galería */
+  .galeria { background: var(--hondo); color: #fff; }
+  .galeria h2 { color: #fff; }
+  .galeria .bajada { color: rgba(255,255,255,.88); }
+  .galeria .bajada b { color: var(--oro-claro); }
+  .carrusel { position: relative; background: #0d3423; border-radius: 6px; overflow: hidden; }
   .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
   .pista::-webkit-scrollbar { display: none; }
   .pista figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; aspect-ratio: 4 / 3; max-width: 100%; display: flex; align-items: center; justify-content: center; }
   .pista img { width: 100%; height: 100%; object-fit: contain; }
-  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); color: var(--verde); font-size: 28px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); color: var(--verde); font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
   .flecha:disabled { opacity: .3; cursor: default; }
   .flecha:focus-visible { outline: 3px solid var(--oro-claro); outline-offset: 2px; }
-  .flecha.ant { left: 14px; } .flecha.sig { right: 14px; }
-  .contador { position: absolute; bottom: 14px; right: 14px; background: rgba(6,42,25,.9); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
-  .ayuda { font-size: 14px; color: rgba(255,255,255,.8); margin: 10px 0 0; }
+  .flecha.ant { left: 12px; } .flecha.sig { right: 12px; }
+  .contador { position: absolute; bottom: 12px; right: 12px; background: rgba(6,42,25,.9); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .miniaturas { display: flex; gap: 6px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; }
+  .miniaturas::-webkit-scrollbar { display: none; }
+  .miniaturas button { flex: 0 0 64px; height: 48px; padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; opacity: .55; background: none; transition: opacity .2s, border-color .2s; }
+  .miniaturas button.on { opacity: 1; border-color: var(--oro-claro); }
+  .miniaturas img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* Edificio */
-  .edificio .ancho { padding-block: 80px 40px; }
-  .edificio h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; color: var(--verde); margin: 10px 0 30px; }
-  .cifras { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
-  .cifras div { padding: 24px 8px; text-align: center; border-right: 1px solid var(--linea); }
-  .cifras div:last-child { border-right: 0; }
-  .cifras b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(38px, 6vw, 56px); line-height: 1; color: var(--verde); }
-  .cifras span { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--gris); font-weight: 600; }
-  .amenidades { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 36px; list-style: none; padding: 0; margin: 34px 0 0; }
-  .amenidades li { padding: 14px 0; border-bottom: 1px solid var(--linea); font-weight: 500; }
-  .amenidades li small { display: block; font-weight: 400; color: var(--gris); font-size: 15px; }
+  /* Video */
+  .video { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: #000 center/cover; cursor: pointer; border: 0; padding: 0; width: 100%; display: block; }
+  .video::after { content: ''; position: absolute; inset: 0; background: rgba(6,42,25,.3); transition: background .3s; }
+  .video:hover::after { background: rgba(6,42,25,.15); }
+  .video .play { position: absolute; z-index: 1; left: 50%; top: 50%; width: 78px; height: 78px; margin: -39px 0 0 -39px; border-radius: 50%; background: rgba(255,255,255,.95); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(0,0,0,.3); transition: transform .3s; }
+  .video:hover .play { transform: scale(1.08); }
+  .video .play::before { content: ''; margin-left: 6px; border-left: 22px solid var(--verde); border-top: 14px solid transparent; border-bottom: 14px solid transparent; }
+  .video .rotulo { position: absolute; z-index: 1; left: 16px; bottom: 14px; color: #fff; font-weight: 600; font-size: 15px; text-shadow: 0 1px 8px rgba(0,0,0,.6); text-align: left; }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 2; }
+  .credito { font-size: 13px; color: var(--gris); margin-top: 8px; }
 
   /* Ubicación */
-  .ubicacion { background: var(--marfil); }
-  .ubicacion .ancho { padding-block: 76px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .ubicacion h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; color: var(--verde); margin: 10px 0 0; }
-  .ubicacion .ancho > * { min-width: 0; }
-  .aerea { grid-column: 1 / -1; margin: 0; order: 3; }
-  .aerea img { width: 100%; border-radius: 4px; }
-  .aerea figcaption { font-size: 14px; color: var(--gris); margin-top: 10px; }
-  .portada .ref { position: absolute; top: calc(26px + env(safe-area-inset-top, 0px)); right: max(20px, env(safe-area-inset-right, 0px)); z-index: 1; font-size: 12px; letter-spacing: .08em; color: rgba(255,255,255,.85); text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+  .mapa { position: relative; border-radius: 6px; overflow: hidden; }
+  .mapa img { width: 100%; aspect-ratio: 1500 / 712; object-fit: cover; }
+  .mapa .chips { position: absolute; left: 14px; right: 14px; bottom: 14px; margin: 0; }
+  .mapa .chips span { background: rgba(6,42,25,.72); color: #fff; border-color: rgba(255,255,255,.5); }
+
+  /* Inversión */
+  .inversion { background: var(--marfil); }
+  .escasez { font-family: var(--display); font-size: clamp(26px, 4vw, 34px); line-height: 1.2; color: var(--verde); border-left: 2px solid var(--oro); padding: 2px 0 2px 20px; margin: 0 0 30px; max-width: 24em; }
+  .escasez em { color: var(--oro); }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 34px; }
+  .tile { background: #fff; border-radius: 6px; padding: 22px 20px; min-width: 0; }
+  .tile b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(44px, 7vw, 60px); line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
+  .tile span { display: block; margin-top: 8px; font-size: 15px; }
+  .panel { background: #fff; border-radius: 6px; padding: 22px 20px 16px; }
+  .panel h3 { font: 600 18px var(--texto); margin: 0 0 4px; }
+  .panel .sub { font-size: 14px; color: var(--gris); margin: 0 0 12px; }
+  .panel svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .nota { font-size: 13px; color: var(--gris); margin-top: 14px; max-width: 60em; }
+  .tip { position: fixed; pointer-events: none; background: var(--hondo); color: #fff; font-size: 14px; line-height: 1.35; padding: 8px 11px; border-radius: 6px; opacity: 0; transition: opacity .12s; z-index: 10; font-variant-numeric: tabular-nums; }
 
   /* Cierre */
   .cierre { background: var(--verde); color: #fff; text-align: center; }
-  .cierre .ancho { padding-block: 84px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .cierre img { width: 78px; }
-  .cierre h2 { font-size: clamp(40px, 6.5vw, 64px); line-height: 1.02; max-width: 12em; }
+  .cierre .ancho { padding-block: 80px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .cierre img { width: 74px; }
+  .cierre h2 { font-size: clamp(40px, 6.5vw, 62px); line-height: 1.02; color: #fff; }
   .cierre h2 em { color: var(--oro-claro); }
-  .cierre p { margin: 0; max-width: 30em; }
-  .numero { font-size: 22px; font-weight: 600; letter-spacing: .05em; user-select: all; }
-  .boton { display: inline-block; background: var(--oro-claro); color: var(--verde-hondo); text-decoration: none; font-weight: 600; padding: 15px 28px; border-radius: 999px; font-size: 17px; }
+  .cierre p { margin: 0; max-width: 28em; }
+  .numero { font-size: 22px; font-weight: 600; letter-spacing: .04em; user-select: all; }
+  .boton { display: inline-block; background: var(--oro-claro); color: var(--hondo); text-decoration: none; font-weight: 600; padding: 15px 28px; border-radius: 999px; font-size: 17px; transition: transform .25s; }
+  .boton:hover { transform: translateY(-2px); }
   .boton:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 
   @media (max-width: 760px) {
-    body { font-size: 17px; }
-    .capitulo .ancho, .ubicacion .ancho { grid-template-columns: 1fr; padding-block: 56px; }
-    .capitulo.invertido .foto { order: 0; }
-    .amenidades { grid-template-columns: 1fr; }
-    .cifras b { font-size: 40px; }
-    .flecha { width: 44px; height: 44px; font-size: 24px; }
-    .declaracion .ancho { padding-block: 52px; }
+    .seccion { padding-block: 56px; }
+    .tiles { grid-template-columns: 1fr; }
+    .flecha { width: 42px; height: 42px; font-size: 22px; }
+    .mapa img { aspect-ratio: 4 / 3; object-position: 80% 50%; }
   }
-  @media (prefers-reduced-motion: reduce) { html, .pista { scroll-behavior: auto; } }
-
-  /* Inversión */
-  .inversion .ancho { padding-block: 84px 72px; }
-  .inversion h2 { font-size: clamp(40px, 6vw, 62px); line-height: 1; color: var(--verde); margin: 10px 0 20px; max-width: 14em; }
-  .inversion .intro { max-width: 36em; margin: 0 0 14px; }
-  .escasez { font-family: var(--display); font-size: clamp(26px, 4vw, 34px); line-height: 1.2; color: var(--verde); border-left: 2px solid var(--oro); padding: 4px 0 4px 22px; margin: 34px 0 44px; max-width: 26em; }
-  .escasez em { color: var(--oro); }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 52px; }
-  .tile { background: var(--marfil); border-radius: 6px; padding: 24px 22px; min-width: 0; }
-  .tile b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(46px, 7vw, 64px); line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
-  .tile span { display: block; margin-top: 10px; font-size: 16px; color: var(--tinta); }
-  .grafico { margin: 0 0 48px; }
-  .grafico h3 { font-family: var(--texto); font-size: 19px; font-weight: 600; color: var(--tinta); margin: 0 0 4px; }
-  .grafico .sub { font-size: 15px; color: var(--gris); margin: 0 0 16px; }
-  .grafico svg { width: 100%; height: auto; display: block; overflow: visible; }
-  .grafico .fuente { font-size: 14px; color: var(--gris); margin-top: 8px; }
-  .tip { position: fixed; pointer-events: none; background: var(--verde-hondo); color: #fff; font-size: 14px; line-height: 1.35; padding: 8px 11px; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,.2); opacity: 0; transition: opacity .12s; z-index: 10; font-variant-numeric: tabular-nums; }
-  .tip b { font-weight: 600; }
-  .nota-legal { font-size: 14px; color: var(--gris); border-top: 1px solid var(--linea); padding-top: 18px; max-width: 60em; }
-  @media (max-width: 760px) { .tiles { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) {
+    .portada .fondo, .bajar i::after { animation: none; }
+    .js .rv { opacity: 1; transform: none; transition: none; }
+    .tarjetas, .pista { scroll-behavior: auto; }
+  }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <header class="portada">
+  <div class="fondo" role="img" aria-label="Sala con vista al mar"></div>
   <img class="marca" src="../img/logo-blanco.png" alt="MP Propiedades">
   <span class="ref">Imagen referencial</span>
   <div class="ancho">
     <div class="eyebrow">Lighthouse by Bragagnini · Miraflores</div>
     <h1>Un hogar<br><em>frente al mar</em></h1>
-    <p>El piso 3 de Lighthouse: espacio para cada uno, vista al mar y al verde, y todo Miraflores a una caminata.</p>
-    <div class="fichas"><span>3 dormitorios con baño propio</span><span>Balcón con vista al mar</span><span>Piso 3</span></div>
+    <p>El piso 3: un espacio para cada uno, con vista al mar y al verde.</p>
+    <div class="chips"><span>3 dormitorios con baño propio</span><span>Balcón con vista al mar</span><span>Piso 3</span></div>
+    <a class="bajar" href="#familia"><i></i>Descubra por qué</a>
   </div>
 </header>
 
-<section class="declaracion">
+<section class="seccion familia" id="familia">
   <div class="ancho">
-    <p>Para una familia que viene de vivir en casa y no quiere renunciar a eso: <em>amplitud, privacidad y lugares</em> donde cada uno se sienta a gusto.</p>
-  </div>
-</section>
-
-<section class="capitulo">
-  <div class="ancho">
-    <figure class="foto"><img src="img/depa-01.jpg" alt="Sala con salida al balcón"><figcaption>Sala con salida al balcón · depa piloto</figcaption></figure>
-    <div class="texto">
-      <div class="num">I · Para usted, Paola</div>
-      <h2>El depa que más le gustó</h2>
-      <p>De todo lo que vimos, el piso 3 fue su favorito, y con razón: un balcón donde entra un camastro para tomarse un café mirando el mar y el parque, una cocina abierta que puede cerrar cuando quiera y una salita de estar para tener su propio rincón.</p>
-      <p>Afuera, el malecón para caminar cada mañana, Larcomar y sus cafés a pie, y un gimnasio sin salir del edificio. Todo con la tranquilidad de saber que sus hijos viven en un edificio de solo 39 departamentos, en lo mejor de Miraflores.</p>
-      <ul class="puntos">
-        <li>Balcón con vista al mar y al parque</li>
-        <li>Cocina abierta, que se puede cerrar</li>
-        <li>Salita de estar y baño de visitas</li>
-        <li>El malecón y Larcomar, caminando</li>
-      </ul>
+    <div class="rv">
+      <div class="eyebrow">Pensado para cada uno</div>
+      <h2>Un lugar para cada uno de ustedes</h2>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Miembros de la familia">
+      <button role="tab" aria-selected="true" data-i="0">Paola</button>
+      <button role="tab" aria-selected="false" data-i="1">Su hija</button>
+      <button role="tab" aria-selected="false" data-i="2">Su hijo</button>
+      <button role="tab" aria-selected="false" data-i="3">Su esposo</button>
+    </div>
+    <div class="tarjetas rv" id="tarjetas">
+      <article class="tarjeta">
+        <div class="img"><img src="img/depa-01.jpg" alt="Sala con salida al balcón"></div>
+        <figcaption>Sala con balcón · depa piloto</figcaption>
+        <div class="cuerpo">
+          <div class="quien">Para usted, Paola</div>
+          <h3>El depa que más le gustó</h3>
+          <p>Un balcón para tomarse un café mirando el mar, su propio rincón en la salita de estar y el malecón para caminar cada mañana.</p>
+          <div class="mini"><span>Balcón al mar</span><span>Cocina abierta que se cierra</span><span>Malecón a pie</span></div>
+        </div>
+      </article>
+      <article class="tarjeta">
+        <div class="img"><img src="img/cap-hija.jpg" alt="Coworking del edificio"></div>
+        <figcaption>Coworking · imagen referencial</figcaption>
+        <div class="cuerpo">
+          <div class="quien">Para su hija</div>
+          <h3>Mil lugares para estudiar</h3>
+          <p>Los cafés de Larcomar a pie, un coworking espectacular y varias áreas comunes para cambiar de ambiente. Y su cuarto con baño propio.</p>
+          <div class="mini"><span>Baño propio</span><span>Coworking</span><span>Cafés de Larcomar</span></div>
+        </div>
+      </article>
+      <article class="tarjeta">
+        <div class="img"><img src="img/cap-hijo.jpg" alt="Sala con billar y vista al mar"></div>
+        <figcaption>Sala con billar · imagen referencial</figcaption>
+        <div class="cuerpo">
+          <div class="quien">Para su hijo</div>
+          <h3>Su espacio, sus amigos</h3>
+          <p>Su cuarto con baño propio, gimnasio y una sala con barra y billar para ver los partidos con sus amigos.</p>
+          <div class="mini"><span>Baño propio</span><span>Gimnasio</span><span>Billar y partidos</span></div>
+        </div>
+      </article>
+      <article class="tarjeta">
+        <div class="img"><img src="img/cap-esposo.jpg" alt="Terraza con parrilla"></div>
+        <figcaption>Terraza con parrilla · imagen referencial</figcaption>
+        <div class="cuerpo">
+          <div class="quien">Para su esposo</div>
+          <h3>Mar, verde y espacio</h3>
+          <p>Para quien viene de una casa: vista al mar y al parque, balcón para la parrilla y un coworking para sus directorios cuando esté en Lima.</p>
+          <div class="mini"><span>Vista al mar</span><span>Parrilla</span><span>Sala de reuniones</span></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<section class="capitulo invertido">
+<section class="seccion galeria oscuro" id="galeria">
   <div class="ancho">
-    <figure class="foto ancha"><img src="img/cap-hija.jpg" alt="Coworking del edificio"><figcaption>Coworking del edificio · imagen referencial</figcaption></figure>
-    <div class="texto">
-      <div class="num">II · Para su hija</div>
-      <h2>Mil lugares para estudiar</h2>
-      <p>A ella le encanta estudiar en cafeterías: en Larcomar y alrededor tiene muchísimas, a las que llega caminando por el malecón.</p>
-      <p>Sin salir del edificio tiene un coworking espectacular y varias áreas comunes distintas para cambiar de ambiente y no sentirse encerrada. Y su propio dormitorio con baño, lejos del movimiento de la sala.</p>
-      <ul class="puntos">
-        <li>Su dormitorio con baño propio</li>
-        <li>Cafés de Larcomar y del malecón, a pie</li>
-        <li>Coworking y áreas comunes para cambiar de ambiente</li>
-      </ul>
+    <div class="rv">
+      <div class="eyebrow" style="color:var(--oro-claro)">Recórralo</div>
+      <h2>Véalo con calma</h2>
+      <p class="bajada">Las fotos son del <b>piloto del piso 2</b>. El <b>piso 3</b> que le proponemos <b>es un poco más grande</b>.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Galería">
+      <button role="tab" aria-selected="true" data-set="depa">El departamento · 17</button>
+      <button role="tab" aria-selected="false" data-set="edificio">Áreas comunes · 12</button>
+    </div>
+    <div class="rv">
+      <div class="carrusel" id="carrusel"></div>
+      <div class="miniaturas" id="miniaturas"></div>
     </div>
   </div>
 </section>
 
-<section class="capitulo">
+<section class="seccion" id="video">
   <div class="ancho">
-    <figure class="foto ancha"><img src="img/cap-hijo.jpg" alt="Sala con mesa de billar y vista al mar"><figcaption>Sala con billar y vista al mar · imagen referencial</figcaption></figure>
-    <div class="texto">
-      <div class="num">III · Para su hijo</div>
-      <h2>Su espacio, sus amigos, su ritmo</h2>
-      <p>Su propio dormitorio con baño, para tener privacidad sin depender de nadie.</p>
-      <p>En el edificio tiene gimnasio y una sala con barra y mesa de billar para ver los partidos con sus amigos sin salir del edificio. Y una ubicación desde donde llega a todas partes caminando o en carro.</p>
-      <ul class="puntos">
-        <li>Su dormitorio con baño propio</li>
-        <li>Gimnasio en el edificio</li>
-        <li>Sala con barra y billar para los partidos</li>
-        <li>Bien conectado, caminando o en carro</li>
-      </ul>
+    <div class="rv">
+      <div class="eyebrow">En video</div>
+      <h2>Las áreas comunes</h2>
+    </div>
+    <div class="rv">
+      <button class="video" id="video-btn" style="background-image:url(https://i.ytimg.com/vi/sdS1uiVfoSA/hqdefault.jpg)" aria-label="Reproducir video de las áreas comunes">
+        <span class="play"></span><span class="rotulo">Lobby, gimnasio, coworking y más · 2:14</span>
+      </button>
+      <p class="credito">Video de Bragagnini Constructores.</p>
     </div>
   </div>
 </section>
 
-<section class="capitulo invertido">
+<section class="seccion" id="ubicacion" style="padding-top:0">
   <div class="ancho">
-    <figure class="foto ancha"><img src="img/cap-esposo.jpg" alt="Terraza con parrilla del edificio"><figcaption>Terraza con parrilla · imagen referencial del proyecto</figcaption></figure>
-    <div class="texto">
-      <div class="num">IV · Para su esposo</div>
-      <h2>Mar, verde y espacio de sobra</h2>
-      <p>Para quien está acostumbrado a casa: vista al mar y al parque desde la sala y un balcón donde entra una parrilla o un camastro.</p>
-      <p>Y muchas áreas comunes para sentirse a gusto también fuera del departamento: terraza con parrilla, la sala de billar para los partidos y un coworking para sus reuniones o directorios cuando esté en Lima.</p>
-      <ul class="puntos">
-        <li>Vista al mar y al parque</li>
-        <li>Balcón para parrilla o camastro</li>
-        <li>Coworking para reuniones y directorios</li>
-        <li>Terraza con parrilla para el verano</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="recorrido" id="recorrido">
-  <div class="ancho">
-    <div class="eyebrow">Recorra el departamento</div>
-    <h2>El depa, foto por foto</h2>
-    <p class="aviso">Estas fotos son del <b>depa piloto del piso 2</b>. El <b>piso 3</b>, el que le proponemos, tiene la misma idea y <b>es un poco más grande</b>.</p>
-    <div class="carrusel" data-fotos="depa" data-total="17" data-nombre="el departamento piloto"></div>
-  </div>
-</section>
-
-<section class="edificio">
-  <div class="ancho">
-    <div class="eyebrow">El edificio</div>
-    <h2>Pocos vecinos, mucho espacio común</h2>
-    <div class="cifras">
-      <div><b>19</b><span>Pisos + azotea</span></div>
-      <div><b>39</b><span>Departamentos</span></div>
-      <div><b>LEED</b><span>Certificado</span></div>
-    </div>
-    <ul class="amenidades">
-      <li>Coworking<small>Para estudiar o tener reuniones</small></li>
-      <li>Sala con barra y billar<small>Para ver los partidos</small></li>
-      <li>Terraza con parrilla<small>Para el verano</small></li>
-      <li>Gimnasio<small>Sin salir de casa</small></li>
-      <li>Lobby amplio<small>Recepción del edificio</small></li>
-      <li>Edificio sostenible<small>Ahorro de luz y agua</small></li>
-    </ul>
-    <div class="carrusel" data-fotos="edificio" data-total="12" data-nombre="las áreas comunes" style="margin-top:36px"></div>
-    <p class="ayuda" style="color:var(--gris)">Imágenes referenciales del proyecto.</p>
-  </div>
-</section>
-
-<section class="ubicacion">
-  <div class="ancho">
-    <div>
+    <div class="rv">
       <div class="eyebrow">La ubicación</div>
-      <h2>Frente al malecón de Miraflores</h2>
+      <h2>Frente al malecón</h2>
     </div>
-    <figure class="aerea"><img src="img/ubicacion.jpg" alt="Vista aérea del malecón de Miraflores con la ubicación de Lighthouse marcada"><figcaption>La «B» marca dónde está Lighthouse · imagen del proyecto</figcaption></figure>
-    <ul class="puntos" style="margin-top:0">
-      <li>Malecón de la Marina con calle Manuel Tovar</li>
-      <li>Larcomar y sus cafés, caminando</li>
-      <li>Cafés y restaurantes a pie</li>
-      <li>Un punto medio: a todas partes caminando o en carro</li>
-    </ul>
+    <div class="mapa rv">
+      <img src="img/ubicacion.jpg" alt="Vista aérea del malecón de Miraflores con la ubicación de Lighthouse marcada con una B" loading="lazy">
+      <div class="chips"><span>Malecón de la Marina</span><span>Larcomar caminando</span><span>Cafés a pie</span><span>A todas partes en carro</span></div>
+    </div>
+    <p class="credito">La «B» marca dónde está Lighthouse · imagen del proyecto.</p>
   </div>
 </section>
 
-<section class="inversion" id="inversion">
+<section class="seccion inversion" id="inversion">
   <div class="ancho">
-    <div class="eyebrow">Además, una buena inversión</div>
-    <h2>Un hogar que también cuida su patrimonio</h2>
-    <p class="intro">Aunque lo compren para vivir, vale la pena saber que es una decisión sólida a largo plazo.</p>
-    <p class="escasez">Frente al mar y frente a parques ya casi no queda terreno. <em>Lo que no se puede volver a construir tiende a valorizarse</em>: cuando se acaba el suelo, sube el valor.</p>
-
-    <div class="tiles">
-      <div class="tile"><b>+78%</b><span>subieron los precios de departamentos en Lima entre 2010 y 2025</span></div>
-      <div class="tile"><b>US$ 2,400</b><span>por m² en Miraflores a fines de 2025: <strong>+8%</strong> en un año</span></div>
-      <div class="tile"><b>≈5.7%</b><span>al año rinde un departamento en Miraflores si se alquila</span></div>
+    <div class="rv">
+      <div class="eyebrow">Además, una buena inversión</div>
+      <h2>Un hogar que cuida su patrimonio</h2>
+      <p class="escasez">Frente al mar y a parques ya casi no queda terreno. <em>Lo que no se puede volver a construir, se valoriza.</em></p>
     </div>
-
-    <figure class="grafico">
-      <h3>Precio de los departamentos en Lima, 2010–2025</h3>
-      <p class="sub">Índice de precios del BCRP (2013 = 100), al cuarto trimestre de cada año</p>
-      <svg id="g-indice" role="img" aria-label="Índice de precios de departamentos en Lima: 65 en 2010 y 116 en 2025"></svg>
-      <p class="fuente">Fuente: BCRP, índice de precios hedónicos de departamentos.</p>
-    </figure>
-
-    <figure class="grafico">
-      <h3>Precio por m² según distrito, fines de 2025</h3>
-      <p class="sub">Dólares por m², mediana de departamentos en venta</p>
-      <svg id="g-distritos" role="img" aria-label="Precio por metro cuadrado por distrito. Miraflores: 2,400 dólares, segundo más alto de 12 distritos"></svg>
-      <p class="fuente">Fuente: BCRP, precios de venta por distrito, IV trimestre 2025.</p>
-    </figure>
-
-    <p class="nota-legal">Datos del Banco Central de Reserva del Perú (Notas de Estudios N.° 16, marzo 2026), calculados con precios publicados en Urbania; son precios de oferta, no de cierre. El rendimiento por alquiler es bruto y sale de la relación precio/alquiler de Miraflores (17.5 años). Los resultados pasados no garantizan los futuros; esta información es referencial.</p>
+    <div class="tiles rv">
+      <div class="tile"><b data-contar="78" data-antes="+" data-despues="%">+78%</b><span>subieron los departamentos en Lima entre 2010 y 2025</span></div>
+      <div class="tile"><b data-contar="2400" data-antes="US$ " data-miles="1">US$ 2,400</b><span>el m² en Miraflores, <strong>+8%</strong> en el último año</span></div>
+      <div class="tile"><b data-contar="5.7" data-antes="≈" data-despues="%" data-dec="1">≈5.7%</b><span>al año rinde si algún día lo alquilan</span></div>
+    </div>
+    <div class="panel rv">
+      <div class="tabs" role="tablist" aria-label="Gráficos">
+        <button role="tab" aria-selected="true" data-g="indice">Lima 2010–2025</button>
+        <button role="tab" aria-selected="false" data-g="distritos">Por distrito</button>
+      </div>
+      <div id="p-indice">
+        <h3>Precio de los departamentos en Lima</h3>
+        <p class="sub">Índice del BCRP (2013 = 100), al cierre de cada año</p>
+        <svg id="g-indice" role="img" aria-label="Índice de precios de departamentos en Lima: 65 en 2010 y 116 en 2025"></svg>
+      </div>
+      <div id="p-distritos" hidden>
+        <h3>Precio por m² según distrito, fines de 2025</h3>
+        <p class="sub">Dólares por m², mediana de departamentos en venta</p>
+        <svg id="g-distritos" role="img" aria-label="Miraflores: 2,400 dólares por metro cuadrado, segundo más alto de 12 distritos"></svg>
+      </div>
+    </div>
+    <p class="nota">Fuente: BCRP, Notas de Estudios N.° 16 (marzo 2026), con precios de oferta publicados en Urbania. El rendimiento por alquiler es bruto (relación precio/alquiler de Miraflores: 17.5 años). Los resultados pasados no garantizan los futuros; información referencial.</p>
   </div>
 </section>
 
@@ -327,114 +313,133 @@
   <div class="ancho">
     <img src="../img/logo-blanco.png" alt="MP Propiedades">
     <h2>¿Volvemos a ver <em>el piso 3</em>?</h2>
-    <p>Coordinamos una segunda visita cuando les acomode, también con su esposo e hijos.</p>
+    <p>Coordinamos una segunda visita cuando les acomode, con toda la familia.</p>
     <div class="numero">WhatsApp 969 698 347</div>
     <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Agendar visita por WhatsApp</a>
   </div>
 </footer>
 
-<script>
-  document.querySelectorAll('.carrusel').forEach(function (c) {
-    var clave = c.dataset.fotos, total = +c.dataset.total, nombre = c.dataset.nombre;
-    var pista = document.createElement('div');
-    pista.className = 'pista';
-    pista.setAttribute('tabindex', '0');
-    pista.setAttribute('aria-label', 'Fotos de ' + nombre);
-    for (var i = 1; i <= total; i++) {
-      var f = document.createElement('figure');
-      var img = document.createElement('img');
-      img.src = 'img/' + clave + '-' + String(i).padStart(2, '0') + '.jpg';
-      img.alt = nombre + ', foto ' + i + ' de ' + total;
-      img.loading = i <= 2 ? 'eager' : 'lazy';
-      f.appendChild(img);
-      pista.appendChild(f);
-    }
-    var ant = document.createElement('button'); ant.className = 'flecha ant'; ant.innerHTML = '&#8249;'; ant.setAttribute('aria-label', 'Foto anterior');
-    var sig = document.createElement('button'); sig.className = 'flecha sig'; sig.innerHTML = '&#8250;'; sig.setAttribute('aria-label', 'Foto siguiente');
-    var cont = document.createElement('div'); cont.className = 'contador';
-    c.append(pista, ant, sig, cont);
-    var ayuda = document.createElement('p'); ayuda.className = 'ayuda'; ayuda.textContent = total + ' fotos';
-    c.after(ayuda);
-
-    var idx = 0;
-    function actual() { return Math.round(pista.scrollLeft / pista.clientWidth); }
-    function pintar() {
-      var n = idx;
-      cont.textContent = (n + 1) + ' / ' + total;
-      ant.disabled = n === 0; sig.disabled = n === total - 1;
-    }
-    function ir(n) { idx = n; pintar(); pista.scrollTo({ left: n * pista.clientWidth }); }
-    ant.addEventListener('click', function () { ir(Math.max(0, idx - 1)); });
-    sig.addEventListener('click', function () { ir(Math.min(total - 1, idx + 1)); });
-    pista.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); }
-    });
-    var t; pista.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { idx = actual(); pintar(); }, 120); });
-    window.addEventListener('resize', pintar);
-    pintar();
-  });
-</script>
-
 <div class="tip" id="tip" role="status"></div>
+
 <script>
 (function () {
+  var reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Aparecer al bajar + contadores
+  function contar(el) {
+    var fin = parseFloat(el.dataset.contar), dec = +(el.dataset.dec || 0), antes = el.dataset.antes || '', despues = el.dataset.despues || '', miles = el.dataset.miles;
+    if (reducir) return;
+    var t0 = null, dur = 1400;
+    function paso(t) {
+      if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3), v = fin * e;
+      var s = dec ? v.toFixed(dec) : Math.round(v).toString(); if (miles) s = Math.round(v).toLocaleString('en-US');
+      el.textContent = antes + s + despues; if (p < 1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visto'); e.target.querySelectorAll('[data-contar]').forEach(contar); io.unobserve(e.target); } });
+  }, { threshold: .15 }) : null;
+  document.querySelectorAll('.rv').forEach(function (el) { io ? io.observe(el) : el.classList.add('visto'); });
+
+  function pestañas(lista, alElegir) {
+    var bs = lista.querySelectorAll('button');
+    bs.forEach(function (b) { b.addEventListener('click', function () { marcar(b); alElegir(b); }); });
+    function marcar(b) { bs.forEach(function (x) { x.setAttribute('aria-selected', x === b); }); }
+    return { marcar: function (i) { marcar(bs[i]); } };
+  }
+
+  // Familia: pestañas <-> tarjetas
+  var tj = document.getElementById('tarjetas'), cards = tj.querySelectorAll('.tarjeta');
+  var tf = pestañas(document.querySelector('#familia .tabs'), function (b) { tj.scrollTo({ left: cards[+b.dataset.i].offsetLeft - tj.offsetLeft }); });
+  var tt; tj.addEventListener('scroll', function () { clearTimeout(tt); tt = setTimeout(function () {
+    var mejor = 0, d = 1e9; cards.forEach(function (c, i) { var x = Math.abs(c.offsetLeft - tj.offsetLeft - tj.scrollLeft); if (x < d) { d = x; mejor = i; } }); tf.marcar(mejor);
+  }, 80); });
+
+  // Galería con dos conjuntos
+  var sets = { depa: { n: 17, nombre: 'el departamento piloto' }, edificio: { n: 12, nombre: 'las áreas comunes' } };
+  var car = document.getElementById('carrusel'), mins = document.getElementById('miniaturas'), idx = 0, total = 0, pista, cont, ant, sig;
+  function cargar(clave) {
+    var s = sets[clave]; total = s.n; idx = 0; car.innerHTML = ''; mins.innerHTML = '';
+    pista = document.createElement('div'); pista.className = 'pista'; pista.tabIndex = 0; pista.setAttribute('aria-label', 'Fotos de ' + s.nombre);
+    for (var i = 1; i <= total; i++) {
+      var src = 'img/' + clave + '-' + String(i).padStart(2, '0') + '.jpg';
+      var f = document.createElement('figure'), im = document.createElement('img'); im.src = src; im.alt = s.nombre + ', foto ' + i + ' de ' + total; im.loading = i <= 2 ? 'eager' : 'lazy'; f.appendChild(im); pista.appendChild(f);
+      var m = document.createElement('button'); m.setAttribute('aria-label', 'Ver foto ' + i); m.innerHTML = '<img src="' + src + '" alt="" loading="lazy">'; (function (k) { m.addEventListener('click', function () { ir(k); }); })(i - 1); mins.appendChild(m);
+    }
+    ant = document.createElement('button'); ant.className = 'flecha ant'; ant.innerHTML = '&#8249;'; ant.setAttribute('aria-label', 'Foto anterior');
+    sig = document.createElement('button'); sig.className = 'flecha sig'; sig.innerHTML = '&#8250;'; sig.setAttribute('aria-label', 'Foto siguiente');
+    cont = document.createElement('div'); cont.className = 'contador';
+    car.append(pista, ant, sig, cont);
+    ant.onclick = function () { ir(Math.max(0, idx - 1)); }; sig.onclick = function () { ir(Math.min(total - 1, idx + 1)); };
+    pista.onkeydown = function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); } if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); } };
+    var t; pista.onscroll = function () { clearTimeout(t); t = setTimeout(function () { idx = Math.round(pista.scrollLeft / pista.clientWidth); pintar(); }, 120); };
+    pintar();
+  }
+  function pintar() {
+    cont.textContent = (idx + 1) + ' / ' + total; ant.disabled = idx === 0; sig.disabled = idx === total - 1;
+    mins.querySelectorAll('button').forEach(function (b, i) { b.classList.toggle('on', i === idx); });
+    var on = mins.children[idx]; if (on) mins.scrollTo({ left: on.offsetLeft - mins.clientWidth / 2 + 32, behavior: reducir ? 'auto' : 'smooth' });
+  }
+  function ir(n) { idx = n; pintar(); pista.scrollTo({ left: n * pista.clientWidth }); }
+  pestañas(document.querySelector('#galeria .tabs'), function (b) { cargar(b.dataset.set); });
+  cargar('depa');
+
+  // Video al tocar
+  document.getElementById('video-btn').addEventListener('click', function () {
+    this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/sdS1uiVfoSA?autoplay=1&rel=0&playsinline=1" title="Áreas comunes de Lighthouse" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  });
+
+  // Gráficos
   var NS = 'http://www.w3.org/2000/svg', tip = document.getElementById('tip');
-  function el(tag, at, parent) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (parent) parent.appendChild(e); return e; }
-  function txt(s, at, parent) { var t = el('text', at, parent); t.textContent = s; return t; }
-  function mostrar(html, ev) { tip.innerHTML = html; tip.style.opacity = 1; var x = ev.clientX + 14, y = ev.clientY - 52; if (x + 190 > innerWidth) x = Math.max(8, ev.clientX - 200); tip.style.left = x + 'px'; tip.style.top = Math.max(8, y) + 'px'; }
+  function el(tag, at, p) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (p) p.appendChild(e); return e; }
+  function txt(s, at, p) { var t = el('text', at, p); t.textContent = s; return t; }
+  function mostrar(h, ev) { tip.innerHTML = h; tip.style.opacity = 1; var x = ev.clientX + 14; if (x + 190 > innerWidth) x = Math.max(8, ev.clientX - 200); tip.style.left = x + 'px'; tip.style.top = Math.max(8, ev.clientY - 52) + 'px'; }
   function ocultar() { tip.style.opacity = 0; }
   var VERDE = '#00381d', TINTA = '#1b2420', GRIS = '#46504a', REJA = '#e7e2d8', NEUTRO = '#cfc8b9';
   var años = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
-  var idx = [65,78,93,102,106,102,105,105,106,106,110,107,108,111,110,116];
-  var d = [['Barranco',2463],['Miraflores',2400],['San Isidro',2273],['Jesús María',2086],['San Borja',2000],['Lince',1970],['Magdalena',1880],['Surco',1873],['Surquillo',1849],['Pueblo Libre',1717],['San Miguel',1697],['La Molina',1392]];
-
+  var ind = [65,78,93,102,106,102,105,105,106,106,110,107,108,111,110,116];
+  var dist = [['Barranco',2463],['Miraflores',2400],['San Isidro',2273],['Jesús María',2086],['San Borja',2000],['Lince',1970],['Magdalena',1880],['Surco',1873],['Surquillo',1849],['Pueblo Libre',1717],['San Miguel',1697],['La Molina',1392]];
   function linea() {
-    var s = document.getElementById('g-indice'); s.innerHTML = '';
-    var W = Math.max(280, s.parentNode.clientWidth), H = W < 500 ? 240 : 300, chico = W < 500;
+    var s = document.getElementById('g-indice'); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
+    var W = Math.max(280, s.parentNode.clientWidth), H = W < 500 ? 230 : 290, fs = W < 500 ? 13 : 14;
     s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    var L = 38, R = W - 22, T = 26, B = H - 34, ymin = 40, ymax = 130, fs = chico ? 13 : 14;
-    function X(i) { return L + (R - L) * i / (años.length - 1); }
-    function Y(v) { return B - (B - T) * (v - ymin) / (ymax - ymin); }
-    [40,60,80,100,120].forEach(function (v) { el('line', {x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: REJA, 'stroke-width': 1}, s); txt(v, {x: L - 8, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS}, s); });
-    [0,5,10,15].forEach(function (i) { txt(años[i], {x: X(i), y: B + 24, 'text-anchor': i === 0 ? 'start' : i === 15 ? 'end' : 'middle', 'font-size': fs, fill: GRIS}, s); });
-    el('path', {d: 'M' + X(0) + ',' + Y(ymin) + idx.map(function (v, i) { return ' L' + X(i) + ',' + Y(v); }).join('') + ' L' + X(idx.length - 1) + ',' + Y(ymin) + 'Z', fill: VERDE, 'fill-opacity': .07}, s);
-    el('path', {d: 'M' + idx.map(function (v, i) { return X(i) + ',' + Y(v); }).join(' L'), fill: 'none', stroke: VERDE, 'stroke-width': 2.5, 'stroke-linejoin': 'round'}, s);
-    [[0, 'start', 10, 22], [idx.length - 1, 'end', -6, -12]].forEach(function (p) { var i = p[0]; el('circle', {cx: X(i), cy: Y(idx[i]), r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2}, s); txt(idx[i], {x: X(i) + p[2], y: Y(idx[i]) + p[3], 'text-anchor': p[1], 'font-size': 16, 'font-weight': 700, fill: TINTA}, s); });
-    var guia = el('line', {y1: T, y2: B, stroke: GRIS, 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0}, s);
-    var punto = el('circle', {r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2, opacity: 0}, s);
-    var hit = el('rect', {x: L, y: T, width: R - L, height: B - T, fill: 'transparent'}, s);
-    function mover(ev) {
-      var pt = s.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; var p = pt.matrixTransform(s.getScreenCTM().inverse());
-      var i = Math.max(0, Math.min(años.length - 1, Math.round((p.x - L) / (R - L) * (años.length - 1))));
-      guia.setAttribute('x1', X(i)); guia.setAttribute('x2', X(i)); guia.setAttribute('opacity', 1);
-      punto.setAttribute('cx', X(i)); punto.setAttribute('cy', Y(idx[i])); punto.setAttribute('opacity', 1);
-      var vs = Math.round((idx[i] / idx[0] - 1) * 100);
-      mostrar('<b>' + años[i] + '</b><br>Índice: ' + idx[i] + (i ? '<br>+' + vs + '% vs. 2010' : ''), ev);
-    }
-    hit.addEventListener('pointermove', mover); hit.addEventListener('pointerdown', mover);
-    hit.addEventListener('pointerleave', function () { ocultar(); guia.setAttribute('opacity', 0); punto.setAttribute('opacity', 0); });
+    var L = 36, R = W - 22, T = 26, B = H - 32, y0 = 40, y1 = 130;
+    function X(i) { return L + (R - L) * i / (años.length - 1); } function Y(v) { return B - (B - T) * (v - y0) / (y1 - y0); }
+    [40,60,80,100,120].forEach(function (v) { el('line', {x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: REJA}, s); txt(v, {x: L - 8, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS}, s); });
+    [0,5,10,15].forEach(function (i) { txt(años[i], {x: X(i), y: B + 23, 'text-anchor': i === 0 ? 'start' : i === 15 ? 'end' : 'middle', 'font-size': fs, fill: GRIS}, s); });
+    el('path', {d: 'M' + X(0) + ',' + Y(y0) + ind.map(function (v, i) { return ' L' + X(i) + ',' + Y(v); }).join('') + ' L' + X(15) + ',' + Y(y0) + 'Z', fill: VERDE, 'fill-opacity': .07}, s);
+    var ln = el('path', {d: 'M' + ind.map(function (v, i) { return X(i) + ',' + Y(v); }).join(' L'), fill: 'none', stroke: VERDE, 'stroke-width': 2.5, 'stroke-linejoin': 'round'}, s);
+    if (!reducir) { var len = ln.getTotalLength(); ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len; ln.getBoundingClientRect(); ln.style.transition = 'stroke-dashoffset 1.6s ease'; ln.style.strokeDashoffset = 0; }
+    [[0, 'start', 10, 22], [15, 'end', -6, -12]].forEach(function (p) { var i = p[0]; el('circle', {cx: X(i), cy: Y(ind[i]), r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2}, s); txt(ind[i], {x: X(i) + p[2], y: Y(ind[i]) + p[3], 'text-anchor': p[1], 'font-size': 16, 'font-weight': 700, fill: TINTA}, s); });
+    var g = el('line', {y1: T, y2: B, stroke: GRIS, 'stroke-dasharray': '3 3', opacity: 0}, s), pt = el('circle', {r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2, opacity: 0}, s), hit = el('rect', {x: L, y: T, width: R - L, height: B - T, fill: 'transparent'}, s);
+    function mv(ev) { var q = s.createSVGPoint(); q.x = ev.clientX; q.y = ev.clientY; var p = q.matrixTransform(s.getScreenCTM().inverse()); var i = Math.max(0, Math.min(15, Math.round((p.x - L) / (R - L) * 15)));
+      g.setAttribute('x1', X(i)); g.setAttribute('x2', X(i)); g.setAttribute('opacity', 1); pt.setAttribute('cx', X(i)); pt.setAttribute('cy', Y(ind[i])); pt.setAttribute('opacity', 1);
+      mostrar('<b>' + años[i] + '</b><br>Índice: ' + ind[i] + (i ? '<br>+' + Math.round((ind[i] / 65 - 1) * 100) + '% vs. 2010' : ''), ev); }
+    hit.addEventListener('pointermove', mv); hit.addEventListener('pointerdown', mv); hit.addEventListener('pointerleave', function () { ocultar(); g.setAttribute('opacity', 0); pt.setAttribute('opacity', 0); });
   }
-
   function barras() {
-    var g = document.getElementById('g-distritos'); g.innerHTML = '';
-    var W = Math.max(280, g.parentNode.clientWidth), chico = W < 500, fs = chico ? 14 : 15;
-    var fila = chico ? 34 : 38, alto = chico ? 22 : 26, LL = chico ? 96 : 128, RR = W - (chico ? 74 : 92), max = 2500;
-    var H = d.length * fila + 4; g.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    d.forEach(function (r, i) {
-      var y = 4 + i * fila, w = (RR - LL) * r[1] / max, mf = r[0] === 'Miraflores';
-      txt(r[0], {x: LL - 10, y: y + alto / 2 + 5, 'text-anchor': 'end', 'font-size': fs, 'font-weight': mf ? 700 : 400, fill: mf ? VERDE : TINTA}, g);
-      el('rect', {x: LL, y: y, width: w, height: alto, rx: 4, fill: mf ? VERDE : NEUTRO}, g);
-      txt((chico ? '$' : 'US$ ') + r[1].toLocaleString('en-US'), {x: LL + w + 7, y: y + alto / 2 + 5, 'font-size': fs, 'font-weight': mf ? 700 : 400, fill: TINTA}, g);
-      var hz = el('rect', {x: 0, y: y - 4, width: W, height: fila, fill: 'transparent'}, g);
+    var s = document.getElementById('g-distritos'); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
+    var W = Math.max(280, s.parentNode.clientWidth), ch = W < 500, fs = ch ? 14 : 15, fila = ch ? 33 : 37, alto = ch ? 22 : 26, LL = ch ? 96 : 128, RR = W - (ch ? 70 : 92);
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + (dist.length * fila + 4));
+    dist.forEach(function (r, i) {
+      var y = 4 + i * fila, w = (RR - LL) * r[1] / 2500, mf = r[0] === 'Miraflores';
+      txt(r[0], {x: LL - 10, y: y + alto / 2 + 5, 'text-anchor': 'end', 'font-size': fs, 'font-weight': mf ? 700 : 400, fill: mf ? VERDE : TINTA}, s);
+      var b = el('rect', {x: LL, y: y, width: reducir ? w : 0, height: alto, rx: 4, fill: mf ? VERDE : NEUTRO}, s);
+      if (!reducir) { b.style.transition = 'width 1s ' + (i * 0.05) + 's ease'; requestAnimationFrame(function () { requestAnimationFrame(function () { b.setAttribute('width', w); }); }); }
+      txt((ch ? '$' : 'US$ ') + r[1].toLocaleString('en-US'), {x: LL + w + 7, y: y + alto / 2 + 5, 'font-size': fs, 'font-weight': mf ? 700 : 400, fill: TINTA}, s);
+      var h = el('rect', {x: 0, y: y - 4, width: W, height: fila, fill: 'transparent'}, s);
       function m(ev) { mostrar('<b>' + r[0] + '</b><br>US$ ' + r[1].toLocaleString('en-US') + ' por m²' + (mf ? '<br>2.º más alto de 12 distritos' : ''), ev); }
-      hz.addEventListener('pointermove', m); hz.addEventListener('pointerdown', m); hz.addEventListener('pointerleave', ocultar);
+      h.addEventListener('pointermove', m); h.addEventListener('pointerdown', m); h.addEventListener('pointerleave', ocultar);
     });
   }
-
-  function dibujar() { linea(); barras(); }
-  dibujar();
-  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(dibujar, 150); });
+  pestañas(document.querySelector('#inversion .tabs'), function (b) {
+    document.getElementById('p-indice').hidden = b.dataset.g !== 'indice'; document.getElementById('p-distritos').hidden = b.dataset.g !== 'distritos';
+    b.dataset.g === 'indice' ? linea() : barras();
+  });
+  var dibujado = false, pan = document.querySelector('#inversion .panel');
+  if (io) { new IntersectionObserver(function (es, o) { if (es[0].isIntersecting && !dibujado) { dibujado = true; linea(); o.disconnect(); } }, { threshold: .3 }).observe(pan); } else linea();
+  var tr; addEventListener('resize', function () { clearTimeout(tr); tr = setTimeout(function () { if (dibujado) { linea(); barras(); } }, 150); });
 })();
 </script>
 </body>
