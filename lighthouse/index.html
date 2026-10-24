@@ -215,13 +215,13 @@
   /* Botón vs. información: solo lo que se toca tiene forma de botón */
   .chips { gap: 4px 0; }
   .chips span { border: 0; border-radius: 0; padding: 0; backdrop-filter: none; font-size: 15px; }
-  .chips span + span::before { content: '·'; margin: 0 10px; opacity: .7; }
+  .portada .chips { gap: 6px 18px; }
+  .portada .chips span::before { content: '✓'; color: var(--oro-claro); font-weight: 700; margin-right: 7px; }
   .mini { gap: 4px 14px; }
   .mini span { background: none; padding: 0; border-radius: 0; color: var(--verde); font-weight: 500; }
   .mini span::before { content: '✓'; color: var(--oro); font-weight: 700; margin-right: 6px; }
   .mapa .chips { display: flex; flex-wrap: wrap; gap: 6px 18px; }
   .mapa .chips span { background: none; border: 0; padding: 0; color: var(--verde); font-weight: 500; }
-  .mapa .chips span + span::before { content: none; }
   .mapa .chips span::before { content: '✓'; color: var(--oro); font-weight: 700; margin-right: 6px; }
   .sello-precio { background: none; color: var(--oro); padding: 0; border-radius: 0; border-bottom: 1.5px solid var(--oro); padding-bottom: 4px; }
   .tabs button { box-shadow: 0 1px 3px rgba(6,42,25,.12); }
