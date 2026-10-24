@@ -188,7 +188,9 @@
     .barra b { font-size: 21px; }
     .barra .largo { display: none; } .barra .corto { display: block; font-size: 13px; }
     .barra a { padding: 9px 18px; font-size: 15px; }
-    .plazo { flex-direction: row; text-align: left; align-items: flex-start; gap: 16px; padding: 18px; }
+    .plazo { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px 14px; text-align: left; padding: 18px; }
+    .plazo > div:last-child { display: contents; }
+    .plazo p { grid-column: 1 / -1; }
     .reloj { width: 76px; height: 76px; font-size: 15px; }
     .reloj b { font-size: 30px; }
     .plazo h3 { font-size: 17px; }
