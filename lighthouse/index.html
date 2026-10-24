@@ -218,8 +218,8 @@
         </div>
       </article>
       <article class="tarjeta">
-        <div class="img"><img src="img/cap-hija.jpg" alt="Coworking del edificio"></div>
-        <figcaption>Coworking · imagen referencial</figcaption>
+        <div class="img"><img src="img/cap-hija.jpg" alt="Boxes de estudio del coworking"></div>
+        <figcaption>Coworking del edificio · foto real</figcaption>
         <div class="cuerpo">
           <div class="quien">Para su hija</div>
           <h3>Mil lugares para estudiar</h3>
@@ -228,8 +228,8 @@
         </div>
       </article>
       <article class="tarjeta">
-        <div class="img"><img src="img/cap-hijo.jpg" alt="Sala con billar y vista al mar"></div>
-        <figcaption>Sala con billar · imagen referencial</figcaption>
+        <div class="img"><img src="img/cap-hijo.jpg" alt="Sala de billar del edificio"></div>
+        <figcaption>Sala de billar · foto real</figcaption>
         <div class="cuerpo">
           <div class="quien">Para su hijo</div>
           <h3>Su espacio, sus amigos</h3>
@@ -238,8 +238,8 @@
         </div>
       </article>
       <article class="tarjeta">
-        <div class="img"><img src="img/cap-esposo.jpg" alt="Terraza con parrilla"></div>
-        <figcaption>Terraza con parrilla · imagen referencial</figcaption>
+        <div class="img"><img src="img/cap-esposo.jpg" alt="Sala social del edificio con vista al verde"></div>
+        <figcaption>Sala social del edificio · foto real</figcaption>
         <div class="cuerpo">
           <div class="quien">Para su esposo</div>
           <h3>Mar, verde y espacio</h3>
@@ -256,11 +256,11 @@
     <div class="rv">
       <div class="eyebrow" style="color:var(--oro-claro)">Recórralo</div>
       <h2>Véalo con calma</h2>
-      <p class="bajada">Las fotos son del <b>piloto del piso 2</b>. El <b>piso 3</b> que le proponemos <b>es un poco más grande</b>.</p>
+      <p class="bajada">Las fotos del depa son del <b>piloto del piso 2</b>; en áreas comunes, las primeras 5 son <b>fotos reales</b> y el resto imágenes referenciales. El <b>piso 3</b> que le proponemos <b>es un poco más grande</b>.</p>
     </div>
     <div class="tabs rv" role="tablist" aria-label="Galería">
-      <button role="tab" aria-selected="true" data-set="depa">El depa · 17</button>
-      <button role="tab" aria-selected="false" data-set="edificio">Áreas comunes · 12</button>
+      <button role="tab" aria-selected="true" data-set="depa">El depa · 19</button>
+      <button role="tab" aria-selected="false" data-set="edificio">Áreas comunes · 17</button>
     </div>
     <div class="rv">
       <div class="carrusel" id="carrusel"></div>
@@ -406,7 +406,7 @@
   }, 80); });
 
   // Galería con dos conjuntos
-  var sets = { depa: { n: 17, nombre: 'el departamento piloto' }, edificio: { n: 12, nombre: 'las áreas comunes' } };
+  var sets = { depa: { n: 19, nombre: 'el departamento piloto' }, edificio: { n: 17, nombre: 'las áreas comunes' } };
   var car = document.getElementById('carrusel'), mins = document.getElementById('miniaturas'), idx = 0, total = 0, pista, cont, ant, sig;
   function cargar(clave) {
     var s = sets[clave]; total = s.n; idx = 0; car.innerHTML = ''; mins.innerHTML = '';
