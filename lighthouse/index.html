@@ -132,9 +132,29 @@
   .nota { font-size: 13px; color: var(--gris); margin-top: 14px; max-width: 60em; }
   .tip { position: fixed; pointer-events: none; background: var(--hondo); color: #fff; font-size: 14px; line-height: 1.35; padding: 8px 11px; border-radius: 6px; opacity: 0; transition: opacity .12s; z-index: 10; font-variant-numeric: tabular-nums; }
 
+  /* Propuesta */
+  .propuesta h2 em { color: var(--oro); font-style: normal; }
+  .incluye { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); margin-bottom: 28px; }
+  .incluye div { padding: 20px 8px; text-align: center; border-right: 1px solid var(--linea); min-width: 0; }
+  .incluye div:last-child { border-right: 0; }
+  .incluye b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(34px, 5vw, 48px); line-height: 1; color: var(--verde); }
+  .incluye span { display: block; font-size: 14px; color: var(--gris); margin-top: 6px; }
+  .plazo { display: flex; gap: 22px; align-items: center; background: var(--marfil); border-left: 3px solid var(--oro); border-radius: 6px; padding: 22px; }
+  .plazo h3 { font: 600 19px var(--texto); color: var(--verde); margin: 0 0 6px; }
+  .plazo p { margin: 0; }
+  .reloj { flex: 0 0 auto; text-align: center; font-family: var(--display); font-size: 22px; line-height: 1.05; color: #fff; background: var(--verde); border-radius: 50%; width: 112px; height: 112px; display: flex; align-items: center; justify-content: center; padding: 10px; }
+  .reloj b { display: block; font-size: 44px; font-weight: 500; }
+  .barra { position: fixed; z-index: 20; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(6,42,25,.96); color: #fff; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); transform: translateY(110%); transition: transform .4s ease; box-shadow: 0 -6px 20px rgba(0,0,0,.15); }
+  .barra.on { transform: none; }
+  .barra b { display: block; font-family: var(--display); font-size: 24px; font-weight: 600; line-height: 1; }
+  .barra span { font-size: 13px; color: rgba(255,255,255,.85); }
+  .barra a { flex: 0 0 auto; background: var(--oro-claro); color: var(--hondo); font-weight: 600; text-decoration: none; padding: 11px 20px; border-radius: 999px; }
+  @media (min-width: 761px) { .barra { left: 50%; right: auto; bottom: 18px; transform: translate(-50%, 160%); border-radius: 999px; padding: 10px 10px 10px 24px; gap: 24px; } .barra.on { transform: translate(-50%, 0); } }
+  @media (max-width: 760px) { .incluye { grid-template-columns: repeat(2, 1fr); } .incluye div:nth-child(2) { border-right: 0; } .incluye div:nth-child(-n+2) { border-bottom: 1px solid var(--linea); } .plazo { flex-direction: column; text-align: center; } }
+
   /* Cierre */
   .cierre { background: var(--verde); color: #fff; text-align: center; }
-  .cierre .ancho { padding-block: 80px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .cierre .ancho { padding-block: 80px 110px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .cierre img { width: 74px; }
   .cierre h2 { font-size: clamp(40px, 6.5vw, 62px); line-height: 1.02; color: #fff; }
   .cierre h2 em { color: var(--oro-claro); }
@@ -168,7 +188,7 @@
     <div class="eyebrow">Lighthouse by Bragagnini · Miraflores</div>
     <h1>Un hogar<br><em>frente al mar</em></h1>
     <p>El piso 3: un espacio para cada uno, con vista al mar y al verde.</p>
-    <div class="chips"><span>3 dormitorios con baño propio</span><span>Balcón con vista al mar</span><span>Piso 3</span></div>
+    <div class="chips"><span>Piso 3 · 160 m²</span><span>3 dormitorios con baño propio</span><span>2 cocheras + depósito</span></div>
     <a class="bajar" href="#familia"><i></i>Descubra por qué</a>
   </div>
 </header>
@@ -305,21 +325,48 @@
         <svg id="g-distritos" role="img" aria-label="Miraflores: 2,400 dólares por metro cuadrado, segundo más alto de 12 distritos"></svg>
       </div>
     </div>
-    <p class="nota">Fuente: BCRP, Notas de Estudios N.° 16 (marzo 2026), con precios de oferta publicados en Urbania. El rendimiento por alquiler es bruto (relación precio/alquiler de Miraflores: 17.5 años). Los resultados pasados no garantizan los futuros; información referencial.</p>
+    <p class="nota" style="margin-bottom:0">Fuente: BCRP, Notas de Estudios N.° 16 (marzo 2026), con precios de oferta publicados en Urbania. El rendimiento por alquiler es bruto (relación precio/alquiler de Miraflores: 17.5 años). Los resultados pasados no garantizan los futuros; información referencial.</p>
+  </div>
+</section>
+
+<section class="seccion propuesta" id="propuesta">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow">La propuesta para ustedes</div>
+      <h2>Piso 3 · <em>US$ 530,000</em></h2>
+      <p class="bajada">Precio acordado con la inmobiliaria, con las cocheras y el depósito incluidos.</p>
+    </div>
+    <div class="incluye rv">
+      <div><b>160 m²</b><span>Área</span></div>
+      <div><b>3</b><span>Dormitorios con baño propio</span></div>
+      <div><b>2</b><span>Cocheras incluidas</span></div>
+      <div><b>1</b><span>Depósito incluido</span></div>
+    </div>
+    <div class="plazo rv">
+      <div class="reloj" id="reloj">Hasta el martes 27</div>
+      <div>
+        <h3>Separación hasta el martes 27 de octubre</h3>
+        <p>Hay otro cliente interesado en este mismo departamento que ya está tramitando su crédito hipotecario; apenas se lo aprueben, lo separaría. Conversen el fin de semana en familia y, si les gusta tanto como a nosotros, asegurémoslo a tiempo.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <footer class="cierre">
   <div class="ancho">
     <img src="../img/logo-blanco.png" alt="MP Propiedades">
-    <h2>¿Volvemos a ver <em>el piso 3</em>?</h2>
-    <p>Coordinamos una segunda visita cuando les acomode, con toda la familia.</p>
+    <h2>¿Separamos <em>el piso 3</em>?</h2>
+    <p>Escríbanos para separarlo antes del martes 27, o si quieren volver a verlo con toda la familia.</p>
     <div class="numero">WhatsApp 969 698 347</div>
-    <a class="boton" href="https://wa.me/51969698347" target="_blank" rel="noopener">Agendar visita por WhatsApp</a>
+    <a class="boton" href="https://wa.me/51969698347?text=Hola%2C%20queremos%20separar%20el%20piso%203%20de%20Lighthouse" target="_blank" rel="noopener">Separar por WhatsApp</a>
   </div>
 </footer>
 
 <div class="tip" id="tip" role="status"></div>
+<div class="barra" id="barra">
+  <div><b>US$ 530,000</b><span>Piso 3 · 160 m² · separación hasta el martes 27</span></div>
+  <a href="#propuesta">Separar</a>
+</div>
 
 <script>
 (function () {
@@ -389,6 +436,12 @@
   document.getElementById('video-btn').addEventListener('click', function () {
     this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/sdS1uiVfoSA?autoplay=1&rel=0&playsinline=1" title="Áreas comunes de Lighthouse" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
   });
+
+  // Cuenta regresiva al martes 27 (hora de Lima) y barra fija
+  var fin = new Date('2026-10-27T23:59:00-05:00'), dias = Math.ceil((fin - new Date()) / 864e5), reloj = document.getElementById('reloj');
+  if (dias > 1) reloj.innerHTML = '<span>Quedan<b>' + dias + '</b>días</span>'; else if (dias === 1) reloj.innerHTML = '<span>Último<b>día</b></span>';
+  var barra = document.getElementById('barra'), heroe = document.querySelector('.portada'), prop = document.getElementById('propuesta'), cierre = document.querySelector('.cierre'), visibles = {};
+  if (io) { var ob = new IntersectionObserver(function (es) { es.forEach(function (e) { visibles[e.target.className] = e.isIntersecting; }); var v = false; for (var k in visibles) v = v || visibles[k]; barra.classList.toggle('on', !v); }, { threshold: 0 }); [heroe, prop, cierre].forEach(function (x) { ob.observe(x); }); }
 
   // Gráficos
   var NS = 'http://www.w3.org/2000/svg', tip = document.getElementById('tip');
