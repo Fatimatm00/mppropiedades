@@ -375,7 +375,7 @@
     [0,5,10,15].forEach(function (i) { txt(años[i], {x: X(i), y: B + 24, 'text-anchor': i === 0 ? 'start' : i === 15 ? 'end' : 'middle', 'font-size': fs, fill: GRIS}, s); });
     el('path', {d: 'M' + X(0) + ',' + Y(ymin) + idx.map(function (v, i) { return ' L' + X(i) + ',' + Y(v); }).join('') + ' L' + X(idx.length - 1) + ',' + Y(ymin) + 'Z', fill: VERDE, 'fill-opacity': .07}, s);
     el('path', {d: 'M' + idx.map(function (v, i) { return X(i) + ',' + Y(v); }).join(' L'), fill: 'none', stroke: VERDE, 'stroke-width': 2.5, 'stroke-linejoin': 'round'}, s);
-    [[0, 'start', 10], [idx.length - 1, 'end', -6]].forEach(function (p) { var i = p[0]; el('circle', {cx: X(i), cy: Y(idx[i]), r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2}, s); txt(idx[i], {x: X(i) + p[2], y: Y(idx[i]) - 12, 'text-anchor': p[1], 'font-size': 16, 'font-weight': 700, fill: TINTA}, s); });
+    [[0, 'start', 10, 22], [idx.length - 1, 'end', -6, -12]].forEach(function (p) { var i = p[0]; el('circle', {cx: X(i), cy: Y(idx[i]), r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2}, s); txt(idx[i], {x: X(i) + p[2], y: Y(idx[i]) + p[3], 'text-anchor': p[1], 'font-size': 16, 'font-weight': 700, fill: TINTA}, s); });
     var guia = el('line', {y1: T, y2: B, stroke: GRIS, 'stroke-width': 1, 'stroke-dasharray': '3 3', opacity: 0}, s);
     var punto = el('circle', {r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2, opacity: 0}, s);
     var hit = el('rect', {x: L, y: T, width: R - L, height: B - T, fill: 'transparent'}, s);
