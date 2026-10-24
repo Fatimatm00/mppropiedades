@@ -37,7 +37,7 @@
   em { font-style: italic; }
 
   /* Portada */
-  .portada { position: relative; min-height: min(92svh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--verde-hondo) url(img/depa-01.jpg) center 62%/cover; }
+  .portada { position: relative; min-height: min(92svh, 860px); display: flex; align-items: flex-end; color: #fff; background: var(--verde-hondo) url(img/hero.jpg) center 55%/cover; }
   .portada::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.45) 42%, rgba(6,42,25,.93) 72%, rgba(6,42,25,.96) 100%); }
   .portada .marca { position: absolute; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 64px; z-index: 1; }
   .portada .ancho { position: relative; width: 100%; padding-block: 0 48px; }
@@ -107,6 +107,10 @@
   .ubicacion .ancho { padding-block: 76px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   .ubicacion h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1; color: var(--verde); margin: 10px 0 0; }
   .ubicacion .ancho > * { min-width: 0; }
+  .aerea { grid-column: 1 / -1; margin: 0; order: 3; }
+  .aerea img { width: 100%; border-radius: 4px; }
+  .aerea figcaption { font-size: 14px; color: var(--gris); margin-top: 10px; }
+  .portada .ref { position: absolute; top: calc(26px + env(safe-area-inset-top, 0px)); right: max(20px, env(safe-area-inset-right, 0px)); z-index: 1; font-size: 12px; letter-spacing: .08em; color: rgba(255,255,255,.85); text-shadow: 0 1px 6px rgba(0,0,0,.5); }
 
   /* Cierre */
   .cierre { background: var(--verde); color: #fff; text-align: center; }
@@ -155,6 +159,7 @@
 
 <header class="portada">
   <img class="marca" src="../img/logo-blanco.png" alt="MP Propiedades">
+  <span class="ref">Imagen referencial</span>
   <div class="ancho">
     <div class="eyebrow">Lighthouse by Bragagnini · Miraflores</div>
     <h1>Un hogar<br><em>frente al mar</em></h1>
@@ -189,7 +194,7 @@
 
 <section class="capitulo invertido">
   <div class="ancho">
-    <figure class="foto"><img src="img/depa-08.jpg" alt="Salita de estar del departamento"><figcaption>Salita de estar · depa piloto</figcaption></figure>
+    <figure class="foto ancha"><img src="img/cap-hija.jpg" alt="Coworking del edificio"><figcaption>Coworking del edificio · imagen referencial</figcaption></figure>
     <div class="texto">
       <div class="num">II · Para su hija</div>
       <h2>Mil lugares para estudiar</h2>
@@ -206,7 +211,7 @@
 
 <section class="capitulo">
   <div class="ancho">
-    <figure class="foto ancha"><img src="img/edificio-02.jpg" alt="Gimnasio del edificio"><figcaption>Gimnasio · imagen referencial del proyecto</figcaption></figure>
+    <figure class="foto ancha"><img src="img/cap-hijo.jpg" alt="Sala con mesa de billar y vista al mar"><figcaption>Sala con billar y vista al mar · imagen referencial</figcaption></figure>
     <div class="texto">
       <div class="num">III · Para su hijo</div>
       <h2>Su espacio, sus amigos, su ritmo</h2>
@@ -224,7 +229,7 @@
 
 <section class="capitulo invertido">
   <div class="ancho">
-    <figure class="foto ancha"><img src="img/edificio-01.jpg" alt="Terraza con parrilla del edificio"><figcaption>Terraza con parrilla · imagen referencial del proyecto</figcaption></figure>
+    <figure class="foto ancha"><img src="img/cap-esposo.jpg" alt="Terraza con parrilla del edificio"><figcaption>Terraza con parrilla · imagen referencial del proyecto</figcaption></figure>
     <div class="texto">
       <div class="num">IV · Para su esposo</div>
       <h2>Mar, verde y espacio de sobra</h2>
@@ -266,7 +271,7 @@
       <li>Lobby amplio<small>Recepción del edificio</small></li>
       <li>Edificio sostenible<small>Ahorro de luz y agua</small></li>
     </ul>
-    <div class="carrusel" data-fotos="edificio" data-total="2" data-nombre="las áreas comunes" style="margin-top:36px"></div>
+    <div class="carrusel" data-fotos="edificio" data-total="12" data-nombre="las áreas comunes" style="margin-top:36px"></div>
     <p class="ayuda" style="color:var(--gris)">Imágenes referenciales del proyecto.</p>
   </div>
 </section>
@@ -277,6 +282,7 @@
       <div class="eyebrow">La ubicación</div>
       <h2>Frente al malecón de Miraflores</h2>
     </div>
+    <figure class="aerea"><img src="img/ubicacion.jpg" alt="Vista aérea del malecón de Miraflores con la ubicación de Lighthouse marcada"><figcaption>La «B» marca dónde está Lighthouse · imagen del proyecto</figcaption></figure>
     <ul class="puntos" style="margin-top:0">
       <li>Malecón de la Marina con calle Manuel Tovar</li>
       <li>Larcomar y sus cafés, caminando</li>
