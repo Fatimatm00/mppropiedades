@@ -23,6 +23,7 @@
     color-scheme: light;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #fff; color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
   img, video { max-width: 100%; display: block; }
@@ -343,7 +344,7 @@
     </div>
     <div class="tabs rv" role="tablist" aria-label="Galería">
       <button role="tab" aria-selected="true" data-set="depa">Los depas · 15</button>
-      <button role="tab" aria-selected="false" data-set="edificio">El edificio · 5</button>
+      <button role="tab" aria-selected="false" data-set="edificio">El edificio · 6</button>
     </div>
     <div class="rv">
       <div class="carrusel" id="carrusel"></div>
@@ -461,13 +462,13 @@
   </div>
 </section>
 
-<footer class="cierre">
+<footer class="cierre" id="contacto">
   <div class="ancho">
     <img src="../img/logo-blanco.png" alt="MP Propiedades">
     <h2>¿Agendamos <em>una visita</em>?</h2>
     <p>Le mostramos los dos depas, resolvemos sus dudas y le pasamos el detalle de la inversión.</p>
     <div class="numero">WhatsApp 969 698 347</div>
-    <a class="boton" href="https://wa.me/51969698347?text=Hola%2C%20me%20interesan%20los%20depas%20del%20Edificio%20Libertad%20en%20Miraflores" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    <a class="boton" href="https://wa.me/51969698347?text=Hola%2C%20me%20interesan%20los%20depas%20del%20Edificio%20Libertad%20en%20Miraflores">Escribir por WhatsApp</a>
   </div>
 </footer>
 
@@ -475,7 +476,7 @@
 <div class="tip" id="tip" role="status"></div>
 <div class="barra" id="barra">
   <div><b>Desde US$ 236,065</b><span>Edificio Libertad · Miraflores</span></div>
-  <a href="https://wa.me/51969698347?text=Hola%2C%20me%20interesan%20los%20depas%20del%20Edificio%20Libertad%20en%20Miraflores" target="_blank" rel="noopener">Visita</a>
+  <a href="#contacto">Agendar visita</a>
 </div>
 
 <script>
@@ -517,7 +518,7 @@
   // Galería
   var sets = {
     depa: ['Sala comedor', 'Sala y cocina', 'Sala con balcón', 'Cocina americana', 'Cocina equipada', 'Cocina', 'Vista desde el balcón', 'Balcón', 'Dormitorio principal', 'Dormitorio', 'Dormitorio', 'Walk-in clóset · 701', 'Baño', 'Baño', 'Lavandería con jardín · 501'],
-    edificio: ['Fachada · imagen referencial', 'Lobby', 'Lobby', 'Ingreso', 'Pasillo de piso']
+    edificio: ['Fachada · imagen referencial', 'Lobby', 'Lobby', 'Ingreso', 'Pasillo de piso', 'Terraza con parrilla']
   };
   var car = document.getElementById('carrusel'), mins = document.getElementById('miniaturas'), idx = 0, total = 0, pista, cont, ant, sig;
   function cargar(clave) {
