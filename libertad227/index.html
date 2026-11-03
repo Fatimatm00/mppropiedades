@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Edificio Libertad · Invertir en Miraflores</title>
+<meta name="description" content="Departamentos 501 y 701 en Calle Libertad 227, Miraflores. Fichas, planos, video y análisis de rentabilidad para Airbnb.">
+<meta property="og:title" content="Edificio Libertad · Invertir en Miraflores">
+<meta property="og:description" content="Depas 501 y 701 desde US$ 236,065 en Calle Libertad 227, Miraflores. Video, planos y simulador de rentabilidad Airbnb.">
+<meta property="og:image" content="https://fatimatm00.github.io/mppropiedades/libertad227/img/vista-previa.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:url" content="https://fatimatm00.github.io/mppropiedades/libertad227/">
+<meta property="og:type" content="website">
+<link rel="icon" href="../img/logo-verde.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Landing para inversionistas: portada, video, los dos depas con planos, galería, Airbnb con gráficos y simulador, ubicación, cierre. */
+  :root {
+    --verde: #00381d; --hondo: #062a19; --oro: #a8834a; --oro-claro: #e2cb98;
+    --marfil: #f7f4ee; --tinta: #1b2420; --gris: #46504a; --linea: #dcd6c9;
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --texto: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #fff; color: var(--tinta); font-family: var(--texto); font-size: 17px; line-height: 1.55; }
+  img, video { max-width: 100%; display: block; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; }
+  .ancho { max-width: 1120px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; color: var(--oro); }
+  .seccion { padding-block: 72px; }
+  .seccion h2 { font-size: clamp(38px, 6vw, 58px); line-height: 1; color: var(--verde); margin: 10px 0 14px; }
+  .bajada { color: var(--gris); margin: 0 0 26px; max-width: 36em; }
+  .nota { font-size: 13px; color: var(--gris); margin-top: 14px; max-width: 62em; }
+  .nota a { color: var(--gris); }
+
+  .js .rv { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+  .js .rv.visto { opacity: 1; transform: none; }
+
+  /* Portada */
+  .portada { position: relative; min-height: min(96svh, 900px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background: var(--hondo); }
+  .portada .fondo { position: absolute; inset: 0; background: url(img/hero.jpg) 50% 40%/cover; animation: zoom 18s ease-out both; }
+  @keyframes zoom { from { transform: scale(1.14); } to { transform: scale(1); } }
+  .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.4) 48%, rgba(6,42,25,.95) 82%); }
+  .portada .marca { position: absolute; z-index: 2; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 62px; }
+  .portada .ancho { position: relative; z-index: 2; width: 100%; padding-block: 0 44px; }
+  .portada .eyebrow { color: var(--oro-claro); text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+  .portada h1 { font-size: clamp(54px, 12vw, 116px); line-height: .92; margin: 12px 0 18px; text-shadow: 0 2px 16px rgba(0,0,0,.35); }
+  .portada h1 em { color: var(--oro-claro); }
+  .portada p { margin: 0; max-width: 30em; font-size: 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 22px; }
+  .chips span { font-size: 15px; font-weight: 500; }
+  .chips span::before { content: '✓'; color: var(--oro-claro); font-weight: 700; margin-right: 7px; }
+  .bajar { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; color: #fff; font-size: 15px; font-weight: 500; text-decoration: underline; text-underline-offset: 4px; }
+  .bajar i { width: 26px; height: 40px; border: 1.5px solid rgba(255,255,255,.8); border-radius: 14px; position: relative; }
+  .bajar i::after { content: ''; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; background: #fff; border-radius: 2px; animation: rueda 1.8s infinite; }
+  @keyframes rueda { 0% { opacity: 1; transform: translateY(0); } 80% { opacity: 0; transform: translateY(12px); } 100% { opacity: 0; } }
+
+  /* Cifras clave */
+  .cifras { background: var(--hondo); color: #fff; }
+  .cifras .ancho { display: grid; grid-template-columns: repeat(4, 1fr); padding-block: 26px; }
+  .cifras div { padding: 8px 14px; border-left: 1px solid rgba(226,203,152,.3); min-width: 0; }
+  .cifras div:first-child { border-left: 0; padding-left: 0; }
+  .cifras b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(28px, 4vw, 40px); line-height: 1.05; color: var(--oro-claro); font-variant-numeric: tabular-nums; }
+  .cifras span { font-size: 14px; color: rgba(255,255,255,.85); }
+
+  /* Pestañas */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-bottom: 18px; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { flex: 0 0 auto; font: 600 15px var(--texto); padding: 10px 16px; border-radius: 999px; border: 1px solid var(--linea); background: #fff; color: var(--tinta); cursor: pointer; box-shadow: 0 1px 3px rgba(6,42,25,.12); transition: background .25s, color .25s, border-color .25s; }
+  .tabs button:hover { border-color: var(--verde); }
+  .tabs button[aria-selected="true"] { background: var(--verde); border-color: var(--verde); color: #fff; }
+  .tabs button:focus-visible { outline: 3px solid var(--oro); outline-offset: 2px; }
+  .oscuro .tabs button { background: transparent; border-color: rgba(255,255,255,.4); color: #fff; box-shadow: none; }
+  .oscuro .tabs button[aria-selected="true"] { background: var(--oro-claro); border-color: var(--oro-claro); color: var(--hondo); }
+
+  /* Video */
+  .video-wrap { display: grid; grid-template-columns: minmax(0, 380px) 1fr; gap: 44px; align-items: center; }
+  .reel { position: relative; aspect-ratio: 9 / 16; border-radius: 10px; overflow: hidden; background: #000; box-shadow: 0 20px 50px rgba(6,42,25,.25); }
+  .reel video { width: 100%; height: 100%; object-fit: cover; }
+  .lista { list-style: none; padding: 0; margin: 0 0 24px; display: grid; gap: 10px; }
+  .lista li { padding-left: 26px; position: relative; }
+  .lista li::before { content: '✓'; position: absolute; left: 0; color: var(--oro); font-weight: 700; }
+  .cita { font-family: var(--display); font-size: clamp(26px, 3.6vw, 34px); line-height: 1.2; color: var(--verde); border-left: 2px solid var(--oro); padding: 2px 0 2px 20px; margin: 0 0 26px; }
+  .cita em { color: var(--oro); }
+
+  /* Los depas */
+  .depas { background: var(--marfil); }
+  .ficha { display: grid; grid-template-columns: 1.05fr 1fr; gap: 34px; background: #fff; border-radius: 10px; padding: 30px; box-shadow: 0 10px 30px rgba(6,42,25,.07); }
+  .ficha h3 { font-size: clamp(34px, 5vw, 46px); color: var(--verde); line-height: 1; }
+  .ficha .precio { font-family: var(--display); font-size: clamp(30px, 4vw, 38px); color: var(--oro); margin: 6px 0 18px; font-variant-numeric: tabular-nums; }
+  .datos { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); margin-bottom: 22px; }
+  .datos div { padding: 14px 8px; text-align: center; border-right: 1px solid var(--linea); min-width: 0; }
+  .datos div:last-child { border-right: 0; }
+  .datos b { display: block; white-space: nowrap; font-family: var(--display); font-weight: 500; font-size: clamp(26px, 3.4vw, 34px); line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
+  .datos span { display: block; font-size: 13px; color: var(--gris); margin-top: 6px; }
+  .plano { border: 0; padding: 0; background: #fff; cursor: zoom-in; border-radius: 6px; overflow: hidden; width: 100%; position: relative; border: 1px solid var(--linea); }
+  .plano img { width: 100%; height: auto; }
+  .plano .lupa { position: absolute; right: 10px; bottom: 10px; background: var(--verde); color: #fff; font: 600 13px var(--texto); padding: 7px 12px; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+  .cochera { margin-top: 18px; background: var(--marfil); border-left: 3px solid var(--oro); border-radius: 6px; padding: 16px 18px; font-size: 15px; }
+  .cochera b { color: var(--verde); }
+  .descarga { display: inline-block; margin-top: 14px; color: var(--verde); font-weight: 600; font-size: 15px; }
+
+  /* Galería */
+  .galeria { background: var(--hondo); color: #fff; }
+  .galeria h2 { color: #fff; }
+  .galeria .bajada { color: rgba(255,255,255,.88); }
+  .carrusel { position: relative; background: #0d3423; border-radius: 6px; overflow: hidden; }
+  .pista { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+  .pista::-webkit-scrollbar { display: none; }
+  .pista figure { flex: 0 0 100%; margin: 0; scroll-snap-align: center; aspect-ratio: 4 / 5; display: flex; align-items: center; justify-content: center; position: relative; }
+  .pista img { width: 100%; height: 100%; object-fit: contain; }
+  .pista figcaption { position: absolute; left: 12px; bottom: 12px; background: rgba(6,42,25,.85); font-size: 13px; font-weight: 600; padding: 5px 11px; border-radius: 4px; }
+  .flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(255,255,255,.95); color: var(--verde); font-size: 26px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+  .flecha:disabled { opacity: .3; cursor: default; }
+  .flecha.ant { left: 12px; } .flecha.sig { right: 12px; }
+  .contador { position: absolute; top: 12px; right: 12px; background: rgba(6,42,25,.9); color: #fff; font-size: 14px; font-weight: 600; padding: 5px 12px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+  .miniaturas { display: flex; gap: 6px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; }
+  .miniaturas::-webkit-scrollbar { display: none; }
+  .miniaturas button { flex: 0 0 64px; height: 64px; padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; cursor: pointer; opacity: .55; background: none; transition: opacity .2s, border-color .2s; }
+  .miniaturas button.on { opacity: 1; border-color: var(--oro-claro); }
+  .miniaturas img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Airbnb */
+  .airbnb { background: #fff; }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 30px; }
+  .tile { background: var(--marfil); border-radius: 6px; padding: 20px 18px; min-width: 0; }
+  .tile b { display: block; font-family: var(--display); font-weight: 500; font-size: clamp(38px, 5vw, 52px); line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
+  .tile span { display: block; margin-top: 8px; font-size: 15px; }
+  .panel { background: var(--marfil); border-radius: 6px; padding: 22px 20px 16px; }
+  .panel h3 { font: 600 18px var(--texto); margin: 0 0 4px; }
+  .panel .sub { font-size: 14px; color: var(--gris); margin: 0 0 12px; }
+  .panel svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .panel .tabs button { background: #fff; }
+  .panel .tabs button[aria-selected="true"] { background: var(--verde); }
+  .tip { position: fixed; pointer-events: none; background: var(--hondo); color: #fff; font-size: 14px; line-height: 1.35; padding: 8px 11px; border-radius: 6px; opacity: 0; transition: opacity .12s; z-index: 30; font-variant-numeric: tabular-nums; }
+
+  /* Simulador */
+  .simulador { background: var(--marfil); }
+  .sim { display: grid; grid-template-columns: 1fr 1.1fr; gap: 26px; }
+  .controles, .resultado { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 10px 30px rgba(6,42,25,.06); min-width: 0; }
+  .control { margin-bottom: 20px; }
+  .control label { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; font-size: 15px; margin-bottom: 8px; gap: 10px; }
+  .control label output { font-family: var(--display); font-size: 26px; color: var(--verde); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .control small { display: block; color: var(--gris); font-size: 13px; margin-top: 4px; }
+  input[type=range] { width: 100%; accent-color: var(--verde); height: 28px; }
+  .check { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 15px; cursor: pointer; }
+  .check input { width: 20px; height: 20px; accent-color: var(--verde); }
+  .resultado .grande { font-family: var(--display); font-size: clamp(56px, 9vw, 84px); line-height: 1; color: var(--verde); font-variant-numeric: tabular-nums; }
+  .resultado .grande small { font-size: .4em; color: var(--oro); }
+  .resultado .que { font-weight: 600; margin: 6px 0 18px; }
+  .filas { display: grid; gap: 0; border-top: 1px solid var(--linea); margin-bottom: 18px; }
+  .filas div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--linea); font-size: 15px; }
+  .filas b { font-variant-numeric: tabular-nums; color: var(--verde); }
+  .vs h3 { font: 600 16px var(--texto); margin: 0 0 10px; }
+  .barra-vs { margin-bottom: 10px; }
+  .barra-vs span { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
+  .barra-vs i { display: block; height: 14px; border-radius: 7px; background: var(--verde); transition: width .5s ease; }
+  .barra-vs.trad i { background: #cfc8b9; }
+
+  /* Ubicación */
+  .mapa { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: var(--marfil) url(img/fachada.jpg) center 30%/cover; border: 0; padding: 0; width: 100%; cursor: pointer; display: block; }
+  .mapa::after { content: ''; position: absolute; inset: 0; background: rgba(6,42,25,.45); }
+  .mapa .ver { position: absolute; z-index: 1; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--oro-claro); color: var(--hondo); font: 600 16px var(--texto); padding: 13px 24px; border-radius: 999px; box-shadow: 0 4px 14px rgba(0,0,0,.25); white-space: nowrap; }
+  .mapa .ver::after { content: ' →'; }
+  .mapa iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 2; }
+
+  /* Cierre */
+  .cierre { background: var(--verde); color: #fff; text-align: center; }
+  .cierre .ancho { padding-block: 80px 120px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .cierre img { width: 74px; }
+  .cierre h2 { font-size: clamp(40px, 6.5vw, 62px); line-height: 1.02; color: #fff; }
+  .cierre h2 em { color: var(--oro-claro); }
+  .cierre p { margin: 0; max-width: 30em; }
+  .numero { font-size: 22px; font-weight: 600; letter-spacing: .04em; user-select: all; }
+  .boton { display: inline-block; background: var(--oro-claro); color: var(--hondo); text-decoration: none; font-weight: 600; padding: 15px 28px; border-radius: 999px; font-size: 17px; box-shadow: 0 4px 14px rgba(0,0,0,.18); transition: transform .25s; }
+  .boton::after, .barra a::after { content: ' →'; }
+  .boton:hover { transform: translateY(-2px); }
+  .boton:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  .barra { position: fixed; z-index: 20; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(6,42,25,.96); color: #fff; padding: 9px max(16px, env(safe-area-inset-right, 0px)) calc(9px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); transform: translateY(110%); transition: transform .4s ease; box-shadow: 0 -6px 20px rgba(0,0,0,.15); }
+  .barra.on { transform: none; }
+  .barra b { display: block; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1; white-space: nowrap; }
+  .barra span { font-size: 13px; color: rgba(255,255,255,.85); white-space: nowrap; }
+  .barra a { flex: 0 0 auto; background: var(--oro-claro); color: var(--hondo); font-weight: 600; text-decoration: none; padding: 9px 18px; border-radius: 999px; font-size: 15px; box-shadow: 0 4px 14px rgba(0,0,0,.18); }
+
+  /* Plano ampliado */
+  dialog { border: 0; padding: 0; max-width: 96vw; max-height: 94vh; border-radius: 8px; background: #fff; }
+  dialog::backdrop { background: rgba(6,42,25,.85); }
+  dialog .zona { overflow: auto; max-height: 94vh; touch-action: pan-x pan-y pinch-zoom; }
+  dialog img { width: min(1400px, 180vw); max-width: none; }
+  dialog .cerrar { position: sticky; top: 10px; float: right; margin: 10px; z-index: 2; border: 0; background: var(--verde); color: #fff; font: 600 15px var(--texto); padding: 9px 16px; border-radius: 999px; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+
+  @media (max-width: 900px) {
+    .video-wrap, .ficha, .sim { grid-template-columns: 1fr; }
+    .video-wrap { gap: 28px; }
+    .reel { max-width: 360px; width: 100%; margin: 0 auto; }
+    .tiles { grid-template-columns: repeat(2, 1fr); }
+    .cifras .ancho { grid-template-columns: repeat(2, 1fr); gap: 14px 0; }
+    .cifras div:nth-child(3) { border-left: 0; padding-left: 0; }
+  }
+  @media (max-width: 760px) {
+    .seccion { padding-block: 56px; }
+    .ficha { padding: 20px; }
+    .flecha { width: 40px; height: 40px; font-size: 22px; }
+    .portada h1 { font-size: clamp(50px, 14vw, 64px); }
+    .mapa { aspect-ratio: 4 / 5; }
+    dialog img { width: 220vw; }
+  }
+  @media (min-width: 761px) {
+    .pista figure { aspect-ratio: auto; height: min(70vh, 640px); }
+    .galeria .carrusel, .galeria .miniaturas { max-width: 900px; margin-left: auto; margin-right: auto; }
+    .barra { left: 50%; right: auto; bottom: 18px; transform: translate(-50%, 160%); border-radius: 999px; padding: 10px 10px 10px 24px; gap: 24px; }
+    .barra.on { transform: translate(-50%, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .portada .fondo, .bajar i::after { animation: none; }
+    .js .rv { opacity: 1; transform: none; transition: none; }
+    .pista { scroll-behavior: auto; }
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<header class="portada">
+  <div class="fondo" role="img" aria-label="Vista desde el balcón del depa sobre Miraflores"></div>
+  <img class="marca" src="../img/logo-blanco.png" alt="MP Propiedades">
+  <div class="ancho">
+    <div class="eyebrow">Edificio Libertad · Miraflores</div>
+    <h1>Invertir en<br><em>Miraflores</em></h1>
+    <p>Dos departamentos de estreno en Calle Libertad 227, listos para vivirlos o para rentarlos en Airbnb.</p>
+    <div class="chips"><span>Depas 501 y 701</span><span>76 m² · 2 y 3 dormitorios</span><span>Desde US$ 236,065</span></div>
+    <a class="bajar" href="#video"><i></i>Ver el depa y los números</a>
+  </div>
+</header>
+
+<section class="cifras" aria-label="Datos clave">
+  <div class="ancho">
+    <div><b>$3,100</b><span>US$ por m² techado</span></div>
+    <div><b>12 pisos</b><span>5 depas por piso</span></div>
+    <div><b>N.° 1</b><span>mercado Airbnb del Perú</span></div>
+    <div><b>1.95 M</b><span>turistas llegaron al Perú (ene–jul 2026)</span></div>
+  </div>
+</section>
+
+<section class="seccion" id="video">
+  <div class="ancho video-wrap">
+    <div class="reel rv">
+      <video src="img/reel.mp4" poster="img/reel-poster.jpg" controls playsinline preload="metadata" aria-label="Recorrido en video del Edificio Libertad"></video>
+    </div>
+    <div class="rv">
+      <div class="eyebrow">El recorrido</div>
+      <h2>Un edificio boutique en Miraflores</h2>
+      <p class="cita">Un lobby de hotel boutique, luz natural en cada espacio y <em>vista abierta desde el balcón</em>.</p>
+      <ul class="lista">
+        <li>Lobby con recepción, sala de estar y piso de mayólica</li>
+        <li>Sala comedor con balcón en travertino</li>
+        <li>Cocina americana con tablero de cuarzo blanco, equipada</li>
+        <li>Pisos SPC tipo madera y ventanas antirruido</li>
+        <li>Arquitectura de Armando Paredes</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="seccion depas" id="depas">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow">Los departamentos</div>
+      <h2>Elija su depa</h2>
+      <p class="bajada">Dos departamentos con la misma calidad de acabados. La cochera N.° 19 se puede sumar a cualquiera de los dos.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Departamentos">
+      <button role="tab" aria-selected="true" data-d="501">Depa 501 · 3 dorm.</button>
+      <button role="tab" aria-selected="false" data-d="701">Depa 701 · 2 dorm.</button>
+    </div>
+
+    <article class="ficha rv" id="d-501">
+      <div>
+        <h3>Depa 501</h3>
+        <div class="precio">US$ 240,000</div>
+        <div class="datos">
+          <div><b>76.58</b><span>m² techados</span></div>
+          <div><b>6.74</b><span>m² área libre</span></div>
+          <div><b>$3,134</b><span>US$ por m² techado</span></div>
+        </div>
+        <ul class="lista">
+          <li>Sala comedor con balcón</li>
+          <li>Cocina americana con tablero de cuarzo blanco y muebles altos y bajos, equipada con cocina encimera, horno y campana extractora</li>
+          <li>Dormitorio principal con vista a la calle, clósets y baño completo</li>
+          <li>Segundo dormitorio con vista a la calle y clósets</li>
+          <li>Tercer dormitorio con vista interna</li>
+          <li>Segundo baño completo</li>
+          <li>Lavandería y área libre con jardín</li>
+          <li>Ventanas antirruido</li>
+        </ul>
+        <p class="nota" style="margin-top:0">Sobre el área total de 83.32 m² (techada + libre), el precio equivale a US$ 2,880 por m².</p>
+      </div>
+      <div>
+        <button class="plano" data-plano="img/plano-501.png" aria-label="Ampliar plano del depa 501"><img src="img/plano-501.png" alt="Plano del departamento 501: sala comedor con balcón, cocina, dos dormitorios con clóset, tercer ambiente, dos baños, lavandería y jardín" loading="lazy"><span class="lupa">Ampliar plano</span></button>
+        <div class="cochera"><b>Cochera N.° 19 · US$ 18,000.</b> Opcional. Con cochera, el 501 queda en US$ 258,000.</div>
+        <a class="descarga" href="planos/AB_501_ARQUITECTURA.pdf" target="_blank" rel="noopener">Descargar plano en PDF</a>
+      </div>
+    </article>
+
+    <article class="ficha rv" id="d-701" hidden>
+      <div>
+        <h3>Depa 701</h3>
+        <div class="precio">US$ 236,065</div>
+        <div class="datos">
+          <div><b>76.15</b><span>m² techados</span></div>
+          <div><b>Piso 7</b><span>más alto, más luz</span></div>
+          <div><b>$3,100</b><span>US$ por m² techado</span></div>
+        </div>
+        <ul class="lista">
+          <li>Sala comedor con balcón con vista a la calle</li>
+          <li>Cocina americana con tablero de cuarzo blanco y muebles altos y bajos, equipada con cocina encimera, horno y campana extractora</li>
+          <li>Dormitorio principal con vista a la calle y baño completo</li>
+          <li>Segundo dormitorio con vista a la calle</li>
+          <li>Walk-in clóset</li>
+          <li>Segundo baño completo</li>
+          <li>Lavandería cerrada con lavadero</li>
+          <li>Ventanas antirruido</li>
+        </ul>
+      </div>
+      <div>
+        <button class="plano" data-plano="img/plano-701.png" aria-label="Ampliar plano del depa 701"><img src="img/plano-701.png" alt="Plano del departamento 701: sala comedor con balcón, cocina, dos dormitorios, walk-in clóset, dos baños y lavandería" loading="lazy"><span class="lupa">Ampliar plano</span></button>
+        <div class="cochera"><b>Cochera N.° 19 · US$ 18,000.</b> Opcional. Con cochera, el 701 queda en US$ 254,065.</div>
+        <a class="descarga" href="planos/AB_701_ARQUITECTURA.pdf" target="_blank" rel="noopener">Descargar plano en PDF</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="seccion galeria oscuro" id="galeria">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow" style="color:var(--oro-claro)">Fotos reales</div>
+      <h2>Recórralo con calma</h2>
+      <p class="bajada">Fotos tomadas en los depas 501 y 701 y en las áreas comunes. La fachada es una imagen referencial del proyecto.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Galería">
+      <button role="tab" aria-selected="true" data-set="depa">Los depas · 15</button>
+      <button role="tab" aria-selected="false" data-set="edificio">El edificio · 5</button>
+    </div>
+    <div class="rv">
+      <div class="carrusel" id="carrusel"></div>
+      <div class="miniaturas" id="miniaturas"></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion airbnb" id="airbnb">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow">Análisis de mercado</div>
+      <h2>Por qué Miraflores rinde en Airbnb</h2>
+      <p class="bajada">Miraflores es el distrito donde llega el turista: hoteles, malecón, restaurantes y vida de barrio. Es el mercado de alquiler corto con más ingresos del Perú.</p>
+    </div>
+    <div class="tiles rv">
+      <div class="tile"><b data-contar="356">356</b><span>depas activos en Airbnb en Miraflores</span></div>
+      <div class="tile"><b data-contar="48" data-despues="%">48%</b><span>ocupación promedio de los depas de 3 dormitorios</span></div>
+      <div class="tile"><b data-contar="75" data-despues="%">75%</b><span>de ocupación logra el 25% mejor gestionado</span></div>
+      <div class="tile"><b data-contar="65.5" data-despues="%" data-dec="1">65.5%</b><span>de los turistas entra al Perú por el aeropuerto de Lima</span></div>
+    </div>
+    <div class="panel rv">
+      <div class="tabs" role="tablist" aria-label="Gráficos de mercado">
+        <button role="tab" aria-selected="true" data-g="mes">Ingresos por mes</button>
+        <button role="tab" aria-selected="false" data-g="tamano">Por tamaño</button>
+        <button role="tab" aria-selected="false" data-g="m2">Precio por m²</button>
+      </div>
+      <div id="p-mes">
+        <h3>Cuánto factura un Airbnb en Miraflores cada mes</h3>
+        <p class="sub">Ingreso promedio por anuncio y ocupación, sep 2025 – ago 2026. Toque las barras.</p>
+        <svg id="g-mes" role="img" aria-label="Ingresos mensuales entre 768 y 1,305 dólares, con picos en junio y julio"></svg>
+      </div>
+      <div id="p-tamano" hidden>
+        <h3>Los depas más grandes facturan más</h3>
+        <p class="sub">Ingreso bruto anual promedio por anuncio de depa completo, en dólares</p>
+        <svg id="g-tamano" role="img" aria-label="1 dormitorio 8,462 dólares, 2 dormitorios 8,402, 3 dormitorios 13,166 al año"></svg>
+      </div>
+      <div id="p-m2" hidden>
+        <h3>Precio por m²: estreno frente al promedio</h3>
+        <p class="sub">Dólares por m². El promedio incluye depas usados y de estreno.</p>
+        <svg id="g-m2" role="img" aria-label="Depa 501 3,134, depa 701 3,100, mediana de Miraflores 2,444 dólares por metro cuadrado"></svg>
+      </div>
+    </div>
+    <p class="nota">Fuentes: <a href="https://www.airroi.com/airbnb-data/peru/provincia-de-lima/miraflores" target="_blank" rel="noopener">AirROI, Miraflores (oct 2025 – sep 2026)</a>, en soles convertidos a S/ 3.38 por dólar; <a href="https://peruyield.com/miraflores/" target="_blank" rel="noopener">PeruYield, Miraflores (nov 2026)</a>; <a href="https://andina.pe/agencia/noticia-peru-received-195-million-international-tourists-from-jan-to-jul-2026-1090532.aspx" target="_blank" rel="noopener">Mincetur vía Andina</a>. Las fuentes miden distinto y sus cifras no siempre coinciden; usamos las de AirROI por ser las más completas.</p>
+  </div>
+</section>
+
+<section class="seccion simulador" id="simulador">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow">Simulador</div>
+      <h2>Calcule su rentabilidad</h2>
+      <p class="bajada">Mueva los controles y vea cuánto le quedaría al año rentando por Airbnb, frente a un alquiler tradicional.</p>
+    </div>
+    <div class="tabs rv" role="tablist" aria-label="Escenarios">
+      <button role="tab" aria-selected="false" data-esc="mercado">Promedio del mercado</button>
+      <button role="tab" aria-selected="true" data-esc="pro">Con gestión profesional</button>
+      <button role="tab" aria-selected="false" data-esc="top">Top 25%</button>
+    </div>
+    <div class="sim rv">
+      <div class="controles">
+        <div class="control">
+          <label for="s-depa">Departamento</label>
+          <div class="tabs" role="tablist" id="s-depa" aria-label="Departamento a simular" style="margin:0">
+            <button role="tab" aria-selected="true" data-sd="501">501 · 3 dorm.</button>
+            <button role="tab" aria-selected="false" data-sd="701">701 · 2 dorm.</button>
+          </div>
+        </div>
+        <div class="control">
+          <label for="s-tarifa">Tarifa por noche <output id="o-tarifa">US$ 95</output></label>
+          <input type="range" id="s-tarifa" min="50" max="160" step="1" value="95">
+          <small>Promedio en Miraflores: US$ 88 (3 dorm.) y US$ 69 (2 dorm.)</small>
+        </div>
+        <div class="control">
+          <label for="s-ocup">Ocupación <output id="o-ocup">65%</output></label>
+          <input type="range" id="s-ocup" min="30" max="90" step="1" value="65">
+          <small>Promedio: 44–48%. El 25% mejor gestionado: 75% o más</small>
+        </div>
+        <div class="control">
+          <label for="s-gastos">Gastos operativos <output id="o-gastos">30%</output></label>
+          <input type="range" id="s-gastos" min="15" max="45" step="1" value="30">
+          <small>Comisión de Airbnb, administración, limpieza, servicios y mantenimiento</small>
+        </div>
+        <label class="check"><input type="checkbox" id="s-cochera"> Sumar la cochera (US$ 18,000)</label>
+      </div>
+      <div class="resultado" aria-live="polite">
+        <div class="grande" id="r-rent">6.2<small>%</small></div>
+        <div class="que">de rentabilidad neta al año con Airbnb</div>
+        <div class="filas">
+          <div><span>Inversión</span><b id="r-inv">US$ 240,000</b></div>
+          <div><span>Noches ocupadas al año</span><b id="r-noches">237</b></div>
+          <div><span>Ingreso bruto al año</span><b id="r-bruto">US$ 22,534</b></div>
+          <div><span>Ingreso neto al año</span><b id="r-neto">US$ 15,774</b></div>
+          <div><span>Ingreso neto al mes</span><b id="r-mes">US$ 1,315</b></div>
+        </div>
+        <div class="vs">
+          <h3>Airbnb frente a alquiler tradicional (neto al año)</h3>
+          <div class="barra-vs"><span><em>Airbnb</em><b id="v-air">US$ 15,774</b></span><i id="b-air" style="width:100%"></i></div>
+          <div class="barra-vs trad"><span><em>Alquiler tradicional</em><b id="v-trad">US$ 10,994</b></span><i id="b-trad" style="width:70%"></i></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">Supuestos: alquiler tradicional de US$ 13 por m² al mes (mediana de Miraflores según PeruYield) con 8% de gastos y vacancia. Cálculo antes de impuestos y sin financiamiento. Es una simulación referencial: no es asesoría financiera ni garantiza resultados.</p>
+  </div>
+</section>
+
+<section class="seccion" id="ubicacion">
+  <div class="ancho">
+    <div class="rv">
+      <div class="eyebrow">La ubicación</div>
+      <h2>Calle Libertad 227, Miraflores</h2>
+      <p class="bajada">En el corazón de Miraflores, el distrito más buscado por quienes visitan Lima.</p>
+    </div>
+    <button class="mapa rv" id="mapa" aria-label="Ver la ubicación en el mapa"><span class="ver">Ver en el mapa</span></button>
+  </div>
+</section>
+
+<footer class="cierre">
+  <div class="ancho">
+    <img src="../img/logo-blanco.png" alt="MP Propiedades">
+    <h2>¿Agendamos <em>una visita</em>?</h2>
+    <p>Le mostramos los dos depas, resolvemos sus dudas y le pasamos el detalle de la inversión.</p>
+    <div class="numero">WhatsApp 969 698 347</div>
+    <a class="boton" href="https://wa.me/51969698347?text=Hola%2C%20me%20interesan%20los%20depas%20del%20Edificio%20Libertad%20en%20Miraflores" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-label="Plano ampliado"><div class="zona"><button class="cerrar" id="cerrar">Cerrar</button><img id="dlg-img" alt="Plano ampliado"></div></dialog>
+<div class="tip" id="tip" role="status"></div>
+<div class="barra" id="barra">
+  <div><b>Desde US$ 236,065</b><span>Edificio Libertad · Miraflores</span></div>
+  <a href="https://wa.me/51969698347?text=Hola%2C%20me%20interesan%20los%20depas%20del%20Edificio%20Libertad%20en%20Miraflores" target="_blank" rel="noopener">Visita</a>
+</div>
+
+<script>
+(function () {
+  var reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function usd(v) { return 'US$ ' + Math.round(v).toLocaleString('en-US'); }
+
+  // Aparecer al bajar + contadores
+  function contar(el) {
+    var fin = parseFloat(el.dataset.contar), dec = +(el.dataset.dec || 0), despues = el.dataset.despues || '';
+    if (reducir) return;
+    var t0 = null;
+    function paso(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / 1400), v = fin * (1 - Math.pow(1 - p, 3)); el.textContent = (dec ? v.toFixed(dec) : Math.round(v)) + despues; if (p < 1) requestAnimationFrame(paso); }
+    requestAnimationFrame(paso);
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visto'); e.target.querySelectorAll('[data-contar]').forEach(contar); io.unobserve(e.target); } });
+  }, { threshold: .12 }) : null;
+  document.querySelectorAll('.rv').forEach(function (el) { io ? io.observe(el) : el.classList.add('visto'); });
+
+  function pestañas(lista, alElegir) {
+    var bs = lista.querySelectorAll('button');
+    function marcar(b) { bs.forEach(function (x) { x.setAttribute('aria-selected', x === b); }); }
+    bs.forEach(function (b) { b.addEventListener('click', function () { marcar(b); alElegir(b); }); });
+    return { marcar: function (val, attr) { bs.forEach(function (x) { if (x.dataset[attr] === val) marcar(x); }); } };
+  }
+
+  // Depas
+  pestañas(document.querySelector('#depas .tabs'), function (b) {
+    ['501', '701'].forEach(function (d) { document.getElementById('d-' + d).hidden = d !== b.dataset.d; });
+  });
+
+  // Plano ampliado
+  var dlg = document.getElementById('dlg');
+  document.querySelectorAll('.plano').forEach(function (p) { p.addEventListener('click', function () { document.getElementById('dlg-img').src = p.dataset.plano; dlg.showModal ? dlg.showModal() : window.open(p.dataset.plano); }); });
+  document.getElementById('cerrar').onclick = function () { dlg.close(); };
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  // Galería
+  var sets = {
+    depa: ['Sala comedor', 'Sala y cocina', 'Sala con balcón', 'Cocina americana', 'Cocina equipada', 'Cocina', 'Vista desde el balcón', 'Balcón', 'Dormitorio principal', 'Dormitorio', 'Dormitorio', 'Walk-in clóset · 701', 'Baño', 'Baño', 'Lavandería con jardín · 501'],
+    edificio: ['Fachada · imagen referencial', 'Lobby', 'Lobby', 'Ingreso', 'Pasillo de piso']
+  };
+  var car = document.getElementById('carrusel'), mins = document.getElementById('miniaturas'), idx = 0, total = 0, pista, cont, ant, sig;
+  function cargar(clave) {
+    var s = sets[clave]; total = s.length; idx = 0; car.innerHTML = ''; mins.innerHTML = '';
+    pista = document.createElement('div'); pista.className = 'pista'; pista.tabIndex = 0; pista.setAttribute('aria-label', 'Fotos');
+    s.forEach(function (rot, i) {
+      var src = 'img/' + clave + '-' + String(i + 1).padStart(2, '0') + '.jpg';
+      var f = document.createElement('figure'); f.innerHTML = '<img src="' + src + '" alt="' + rot + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '"><figcaption>' + rot + '</figcaption>'; pista.appendChild(f);
+      var m = document.createElement('button'); m.setAttribute('aria-label', 'Ver foto ' + (i + 1) + ': ' + rot); m.innerHTML = '<img src="' + src + '" alt="" loading="lazy">'; m.onclick = function () { ir(i); }; mins.appendChild(m);
+    });
+    ant = document.createElement('button'); ant.className = 'flecha ant'; ant.innerHTML = '&#8249;'; ant.setAttribute('aria-label', 'Foto anterior');
+    sig = document.createElement('button'); sig.className = 'flecha sig'; sig.innerHTML = '&#8250;'; sig.setAttribute('aria-label', 'Foto siguiente');
+    cont = document.createElement('div'); cont.className = 'contador';
+    car.append(pista, ant, sig, cont);
+    ant.onclick = function () { ir(Math.max(0, idx - 1)); }; sig.onclick = function () { ir(Math.min(total - 1, idx + 1)); };
+    pista.onkeydown = function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); sig.click(); } if (e.key === 'ArrowLeft') { e.preventDefault(); ant.click(); } };
+    var t; pista.onscroll = function () { clearTimeout(t); t = setTimeout(function () { idx = Math.round(pista.scrollLeft / pista.clientWidth); pintar(); }, 120); };
+    pintar();
+  }
+  function pintar() {
+    cont.textContent = (idx + 1) + ' / ' + total; ant.disabled = idx === 0; sig.disabled = idx === total - 1;
+    mins.querySelectorAll('button').forEach(function (b, i) { b.classList.toggle('on', i === idx); });
+    var on = mins.children[idx]; if (on) mins.scrollTo({ left: on.offsetLeft - mins.clientWidth / 2 + 32, behavior: reducir ? 'auto' : 'smooth' });
+  }
+  function ir(n) { idx = n; pintar(); pista.scrollTo({ left: n * pista.clientWidth }); }
+  pestañas(document.querySelector('#galeria .tabs'), function (b) { cargar(b.dataset.set); });
+  cargar('depa');
+
+  // Gráficos
+  var NS = 'http://www.w3.org/2000/svg', tip = document.getElementById('tip');
+  function el(tag, at, p) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (p) p.appendChild(e); return e; }
+  function txt(s, at, p) { var t = el('text', at, p); t.textContent = s; return t; }
+  function mostrar(h, ev) { tip.innerHTML = h; tip.style.opacity = 1; var x = ev.clientX + 14; if (x + 210 > innerWidth) x = Math.max(8, ev.clientX - 220); tip.style.left = x + 'px'; tip.style.top = Math.max(8, ev.clientY - 60) + 'px'; }
+  function ocultar() { tip.style.opacity = 0; }
+  var VERDE = '#00381d', ORO = '#a8834a', TINTA = '#1b2420', GRIS = '#46504a', REJA = '#e2dccf', NEUTRO = '#cfc8b9';
+  var TC = 3.38;
+  var meses = ['Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'];
+  var ing = [2595, 2995, 3440, 3397, 3602, 3261, 3357, 2975, 3176, 4242, 4412, 3791].map(function (v) { return v / TC; });
+  var ocu = [43.9, 46.4, 52.7, 51.8, 54.5, 55.6, 51.6, 47.9, 44.2, 57.6, 48.4, 51.8];
+
+  function animar(b, prop, fin, i) {
+    if (reducir) { b.setAttribute(prop, fin); return; }
+    b.style.transition = (prop === 'height' ? 'height .9s ' : 'width .9s ') + (i * 0.05) + 's ease, y .9s ' + (i * 0.05) + 's ease';
+    requestAnimationFrame(function () { requestAnimationFrame(function () { b.setAttribute(prop, fin); if (b.dataset.y) b.setAttribute('y', b.dataset.y); }); });
+  }
+  function gMes() {
+    var s = document.getElementById('g-mes'); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
+    var W = Math.max(280, s.parentNode.clientWidth), ch = W < 520, H = ch ? 250 : 300, fs = ch ? 12 : 14;
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var L = ch ? 42 : 52, R = W - 8, T = 18, B = H - 30, max = 1400, n = meses.length, paso = (R - L) / n, bw = paso * .62;
+    [0, 400, 800, 1200].forEach(function (v) { var y = B - (B - T) * v / max; el('line', { x1: L, x2: R, y1: y, y2: y, stroke: REJA }, s); txt('$' + v.toLocaleString('en-US'), { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS }, s); });
+    ing.forEach(function (v, i) {
+      var x = L + paso * i + (paso - bw) / 2, h = (B - T) * v / max, alto = i >= 9 && i <= 10;
+      var b = el('rect', { x: x, y: B, width: bw, height: 0, rx: 3, fill: alto ? VERDE : NEUTRO }, s); b.dataset.y = B - h; animar(b, 'height', h, i);
+      if (!ch || i % 2 === 0) txt(meses[i], { x: x + bw / 2, y: B + 18, 'text-anchor': 'middle', 'font-size': fs, fill: GRIS }, s);
+      if (alto && (!ch || i === 10)) txt(usd(v).replace('US$ ', '$'), { x: x + bw / 2, y: B - h - 6, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 700, fill: TINTA }, s);
+      var hit = el('rect', { x: L + paso * i, y: T, width: paso, height: B - T, fill: 'transparent' }, s);
+      function m(ev) { mostrar('<b>' + meses[i] + (i < 4 ? ' 2025' : ' 2026') + '</b><br>' + usd(v) + ' al mes<br>Ocupación: ' + ocu[i] + '%', ev); }
+      hit.addEventListener('pointermove', m); hit.addEventListener('pointerdown', m); hit.addEventListener('pointerleave', ocultar);
+    });
+  }
+  function gBarras(id, datos, max, resaltar, unidad) {
+    var s = document.getElementById(id); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
+    var W = Math.max(280, s.parentNode.clientWidth), ch = W < 520, fs = ch ? 14 : 15, fila = ch ? 46 : 52, alto = ch ? 26 : 30, LL = ch ? 120 : 190, RR = W - (ch ? 78 : 100);
+    s.setAttribute('viewBox', '0 0 ' + W + ' ' + (datos.length * fila + 4));
+    datos.forEach(function (r, i) {
+      var y = 4 + i * fila, w = (RR - LL) * r[1] / max, on = resaltar(r);
+      txt(r[0], { x: LL - 10, y: y + alto / 2 + 5, 'text-anchor': 'end', 'font-size': fs, 'font-weight': on ? 700 : 400, fill: on ? VERDE : TINTA }, s);
+      var b = el('rect', { x: LL, y: y, width: 0, height: alto, rx: 4, fill: on ? VERDE : NEUTRO }, s); animar(b, 'width', w, i);
+      txt(usd(r[1]).replace('US$ ', '$'), { x: LL + w + 8, y: y + alto / 2 + 5, 'font-size': fs, 'font-weight': on ? 700 : 400, fill: TINTA }, s);
+      var h = el('rect', { x: 0, y: y - 4, width: W, height: fila, fill: 'transparent' }, s);
+      function m(ev) { mostrar('<b>' + r[0] + '</b><br>' + usd(r[1]) + unidad + (r[2] ? '<br>' + r[2] : ''), ev); }
+      h.addEventListener('pointermove', m); h.addEventListener('pointerdown', m); h.addEventListener('pointerleave', ocultar);
+    });
+  }
+  function gTamano() {
+    gBarras('g-tamano', [
+      ['1 dormitorio', 28600 / TC, 'Ocupación 50% · US$ 52 por noche'],
+      ['2 dormitorios', 28400 / TC, 'Ocupación 44% · US$ 69 por noche'],
+      ['3 dormitorios', 44500 / TC, 'Ocupación 48% · US$ 88 por noche']
+    ], 15000, function (r) { return r[0] === '3 dormitorios'; }, ' al año');
+  }
+  function gM2() {
+    gBarras('g-m2', [
+      ['Depa 501', 3134, 'US$ 2,880 sobre el área total'],
+      ['Depa 701', 3100, 'Piso 7'],
+      ['Miraflores (mediana)', 2444, 'Depas en venta, usados y de estreno'],
+      ['Miraflores (BCRP)', 2400, 'Fines de 2025']
+    ], 3600, function (r) { return r[0].indexOf('Depa') === 0; }, ' por m²');
+  }
+  var graf = { mes: gMes, tamano: gTamano, m2: gM2 }, actual = 'mes';
+  pestañas(document.querySelector('#airbnb .tabs'), function (b) {
+    actual = b.dataset.g; ['mes', 'tamano', 'm2'].forEach(function (k) { document.getElementById('p-' + k).hidden = k !== actual; }); graf[actual]();
+  });
+  var dibujado = false, pan = document.querySelector('#airbnb .panel');
+  if (io) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting && !dibujado) { dibujado = true; gMes(); o.disconnect(); } }, { threshold: .3 }).observe(pan); else { dibujado = true; gMes(); }
+  var tr; addEventListener('resize', function () { clearTimeout(tr); tr = setTimeout(function () { if (dibujado) graf[actual](); }, 150); });
+
+  // Simulador
+  var D = { '501': { precio: 240000, m2: 76.58 }, '701': { precio: 236065, m2: 76.15 } };
+  var ESC = { mercado: { '501': [88, 48], '701': [69, 44] }, pro: { '501': [95, 65], '701': [80, 65] }, top: { '501': [105, 75], '701': [88, 75] } };
+  var depa = '501', esc = 'pro';
+  var $ = function (id) { return document.getElementById(id); };
+  var tarifa = $('s-tarifa'), ocup = $('s-ocup'), gastos = $('s-gastos'), coch = $('s-cochera');
+  function aplicar() { var v = ESC[esc][depa]; tarifa.value = v[0]; ocup.value = v[1]; calcular(); }
+  function calcular() {
+    var t = +tarifa.value, o = +ocup.value / 100, g = +gastos.value / 100, inv = D[depa].precio + (coch.checked ? 18000 : 0);
+    var noches = Math.round(365 * o), bruto = t * 365 * o, neto = bruto * (1 - g), trad = 13 * D[depa].m2 * 12 * 0.92;
+    $('o-tarifa').textContent = 'US$ ' + t; $('o-ocup').textContent = Math.round(o * 100) + '%'; $('o-gastos').textContent = Math.round(g * 100) + '%';
+    $('r-rent').innerHTML = (neto / inv * 100).toFixed(1) + '<small>%</small>';
+    $('r-inv').textContent = usd(inv); $('r-noches').textContent = noches; $('r-bruto').textContent = usd(bruto); $('r-neto').textContent = usd(neto); $('r-mes').textContent = usd(neto / 12);
+    $('v-air').textContent = usd(neto) + ' · ' + (neto / inv * 100).toFixed(1) + '%'; $('v-trad').textContent = usd(trad) + ' · ' + (trad / inv * 100).toFixed(1) + '%';
+    var mx = Math.max(neto, trad); $('b-air').style.width = (neto / mx * 100) + '%'; $('b-trad').style.width = (trad / mx * 100) + '%';
+  }
+  var pe = pestañas(document.querySelector('#simulador > .ancho > .tabs'), function (b) { esc = b.dataset.esc; aplicar(); });
+  pestañas($('s-depa'), function (b) { depa = b.dataset.sd; aplicar(); });
+  [tarifa, ocup, gastos].forEach(function (i) { i.addEventListener('input', calcular); });
+  coch.addEventListener('change', calcular);
+  aplicar();
+
+  // Mapa al tocar
+  $('mapa').addEventListener('click', function () {
+    this.innerHTML = '<iframe src="https://www.google.com/maps?q=Calle+Libertad+227,+Miraflores,+Lima,+Peru&z=16&output=embed" title="Mapa: Calle Libertad 227, Miraflores" loading="lazy" allowfullscreen></iframe>';
+  });
+
+  // Barra fija
+  var barra = $('barra'), vis = {};
+  if (io) { var ob = new IntersectionObserver(function (es) { es.forEach(function (e) { vis[e.target.className] = e.isIntersecting; }); var v = false; for (var k in vis) v = v || vis[k]; barra.classList.toggle('on', !v); }, { threshold: 0 }); [document.querySelector('.portada'), document.querySelector('.cierre')].forEach(function (x) { ob.observe(x); }); }
+})();
+</script>
+</body>
+</html>
