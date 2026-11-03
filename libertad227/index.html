@@ -41,7 +41,7 @@
 
   /* Portada */
   .portada { position: relative; min-height: min(96svh, 900px); display: flex; align-items: flex-end; color: #fff; overflow: hidden; background: var(--hondo); }
-  .portada .fondo { position: absolute; inset: 0; background: url(img/hero.jpg) 50% 40%/cover; animation: zoom 18s ease-out both; }
+  .portada .fondo { position: absolute; inset: 0; background: url(img/hero.jpg?v=5) 50% 40%/cover; animation: zoom 18s ease-out both; }
   @keyframes zoom { from { transform: scale(1.14); } to { transform: scale(1); } }
   .portada::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,42,25,.55) 0%, rgba(6,42,25,0) 22%, rgba(6,42,25,.4) 48%, rgba(6,42,25,.95) 82%); }
   .portada .marca { position: absolute; z-index: 2; top: calc(22px + env(safe-area-inset-top, 0px)); left: max(20px, env(safe-area-inset-left, 0px)); width: 62px; }
@@ -249,7 +249,7 @@
 <section class="seccion" id="video">
   <div class="ancho video-wrap">
     <div class="reel rv">
-      <video src="img/reel.mp4" poster="img/reel-poster.jpg" controls playsinline preload="metadata" aria-label="Recorrido en video del Edificio Libertad"></video>
+      <video src="img/reel.mp4?v=5" poster="img/reel-poster.jpg?v=5" controls playsinline preload="metadata" aria-label="Recorrido en video del Edificio Libertad"></video>
     </div>
     <div class="rv">
       <div class="eyebrow">El recorrido</div>
@@ -525,7 +525,7 @@
     var s = sets[clave]; total = s.length; idx = 0; car.innerHTML = ''; mins.innerHTML = '';
     pista = document.createElement('div'); pista.className = 'pista'; pista.tabIndex = 0; pista.setAttribute('aria-label', 'Fotos');
     s.forEach(function (rot, i) {
-      var src = 'img/' + clave + '-' + String(i + 1).padStart(2, '0') + '.jpg';
+      var src = 'img/' + clave + '-' + String(i + 1).padStart(2, '0') + '.jpg?v=5';
       var f = document.createElement('figure'); f.innerHTML = '<img src="' + src + '" alt="' + rot + '" loading="' + (i < 2 ? 'eager' : 'lazy') + '"><figcaption>' + rot + '</figcaption>'; pista.appendChild(f);
       var m = document.createElement('button'); m.setAttribute('aria-label', 'Ver foto ' + (i + 1) + ': ' + rot); m.innerHTML = '<img src="' + src + '" alt="" loading="lazy">'; m.onclick = function () { ir(i); }; mins.appendChild(m);
     });
