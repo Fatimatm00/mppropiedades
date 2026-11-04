@@ -164,7 +164,7 @@
   .resultado .que { font-weight: 600; margin: 6px 0 18px; }
   .filas { display: grid; gap: 0; border-top: 1px solid var(--linea); margin-bottom: 18px; }
   .filas div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--linea); font-size: 15px; }
-  .filas b { font-variant-numeric: tabular-nums; color: var(--verde); }
+  .filas b { font-variant-numeric: tabular-nums; color: var(--verde); white-space: nowrap; }
   .vs h3 { font: 600 16px var(--texto); margin: 0 0 10px; }
   .barra-vs { margin-bottom: 10px; }
   .barra-vs span { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
@@ -231,6 +231,8 @@
     .js .rv { opacity: 1; transform: none; transition: none; }
     .pista { scroll-behavior: auto; }
   }
+  .tile b { white-space: nowrap; }
+  @media (max-width: 520px) { .tile b { font-size: 29px; } .cifras b { font-size: 26px; } }
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -250,10 +252,10 @@
 
 <section class="cifras" aria-label="Datos clave">
   <div class="ancho">
-    <div><b>$3,100</b><span>US$ por m² techado</span></div>
+    <div><b>US$ 236,065</b><span>desde, depas de estreno</span></div>
+    <div><b>+78%</b><span>subieron los depas en Lima de 2010 a 2025 (BCRP)</span></div>
+    <div><b>+8%</b><span>subió Miraflores en el último año (BCRP)</span></div>
     <div><b>12 pisos</b><span>5 depas por piso</span></div>
-    <div><b>N.° 1</b><span>mercado Airbnb del Perú</span></div>
-    <div><b>1.95 M</b><span>turistas llegaron al Perú (ene–jul 2026)</span></div>
   </div>
 </section>
 
@@ -296,7 +298,7 @@
         <div class="datos">
           <div><b>76.58</b><span>m² techados</span></div>
           <div><b>6.74</b><span>m² área libre</span></div>
-          <div><b>$3,134</b><span>US$ por m² techado</span></div>
+          <div><b>3</b><span>dormitorios</span></div>
         </div>
         <ul class="lista">
           <li>Sala comedor con balcón</li>
@@ -308,7 +310,6 @@
           <li>Lavandería y área libre con jardín</li>
           <li>Ventanas antirruido</li>
         </ul>
-        <p class="nota" style="margin-top:0">Sobre el área total de 83.32 m² (techada + libre), el precio equivale a US$ 2,880 por m².</p>
       </div>
       <div>
         <button class="plano" data-plano="img/plano-501.png" aria-label="Ampliar plano del depa 501"><img src="img/plano-501.png" alt="Plano del departamento 501: sala comedor con balcón, cocina, dos dormitorios con clóset, tercer ambiente, dos baños, lavandería y jardín" loading="lazy"><span class="lupa">Ampliar plano</span></button>
@@ -324,7 +325,7 @@
         <div class="datos">
           <div><b>76.15</b><span>m² techados</span></div>
           <div><b>Piso 7</b><span>más alto, más luz</span></div>
-          <div><b>$3,100</b><span>US$ por m² techado</span></div>
+          <div><b>2</b><span>dormitorios + walk-in</span></div>
         </div>
         <ul class="lista">
           <li>Sala comedor con balcón con vista a la calle</li>
@@ -367,39 +368,39 @@
 <section class="seccion airbnb" id="airbnb">
   <div class="ancho">
     <div class="rv">
-      <div class="eyebrow">Análisis de mercado</div>
-      <h2>Por qué Miraflores rinde en Airbnb</h2>
-      <p class="bajada">Miraflores es el distrito donde llega el turista: hoteles, malecón, restaurantes y vida de barrio. Es el mercado de alquiler corto con más ingresos del Perú.</p>
+      <div class="eyebrow">Por qué invertir aquí</div>
+      <h2>Una inversión que trabaja dos veces</h2>
+      <p class="bajada">El depa le genera un ingreso mensual por alquiler y, al mismo tiempo, gana valor con los años. Estos son los números, con su fuente.</p>
     </div>
     <div class="tiles rv">
-      <div class="tile"><b data-contar="356">356</b><span>depas activos en Airbnb en Miraflores</span></div>
-      <div class="tile"><b data-contar="48" data-despues="%">48%</b><span>ocupación promedio de los depas de 3 dormitorios</span></div>
-      <div class="tile"><b data-contar="75" data-despues="%">75%</b><span>de ocupación logra el 25% mejor gestionado</span></div>
-      <div class="tile"><b data-contar="65.5" data-despues="%" data-dec="1">65.5%</b><span>de los turistas entra al Perú por el aeropuerto de Lima</span></div>
+      <div class="tile"><b>+78%</b><span>subió el precio de los departamentos en Lima entre 2010 y 2025</span></div>
+      <div class="tile"><b>≈3.9%</b><span>de valorización promedio por año en ese periodo</span></div>
+      <div class="tile"><b>US$ 50–90</b><span>cobran hoy por noche los depas de 2 y 3 dormitorios de Miraflores en Airbnb</span></div>
+      <div class="tile"><b>≈US$ 1,000</b><span>al mes, alquiler tradicional estimado para un depa de 76 m² en Miraflores</span></div>
     </div>
     <div class="panel rv">
-      <div class="tabs" role="tablist" aria-label="Gráficos de mercado">
-        <button role="tab" aria-selected="true" data-g="mes">Ingresos por mes</button>
-        <button role="tab" aria-selected="false" data-g="tamano">Por tamaño</button>
-        <button role="tab" aria-selected="false" data-g="m2">Precio por m²</button>
+      <div class="tabs" role="tablist" aria-label="Gráficos">
+        <button role="tab" aria-selected="true" data-g="indice">Valorización</button>
+        <button role="tab" aria-selected="false" data-g="noche">Airbnb hoy</button>
+        <button role="tab" aria-selected="false" data-g="mes">Temporadas</button>
       </div>
-      <div id="p-mes">
-        <h3>Cuánto factura un Airbnb en Miraflores cada mes</h3>
-        <p class="sub">Ingreso promedio por anuncio y ocupación, sep 2025 – ago 2026. Toque las barras.</p>
-        <svg id="g-mes" role="img" aria-label="Ingresos mensuales entre 768 y 1,305 dólares, con picos en junio y julio"></svg>
+      <div id="p-indice">
+        <h3>Cómo subió el precio de los departamentos en Lima</h3>
+        <p class="sub">Índice de precios del BCRP (2013 = 100), al cierre de cada año. Toque la línea.</p>
+        <svg id="g-indice" role="img" aria-label="El índice pasó de 65 en 2010 a 116 en 2025"></svg>
       </div>
-      <div id="p-tamano" hidden>
-        <h3>Los depas más grandes facturan más</h3>
-        <p class="sub">Ingreso bruto anual promedio por anuncio de depa completo, en dólares</p>
-        <svg id="g-tamano" role="img" aria-label="1 dormitorio 8,462 dólares, 2 dormitorios 8,402, 3 dormitorios 13,166 al año"></svg>
+      <div id="p-noche" hidden>
+        <h3>Lo que cobran hoy depas como este en Airbnb</h3>
+        <p class="sub">Precio por noche de 22 depas enteros de 2 y 3 dormitorios en Miraflores, revisados en Airbnb el 3 de noviembre de 2026 para el 7 al 10 de diciembre. Incluye tarifas.</p>
+        <svg id="g-noche" role="img" aria-label="Entre 50 y 130 dólares por noche, la mitad cobra 70 o más"></svg>
       </div>
-      <div id="p-m2" hidden>
-        <h3>Precio por m²: estreno frente al promedio</h3>
-        <p class="sub">Dólares por m². El promedio incluye depas usados y de estreno.</p>
-        <svg id="g-m2" role="img" aria-label="Depa 501 3,134, depa 701 3,100, mediana de Miraflores 2,444 dólares por metro cuadrado"></svg>
+      <div id="p-mes" hidden>
+        <h3>Las mejores temporadas</h3>
+        <p class="sub">Ocupación promedio de los alojamientos de Miraflores por mes, sep 2025 – ago 2026.</p>
+        <svg id="g-mes" role="img" aria-label="La ocupación va de 44% a 58%, más alta en verano y en junio"></svg>
       </div>
     </div>
-    <p class="nota">Fuentes: <a href="https://www.airroi.com/airbnb-data/peru/provincia-de-lima/miraflores" target="_blank" rel="noopener">AirROI, Miraflores (oct 2025 – sep 2026)</a>, en soles convertidos a S/ 3.38 por dólar; <a href="https://peruyield.com/miraflores/" target="_blank" rel="noopener">PeruYield, Miraflores (nov 2026)</a>; <a href="https://andina.pe/agencia/noticia-peru-received-195-million-international-tourists-from-jan-to-jul-2026-1090532.aspx" target="_blank" rel="noopener">Mincetur vía Andina</a>. Las fuentes miden distinto y sus cifras no siempre coinciden; usamos las de AirROI por ser las más completas.</p>
+    <p class="nota">Fuentes: <b>valorización</b>, Banco Central de Reserva del Perú (BCRP), Notas de Estudios N.° 16, marzo 2026; <b>precios por noche</b>, búsqueda propia en airbnb.com.pe (3 nov 2026); <b>alquiler tradicional</b>, BCRP (relación precio/alquiler de Miraflores de 17.5 años) y <a href="https://peruyield.com/miraflores/" target="_blank" rel="noopener">PeruYield</a> (US$ 13 por m² al mes); <b>ocupación</b>, <a href="https://www.airroi.com/airbnb-data/peru/provincia-de-lima/miraflores" target="_blank" rel="noopener">AirROI</a>. Lo que pasó en el pasado no garantiza lo que pasará; información referencial.</p>
   </div>
 </section>
 
@@ -408,57 +409,68 @@
     <div class="rv">
       <div class="eyebrow">Simulador</div>
       <h2>Calcule su rentabilidad</h2>
-      <p class="bajada">Mueva los controles y vea cuánto le quedaría al año rentando por Airbnb, frente a un alquiler tradicional.</p>
-    </div>
-    <div class="tabs rv" role="tablist" aria-label="Escenarios">
-      <button role="tab" aria-selected="false" data-esc="mercado">Promedio del mercado</button>
-      <button role="tab" aria-selected="true" data-esc="pro">Con gestión profesional</button>
-      <button role="tab" aria-selected="false" data-esc="top">Top 25%</button>
+      <p class="bajada">Los valores iniciales son conservadores. Muévalos según su caso y vea cuánto le rendiría al año, sumando el alquiler y la valorización.</p>
     </div>
     <div class="sim rv">
       <div class="controles">
         <div class="control">
-          <label for="s-depa">Departamento</label>
-          <div class="tabs" role="tablist" id="s-depa" aria-label="Departamento a simular" style="margin:0">
-            <button role="tab" aria-selected="true" data-sd="501">501 · 3 dorm.</button>
-            <button role="tab" aria-selected="false" data-sd="701">701 · 2 dorm.</button>
+          <label>Departamento</label>
+          <div class="tabs" role="tablist" id="s-depa" aria-label="Departamento" style="margin:0">
+            <button role="tab" aria-selected="true" data-sd="501">501 · US$ 240,000</button>
+            <button role="tab" aria-selected="false" data-sd="701">701 · US$ 236,065</button>
           </div>
         </div>
         <div class="control">
-          <label for="s-tarifa">Tarifa por noche <output id="o-tarifa">US$ 95</output></label>
-          <input type="range" id="s-tarifa" min="50" max="160" step="1" value="95">
-          <small>Promedio en Miraflores: US$ 88 (3 dorm.) y US$ 69 (2 dorm.)</small>
+          <label>Cómo lo alquila</label>
+          <div class="tabs" role="tablist" id="s-modo" aria-label="Modalidad" style="margin:0">
+            <button role="tab" aria-selected="true" data-m="trad">Alquiler tradicional</button>
+            <button role="tab" aria-selected="false" data-m="air">Airbnb</button>
+          </div>
+        </div>
+        <div class="control" id="c-renta">
+          <label for="s-renta">Alquiler mensual <output id="o-renta">US$ 1,000</output></label>
+          <input type="range" id="s-renta" min="800" max="1300" step="25" value="1000">
+          <small>Estimado para Miraflores: US$ 1,000 a 1,150 al mes</small>
+        </div>
+        <div class="control" id="c-tarifa" hidden>
+          <label for="s-tarifa">Lo que recibe por noche <output id="o-tarifa">US$ 60</output></label>
+          <input type="range" id="s-tarifa" min="40" max="110" step="1" value="60">
+          <small>Hoy en Airbnb se cobra entre US$ 50 y 90; restamos la comisión de la plataforma</small>
+        </div>
+        <div class="control" id="c-ocup" hidden>
+          <label for="s-ocup">Noches ocupadas <output id="o-ocup">50%</output></label>
+          <input type="range" id="s-ocup" min="30" max="85" step="1" value="50">
+          <small>Promedio en Miraflores: 44% a 58% según el mes</small>
+        </div>
+        <div class="control" id="c-gastos" hidden>
+          <label for="s-gastos">Gastos de operación <output id="o-gastos">25%</output></label>
+          <input type="range" id="s-gastos" min="10" max="40" step="1" value="25">
+          <small>Limpieza, servicios, internet y administración</small>
         </div>
         <div class="control">
-          <label for="s-ocup">Ocupación <output id="o-ocup">65%</output></label>
-          <input type="range" id="s-ocup" min="30" max="90" step="1" value="65">
-          <small>Promedio: 44–48%. El 25% mejor gestionado: 75% o más</small>
+          <label for="s-valor">Valorización por año <output id="o-valor">3.9%</output></label>
+          <input type="range" id="s-valor" min="0" max="6" step="0.1" value="3.9">
+          <small>Promedio de Lima 2010–2025 según el BCRP</small>
         </div>
-        <div class="control">
-          <label for="s-gastos">Gastos operativos <output id="o-gastos">30%</output></label>
-          <input type="range" id="s-gastos" min="15" max="45" step="1" value="30">
-          <small>Comisión de Airbnb, administración, limpieza, servicios y mantenimiento</small>
-        </div>
-        <label class="check"><input type="checkbox" id="s-cochera"> Sumar la cochera (US$ 18,000)</label>
       </div>
       <div class="resultado" aria-live="polite">
-        <div class="grande" id="r-rent">6.2<small>%</small></div>
-        <div class="que">de rentabilidad neta al año con Airbnb</div>
+        <div class="grande" id="r-total">8.4<small>%</small></div>
+        <div class="que">de rentabilidad total al año</div>
         <div class="filas">
-          <div><span>Inversión</span><b id="r-inv">US$ 240,000</b></div>
-          <div><span>Noches ocupadas al año</span><b id="r-noches">237</b></div>
-          <div><span>Ingreso bruto al año</span><b id="r-bruto">US$ 22,534</b></div>
-          <div><span>Ingreso neto al año</span><b id="r-neto">US$ 15,774</b></div>
-          <div><span>Ingreso neto al mes</span><b id="r-mes">US$ 1,315</b></div>
+          <div><span>Ingreso neto por alquiler al año</span><b id="r-neto">US$ 11,040</b></div>
+          <div><span>Ingreso neto al mes</span><b id="r-mes">US$ 920</b></div>
+          <div><span>Rentabilidad por alquiler</span><b id="r-rent">4.6%</b></div>
+          <div><span>Valorización estimada al año</span><b id="r-val">US$ 9,360</b></div>
+          <div><span>Ganancia total estimada al año</span><b id="r-gan">US$ 20,400</b></div>
         </div>
         <div class="vs">
-          <h3>Airbnb frente a alquiler tradicional (neto al año)</h3>
-          <div class="barra-vs"><span><em>Airbnb</em><b id="v-air">US$ 15,774</b></span><i id="b-air" style="width:100%"></i></div>
-          <div class="barra-vs trad"><span><em>Alquiler tradicional</em><b id="v-trad">US$ 10,994</b></span><i id="b-trad" style="width:70%"></i></div>
+          <h3>De dónde viene la ganancia</h3>
+          <div class="barra-vs"><span><em>Alquiler</em><b id="v-alq">4.6%</b></span><i id="b-alq" style="width:55%"></i></div>
+          <div class="barra-vs trad"><span><em>Valorización</em><b id="v-val">3.9%</b></span><i id="b-val" style="width:45%"></i></div>
         </div>
       </div>
     </div>
-    <p class="nota">Supuestos: alquiler tradicional de US$ 13 por m² al mes (mediana de Miraflores según PeruYield) con 8% de gastos y vacancia. Cálculo antes de impuestos y sin financiamiento. Es una simulación referencial: no es asesoría financiera ni garantiza resultados.</p>
+    <p class="nota">Cálculo antes de impuestos y sin financiamiento. En alquiler tradicional se descuenta 8% por mantenimiento y meses vacíos. La valorización es un promedio histórico y puede variar. Simulación referencial: no es asesoría financiera ni garantiza resultados.</p>
   </div>
 </section>
 
@@ -572,94 +584,96 @@
   // Gráficos
   var NS = 'http://www.w3.org/2000/svg', tip = document.getElementById('tip');
   function el(tag, at, p) { var e = document.createElementNS(NS, tag); for (var k in at) e.setAttribute(k, at[k]); if (p) p.appendChild(e); return e; }
-  function txt(s, at, p) { var t = el('text', at, p); t.textContent = s; return t; }
+  function txt(t, at, p) { var e = el('text', at, p); e.textContent = t; return e; }
   function mostrar(h, ev) { tip.innerHTML = h; tip.style.opacity = 1; var x = ev.clientX + 14; if (x + 210 > innerWidth) x = Math.max(8, ev.clientX - 220); tip.style.left = x + 'px'; tip.style.top = Math.max(8, ev.clientY - 60) + 'px'; }
   function ocultar() { tip.style.opacity = 0; }
-  var VERDE = '#00381d', ORO = '#a8834a', TINTA = '#1b2420', GRIS = '#46504a', REJA = '#e2dccf', NEUTRO = '#cfc8b9';
-  var TC = 3.38;
-  var meses = ['Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'];
-  var ing = [2595, 2995, 3440, 3397, 3602, 3261, 3357, 2975, 3176, 4242, 4412, 3791].map(function (v) { return v / TC; });
-  var ocu = [43.9, 46.4, 52.7, 51.8, 54.5, 55.6, 51.6, 47.9, 44.2, 57.6, 48.4, 51.8];
+  var VERDE = '#00381d', TINTA = '#1b2420', GRIS = '#46504a', REJA = '#e2dccf', NEUTRO = '#cfc8b9';
+  function usd(v) { return 'US$ ' + Math.round(v).toLocaleString('en-US'); }
+  function lienzo(id, alto) { var s = document.getElementById(id); if (!s.parentNode.offsetWidth) return null; s.innerHTML = ''; var W = Math.max(280, s.parentNode.clientWidth); s.setAttribute('viewBox', '0 0 ' + W + ' ' + alto); return { s: s, W: W, ch: W < 520 }; }
 
-  function animar(b, prop, fin, i) {
-    if (reducir) { b.setAttribute(prop, fin); return; }
-    b.style.transition = (prop === 'height' ? 'height .9s ' : 'width .9s ') + (i * 0.05) + 's ease, y .9s ' + (i * 0.05) + 's ease';
-    requestAnimationFrame(function () { requestAnimationFrame(function () { b.setAttribute(prop, fin); if (b.dataset.y) b.setAttribute('y', b.dataset.y); }); });
+  // Valorización: índice BCRP
+  var años = [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+  var ind = [65,78,93,102,106,102,105,105,106,106,110,107,108,111,110,116];
+  function gIndice() {
+    var c = lienzo('g-indice', innerWidth < 520 ? 240 : 290); if (!c) return; var s = c.s, W = c.W, H = innerWidth < 520 ? 240 : 290, fs = c.ch ? 13 : 14;
+    var L = 36, R = W - 22, T = 26, B = H - 32, y0 = 40, y1 = 130;
+    function X(i) { return L + (R - L) * i / (años.length - 1); } function Y(v) { return B - (B - T) * (v - y0) / (y1 - y0); }
+    [40, 60, 80, 100, 120].forEach(function (v) { el('line', { x1: L, x2: R, y1: Y(v), y2: Y(v), stroke: REJA }, s); txt(v, { x: L - 8, y: Y(v) + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS }, s); });
+    [0, 5, 10, 15].forEach(function (i) { txt(años[i], { x: X(i), y: B + 23, 'text-anchor': i === 0 ? 'start' : i === 15 ? 'end' : 'middle', 'font-size': fs, fill: GRIS }, s); });
+    el('path', { d: 'M' + X(0) + ',' + Y(y0) + ind.map(function (v, i) { return ' L' + X(i) + ',' + Y(v); }).join('') + ' L' + X(15) + ',' + Y(y0) + 'Z', fill: VERDE, 'fill-opacity': .07 }, s);
+    var ln = el('path', { d: 'M' + ind.map(function (v, i) { return X(i) + ',' + Y(v); }).join(' L'), fill: 'none', stroke: VERDE, 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, s);
+    if (!reducir) { var len = ln.getTotalLength(); ln.style.strokeDasharray = len; ln.style.strokeDashoffset = len; ln.getBoundingClientRect(); ln.style.transition = 'stroke-dashoffset 1.6s ease'; ln.style.strokeDashoffset = 0; }
+    [[0, 'start', 10, 22], [15, 'end', -6, -12]].forEach(function (q) { var i = q[0]; el('circle', { cx: X(i), cy: Y(ind[i]), r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2 }, s); txt(ind[i], { x: X(i) + q[2], y: Y(ind[i]) + q[3], 'text-anchor': q[1], 'font-size': 16, 'font-weight': 700, fill: TINTA }, s); });
+    var g = el('line', { y1: T, y2: B, stroke: GRIS, 'stroke-dasharray': '3 3', opacity: 0 }, s), pt = el('circle', { r: 5, fill: VERDE, stroke: '#fff', 'stroke-width': 2, opacity: 0 }, s), hit = el('rect', { x: L, y: T, width: R - L, height: B - T, fill: 'transparent' }, s);
+    function mv(ev) { var q = s.createSVGPoint(); q.x = ev.clientX; q.y = ev.clientY; var pp = q.matrixTransform(s.getScreenCTM().inverse()); var i = Math.max(0, Math.min(15, Math.round((pp.x - L) / (R - L) * 15)));
+      g.setAttribute('x1', X(i)); g.setAttribute('x2', X(i)); g.setAttribute('opacity', 1); pt.setAttribute('cx', X(i)); pt.setAttribute('cy', Y(ind[i])); pt.setAttribute('opacity', 1);
+      mostrar('<b>' + años[i] + '</b><br>Índice: ' + ind[i] + (i ? '<br>+' + Math.round((ind[i] / 65 - 1) * 100) + '% desde 2010' : ''), ev); }
+    hit.addEventListener('pointermove', mv); hit.addEventListener('pointerdown', mv); hit.addEventListener('pointerleave', function () { ocultar(); g.setAttribute('opacity', 0); pt.setAttribute('opacity', 0); });
   }
-  function gMes() {
-    var s = document.getElementById('g-mes'); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
-    var W = Math.max(280, s.parentNode.clientWidth), ch = W < 520, H = ch ? 250 : 300, fs = ch ? 12 : 14;
+
+  // Airbnb hoy: 22 depas reales, precio por noche
+  var noches = [50,54,59,61,64,64,65,67,68,70,70,71,74,74,76,76,82,88,92,93,102,130];
+  function gNoche() {
+    var c = lienzo('g-noche', innerWidth < 520 ? 210 : 240); if (!c) return; var s = c.s, W = c.W, H = innerWidth < 520 ? 210 : 240, fs = c.ch ? 13 : 14;
     s.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    var L = ch ? 42 : 52, R = W - 8, T = 18, B = H - 30, max = 1400, n = meses.length, paso = (R - L) / n, bw = paso * .62;
-    [0, 400, 800, 1200].forEach(function (v) { var y = B - (B - T) * v / max; el('line', { x1: L, x2: R, y1: y, y2: y, stroke: REJA }, s); txt('$' + v.toLocaleString('en-US'), { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS }, s); });
-    ing.forEach(function (v, i) {
-      var x = L + paso * i + (paso - bw) / 2, h = (B - T) * v / max, alto = i >= 9 && i <= 10;
-      var b = el('rect', { x: x, y: B, width: bw, height: 0, rx: 3, fill: alto ? VERDE : NEUTRO }, s); b.dataset.y = B - h; animar(b, 'height', h, i);
-      if (!ch || i % 2 === 0) txt(meses[i], { x: x + bw / 2, y: B + 18, 'text-anchor': 'middle', 'font-size': fs, fill: GRIS }, s);
-      if (alto && (!ch || i === 10)) txt(usd(v).replace('US$ ', '$'), { x: x + bw / 2, y: B - h - 6, 'text-anchor': 'middle', 'font-size': fs, 'font-weight': 700, fill: TINTA }, s);
+    var L = 34, R = W - 8, T = 28, B = H - 30, n = noches.length, paso = (R - L) / n, bw = paso * .66, max = 140;
+    [0, 50, 100].forEach(function (v) { var y = B - (B - T) * v / max; el('line', { x1: L, x2: R, y1: y, y2: y, stroke: REJA }, s); txt('$' + v, { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS }, s); });
+    var ym = B - (B - T) * 70 / max; el('line', { x1: L, x2: R, y1: ym, y2: ym, stroke: VERDE, 'stroke-dasharray': '4 4' }, s);
+    txt('La mitad cobra US$ 70 o más', { x: L + 4, y: T - 10, 'font-size': fs, 'font-weight': 700, fill: VERDE }, s);
+    noches.forEach(function (v, i) {
+      var x = L + paso * i + (paso - bw) / 2, h = (B - T) * v / max;
+      var b = el('rect', { x: x, y: B, width: bw, height: 0, rx: 2, fill: v >= 70 ? VERDE : NEUTRO }, s);
+      if (reducir) { b.setAttribute('y', B - h); b.setAttribute('height', h); } else { b.style.transition = 'all .8s ' + (i * 0.03) + 's ease'; requestAnimationFrame(function () { requestAnimationFrame(function () { b.setAttribute('y', B - h); b.setAttribute('height', h); }); }); }
       var hit = el('rect', { x: L + paso * i, y: T, width: paso, height: B - T, fill: 'transparent' }, s);
-      function m(ev) { mostrar('<b>' + meses[i] + (i < 4 ? ' 2025' : ' 2026') + '</b><br>' + usd(v) + ' al mes<br>Ocupación: ' + ocu[i] + '%', ev); }
+      function m(ev) { mostrar('<b>US$ ' + v + ' por noche</b><br>Depa de 2 o 3 dormitorios en Miraflores', ev); }
+      hit.addEventListener('pointermove', m); hit.addEventListener('pointerdown', m); hit.addEventListener('pointerleave', ocultar);
+    });
+    txt('22 depas, de menor a mayor precio', { x: (L + R) / 2, y: B + 20, 'text-anchor': 'middle', 'font-size': fs, fill: GRIS }, s);
+  }
+
+  // Temporadas: ocupación por mes (AirROI)
+  var meses = ['Sep', 'Oct', 'Nov', 'Dic', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago'];
+  var ocu = [43.9, 46.4, 52.7, 51.8, 54.5, 55.6, 51.6, 47.9, 44.2, 57.6, 48.4, 51.8];
+  function gMes() {
+    var H = innerWidth < 520 ? 230 : 270, c = lienzo('g-mes', H); if (!c) return; var s = c.s, W = c.W, fs = c.ch ? 12 : 14;
+    var L = 38, R = W - 8, T = 18, B = H - 30, max = 70, n = 12, paso = (R - L) / n, bw = paso * .62;
+    [0, 20, 40, 60].forEach(function (v) { var y = B - (B - T) * v / max; el('line', { x1: L, x2: R, y1: y, y2: y, stroke: REJA }, s); txt(v + '%', { x: L - 6, y: y + 4, 'text-anchor': 'end', 'font-size': fs, fill: GRIS }, s); });
+    ocu.forEach(function (v, i) {
+      var x = L + paso * i + (paso - bw) / 2, h = (B - T) * v / max, alto = v >= 52;
+      var b = el('rect', { x: x, y: B, width: bw, height: 0, rx: 3, fill: alto ? VERDE : NEUTRO }, s);
+      if (reducir) { b.setAttribute('y', B - h); b.setAttribute('height', h); } else { b.style.transition = 'all .9s ' + (i * 0.05) + 's ease'; requestAnimationFrame(function () { requestAnimationFrame(function () { b.setAttribute('y', B - h); b.setAttribute('height', h); }); }); }
+      if (!c.ch || i % 2 === 0) txt(meses[i], { x: x + bw / 2, y: B + 18, 'text-anchor': 'middle', 'font-size': fs, fill: GRIS }, s);
+      var hit = el('rect', { x: L + paso * i, y: T, width: paso, height: B - T, fill: 'transparent' }, s);
+      function m(ev) { mostrar('<b>' + meses[i] + (i < 4 ? ' 2025' : ' 2026') + '</b><br>Ocupación: ' + v + '%', ev); }
       hit.addEventListener('pointermove', m); hit.addEventListener('pointerdown', m); hit.addEventListener('pointerleave', ocultar);
     });
   }
-  function gBarras(id, datos, max, resaltar, unidad) {
-    var s = document.getElementById(id); if (!s.parentNode.offsetWidth) return; s.innerHTML = '';
-    var W = Math.max(280, s.parentNode.clientWidth), ch = W < 520, fs = ch ? 14 : 15, fila = ch ? 46 : 52, alto = ch ? 26 : 30, LL = ch ? 120 : 190, RR = W - (ch ? 78 : 100);
-    s.setAttribute('viewBox', '0 0 ' + W + ' ' + (datos.length * fila + 4));
-    datos.forEach(function (r, i) {
-      var y = 4 + i * fila, w = (RR - LL) * r[1] / max, on = resaltar(r);
-      txt(r[0], { x: LL - 10, y: y + alto / 2 + 5, 'text-anchor': 'end', 'font-size': fs, 'font-weight': on ? 700 : 400, fill: on ? VERDE : TINTA }, s);
-      var b = el('rect', { x: LL, y: y, width: 0, height: alto, rx: 4, fill: on ? VERDE : NEUTRO }, s); animar(b, 'width', w, i);
-      txt(usd(r[1]).replace('US$ ', '$'), { x: LL + w + 8, y: y + alto / 2 + 5, 'font-size': fs, 'font-weight': on ? 700 : 400, fill: TINTA }, s);
-      var h = el('rect', { x: 0, y: y - 4, width: W, height: fila, fill: 'transparent' }, s);
-      function m(ev) { mostrar('<b>' + r[0] + '</b><br>' + usd(r[1]) + unidad + (r[2] ? '<br>' + r[2] : ''), ev); }
-      h.addEventListener('pointermove', m); h.addEventListener('pointerdown', m); h.addEventListener('pointerleave', ocultar);
-    });
-  }
-  function gTamano() {
-    gBarras('g-tamano', [
-      ['1 dormitorio', 28600 / TC, 'Ocupación 50% · US$ 52 por noche'],
-      ['2 dormitorios', 28400 / TC, 'Ocupación 44% · US$ 69 por noche'],
-      ['3 dormitorios', 44500 / TC, 'Ocupación 48% · US$ 88 por noche']
-    ], 15000, function (r) { return r[0] === '3 dormitorios'; }, ' al año');
-  }
-  function gM2() {
-    gBarras('g-m2', [
-      ['Depa 501', 3134, 'US$ 2,880 sobre el área total'],
-      ['Depa 701', 3100, 'Piso 7'],
-      ['Miraflores (mediana)', 2444, 'Depas en venta, usados y de estreno'],
-      ['Miraflores (BCRP)', 2400, 'Fines de 2025']
-    ], 3600, function (r) { return r[0].indexOf('Depa') === 0; }, ' por m²');
-  }
-  var graf = { mes: gMes, tamano: gTamano, m2: gM2 }, actual = 'mes';
+  var graf = { indice: gIndice, noche: gNoche, mes: gMes }, actual = 'indice';
   pestañas(document.querySelector('#airbnb .tabs'), function (b) {
-    actual = b.dataset.g; ['mes', 'tamano', 'm2'].forEach(function (k) { document.getElementById('p-' + k).hidden = k !== actual; }); graf[actual]();
+    actual = b.dataset.g; ['indice', 'noche', 'mes'].forEach(function (k) { document.getElementById('p-' + k).hidden = k !== actual; }); graf[actual]();
   });
   var dibujado = false, pan = document.querySelector('#airbnb .panel');
-  if (io) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting && !dibujado) { dibujado = true; gMes(); o.disconnect(); } }, { threshold: .3 }).observe(pan); else { dibujado = true; gMes(); }
+  if (io) new IntersectionObserver(function (es, o) { if (es[0].isIntersecting && !dibujado) { dibujado = true; gIndice(); o.disconnect(); } }, { threshold: .3 }).observe(pan); else { dibujado = true; gIndice(); }
   var tr; addEventListener('resize', function () { clearTimeout(tr); tr = setTimeout(function () { if (dibujado) graf[actual](); }, 150); });
 
-  // Simulador
-  var D = { '501': { precio: 240000, m2: 76.58 }, '701': { precio: 236065, m2: 76.15 } };
-  var ESC = { mercado: { '501': [88, 48], '701': [69, 44] }, pro: { '501': [95, 65], '701': [80, 65] }, top: { '501': [105, 75], '701': [88, 75] } };
-  var depa = '501', esc = 'pro';
+  // Simulador: alquiler (tradicional o Airbnb) + valorización
+  var D = { '501': 240000, '701': 236065 }, depa = '501', modoA = 'trad';
   var $ = function (id) { return document.getElementById(id); };
-  var tarifa = $('s-tarifa'), ocup = $('s-ocup'), gastos = $('s-gastos'), coch = $('s-cochera');
-  function aplicar() { var v = ESC[esc][depa]; tarifa.value = v[0]; ocup.value = v[1]; calcular(); }
   function calcular() {
-    var t = +tarifa.value, o = +ocup.value / 100, g = +gastos.value / 100, inv = D[depa].precio + (coch.checked ? 18000 : 0);
-    var noches = Math.round(365 * o), bruto = t * 365 * o, neto = bruto * (1 - g), trad = 13 * D[depa].m2 * 12 * 0.92;
-    $('o-tarifa').textContent = 'US$ ' + t; $('o-ocup').textContent = Math.round(o * 100) + '%'; $('o-gastos').textContent = Math.round(g * 100) + '%';
-    $('r-rent').innerHTML = (neto / inv * 100).toFixed(1) + '<small>%</small>';
-    $('r-inv').textContent = usd(inv); $('r-noches').textContent = noches; $('r-bruto').textContent = usd(bruto); $('r-neto').textContent = usd(neto); $('r-mes').textContent = usd(neto / 12);
-    $('v-air').textContent = usd(neto) + ' · ' + (neto / inv * 100).toFixed(1) + '%'; $('v-trad').textContent = usd(trad) + ' · ' + (trad / inv * 100).toFixed(1) + '%';
-    var mx = Math.max(neto, trad); $('b-air').style.width = (neto / mx * 100) + '%'; $('b-trad').style.width = (trad / mx * 100) + '%';
+    var inv = D[depa], neto;
+    if (modoA === 'trad') { neto = +$('s-renta').value * 12 * 0.92; }
+    else { neto = +$('s-tarifa').value * 365 * (+$('s-ocup').value / 100) * (1 - +$('s-gastos').value / 100); }
+    var val = inv * (+$('s-valor').value / 100), rA = neto / inv * 100, rV = +$('s-valor').value;
+    $('o-renta').textContent = usd(+$('s-renta').value); $('o-tarifa').textContent = 'US$ ' + $('s-tarifa').value; $('o-ocup').textContent = $('s-ocup').value + '%'; $('o-gastos').textContent = $('s-gastos').value + '%'; $('o-valor').textContent = (+$('s-valor').value).toFixed(1) + '%';
+    $('r-total').innerHTML = (rA + rV).toFixed(1) + '<small>%</small>';
+    $('r-neto').textContent = usd(neto); $('r-mes').textContent = usd(neto / 12); $('r-rent').textContent = rA.toFixed(1) + '%'; $('r-val').textContent = usd(val); $('r-gan').textContent = usd(neto + val);
+    $('v-alq').textContent = rA.toFixed(1) + '%'; $('v-val').textContent = rV.toFixed(1) + '%';
+    var mx = Math.max(rA, rV, 0.1); $('b-alq').style.width = (rA / mx * 100) + '%'; $('b-val').style.width = (rV / mx * 100) + '%';
   }
-  var pe = pestañas(document.querySelector('#simulador > .ancho > .tabs'), function (b) { esc = b.dataset.esc; aplicar(); });
-  pestañas($('s-depa'), function (b) { depa = b.dataset.sd; aplicar(); });
-  [tarifa, ocup, gastos].forEach(function (i) { i.addEventListener('input', calcular); });
-  coch.addEventListener('change', calcular);
-  aplicar();
+  pestañas($('s-depa'), function (b) { depa = b.dataset.sd; calcular(); });
+  pestañas($('s-modo'), function (b) { modoA = b.dataset.m; $('c-renta').hidden = modoA !== 'trad'; ['c-tarifa', 'c-ocup', 'c-gastos'].forEach(function (k) { $(k).hidden = modoA === 'trad'; }); calcular(); });
+  ['s-renta', 's-tarifa', 's-ocup', 's-gastos', 's-valor'].forEach(function (k) { $(k).addEventListener('input', calcular); });
+  calcular();
 
   // Mapa al tocar
   $('mapa').addEventListener('click', function () {
