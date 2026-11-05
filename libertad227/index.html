@@ -154,7 +154,7 @@
   .controles, .resultado { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 10px 30px rgba(6,42,25,.06); min-width: 0; }
   .control { margin-bottom: 20px; }
   .control label { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; font-size: 15px; margin-bottom: 8px; gap: 10px; }
-  .control label output { font-family: var(--display); font-size: 26px; color: var(--verde); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .control label output { white-space: nowrap; font-family: var(--display); font-size: 26px; color: var(--verde); font-weight: 600; font-variant-numeric: tabular-nums; }
   .control small { display: block; color: var(--gris); font-size: 13px; margin-top: 4px; }
   input[type=range] { width: 100%; accent-color: var(--verde); height: 28px; }
   .check { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 15px; cursor: pointer; }
@@ -447,9 +447,19 @@
           <small>Promedio en Miraflores: 44% a 58% según el mes</small>
         </div>
         <div class="control" id="c-gastos" hidden>
-          <label for="s-gastos">Gastos de operación <output id="o-gastos">25%</output></label>
-          <input type="range" id="s-gastos" min="10" max="40" step="1" value="25">
-          <small>Limpieza, servicios, internet y administración</small>
+          <label for="s-gastos">Gastos de operación <output id="o-gastos">30%</output></label>
+          <input type="range" id="s-gastos" min="10" max="45" step="1" value="30">
+          <small>Administración (15–20%), limpieza, luz, agua e internet</small>
+        </div>
+        <div class="control" id="c-mant" hidden>
+          <label for="s-mant">Mantenimiento del edificio <output id="o-mant">US$ 100</output></label>
+          <input type="range" id="s-mant" min="0" max="250" step="10" value="100">
+          <small>Cuota mensual; en Airbnb la paga usted. Confirmar con la administración</small>
+        </div>
+        <div class="control" id="c-amob" hidden>
+          <label for="s-amob">Amoblar y equipar <output id="o-amob">US$ 10,000</output></label>
+          <input type="range" id="s-amob" min="0" max="25000" step="500" value="10000">
+          <small>Una sola vez; se suma a la inversión</small>
         </div>
         <div class="control">
           <label for="s-valor">Valorización por año <output id="o-valor">3.9%</output></label>
@@ -458,9 +468,12 @@
         </div>
       </div>
       <div class="resultado" aria-live="polite">
-        <div class="grande" id="r-total">8.4<small>%</small></div>
+        <div class="grande" id="r-total">8.0<small>%</small></div>
         <div class="que">de rentabilidad total al año</div>
         <div class="filas">
+          <div><span>Inversión total</span><b id="r-inv">US$ 240,000</b></div>
+          <div><span>Ingreso bruto por alquiler al año</span><b id="r-bruto">US$ 12,000</b></div>
+          <div><span>Costos e impuestos al año</span><b id="r-costos">−US$ 2,000</b></div>
           <div><span>Ingreso neto por alquiler al año</span><b id="r-neto">US$ 11,040</b></div>
           <div><span>Ingreso neto al mes</span><b id="r-mes">US$ 920</b></div>
           <div><span>Rentabilidad por alquiler</span><b id="r-rent">4.6%</b></div>
@@ -474,7 +487,7 @@
         </div>
       </div>
     </div>
-    <p class="nota">Cálculo antes de impuestos y sin financiamiento. En alquiler tradicional se descuenta 8% por mantenimiento y meses vacíos. La valorización es un promedio histórico y puede variar. Simulación referencial: no es asesoría financiera ni garantiza resultados.</p>
+    <p class="nota">Costos incluidos: impuesto a la renta por alquiler (5% de lo cobrado, SUNAT), predial y arbitrios (≈US$ 400 al año, estimado), gastos de compra en notaría y registros (≈1% del precio, estimado) y, en alquiler tradicional, 8% por meses vacíos y mantenimiento del depa. Sin financiamiento bancario. La valorización es un promedio histórico y puede variar. Simulación referencial: no es asesoría financiera ni garantiza resultados.</p>
   </div>
 </section>
 
@@ -664,19 +677,24 @@
   var D = { '501': 240000, '701': 236065 }, depa = '501', modoA = 'trad';
   var $ = function (id) { return document.getElementById(id); };
   function calcular() {
-    var inv = D[depa], neto;
-    if (modoA === 'trad') { neto = +$('s-renta').value * 12 * 0.92; }
-    else { neto = +$('s-tarifa').value * 365 * (+$('s-ocup').value / 100) * (1 - +$('s-gastos').value / 100); }
-    var val = inv * (+$('s-valor').value / 100), rA = neto / inv * 100, rV = +$('s-valor').value;
+    var precio = D[depa], air = modoA === 'air', bruto, costos;
+    var inv = precio * 1.01 + (air ? +$('s-amob').value : 0);   // + notaría y registros (≈1%) + amoblado en Airbnb
+    var fijos = 400;                                              // predial y arbitrios, estimado
+    if (!air) { bruto = +$('s-renta').value * 12; costos = bruto * 0.08 + bruto * 0.05 + fijos; }
+    else { bruto = +$('s-tarifa').value * 365 * (+$('s-ocup').value / 100); costos = bruto * (+$('s-gastos').value / 100) + bruto * 0.05 + +$('s-mant').value * 12 + fijos; }
+    var neto = bruto - costos;
+    var val = precio * (+$('s-valor').value / 100), rA = neto / inv * 100, rV = val / inv * 100;
     $('o-renta').textContent = usd(+$('s-renta').value); $('o-tarifa').textContent = 'US$ ' + $('s-tarifa').value; $('o-ocup').textContent = $('s-ocup').value + '%'; $('o-gastos').textContent = $('s-gastos').value + '%'; $('o-valor').textContent = (+$('s-valor').value).toFixed(1) + '%';
+    $('o-mant').textContent = usd(+$('s-mant').value); $('o-amob').textContent = usd(+$('s-amob').value);
     $('r-total').innerHTML = (rA + rV).toFixed(1) + '<small>%</small>';
+    $('r-inv').textContent = usd(inv); $('r-bruto').textContent = usd(bruto); $('r-costos').textContent = '−' + usd(costos);
     $('r-neto').textContent = usd(neto); $('r-mes').textContent = usd(neto / 12); $('r-rent').textContent = rA.toFixed(1) + '%'; $('r-val').textContent = usd(val); $('r-gan').textContent = usd(neto + val);
     $('v-alq').textContent = rA.toFixed(1) + '%'; $('v-val').textContent = rV.toFixed(1) + '%';
     var mx = Math.max(rA, rV, 0.1); $('b-alq').style.width = (rA / mx * 100) + '%'; $('b-val').style.width = (rV / mx * 100) + '%';
   }
   pestañas($('s-depa'), function (b) { depa = b.dataset.sd; calcular(); });
-  pestañas($('s-modo'), function (b) { modoA = b.dataset.m; $('c-renta').hidden = modoA !== 'trad'; ['c-tarifa', 'c-ocup', 'c-gastos'].forEach(function (k) { $(k).hidden = modoA === 'trad'; }); calcular(); });
-  ['s-renta', 's-tarifa', 's-ocup', 's-gastos', 's-valor'].forEach(function (k) { $(k).addEventListener('input', calcular); });
+  pestañas($('s-modo'), function (b) { modoA = b.dataset.m; $('c-renta').hidden = modoA !== 'trad'; ['c-tarifa', 'c-ocup', 'c-gastos', 'c-mant', 'c-amob'].forEach(function (k) { $(k).hidden = modoA === 'trad'; }); calcular(); });
+  ['s-renta', 's-tarifa', 's-ocup', 's-gastos', 's-mant', 's-amob', 's-valor'].forEach(function (k) { $(k).addEventListener('input', calcular); });
   calcular();
 
   // Mapa al tocar
